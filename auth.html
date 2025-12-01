@@ -1,149 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login · MIS Ultimate Scavenger Hunt</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <div class="app-content">
-        <header class="site-header">
-          <div>
-            <p class="eyebrow">University of Alabama · MIS 430</p>
-            <h1>MIS Ultimate Scavenger Hunt · Login</h1>
-          </div>
-          <div class="header-actions">
-            <a class="btn tertiary" href="index.html">Back to Landing</a>
-            <a class="btn ghost" href="leaderboards.html">View Leaderboards</a>
-          </div>
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - MIS Ultimate Scavenger Hunt</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* Auth Page Specific Styles */
+    .auth-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--surface);
+    }
 
-        <main>
-          <section class="section two-column">
-            <div class="card auth-card">
-              <div class="tabs" role="tablist">
-                <button
-                  class="tab active"
-                  data-tab="studentLogin"
-                  role="tab"
-                  aria-selected="true"
-                >
-                  Student / TA
-                </button>
-                <button
-                  class="tab"
-                  data-tab="adminLogin"
-                  role="tab"
-                  aria-selected="false"
-                >
-                  Admin
-                </button>
-              </div>
-              <form
-                id="studentLogin"
-                class="tab-panel active"
-                role="tabpanel"
-              >
-                <label
-                  >Email<input
-                    type="email"
-                    placeholder="student@ua.edu"
-                    required
-                /></label>
-                <label
-                  >Password<input
-                    type="password"
-                    placeholder="MisStu_2025!"
-                    required
-                /></label>
-                <label class="checkbox"
-                  ><input type="checkbox" />Remember me</label
-                >
-                <button class="btn primary" type="submit">Sign in</button>
-              </form>
-              <form id="adminLogin" class="tab-panel" role="tabpanel">
-                <label
-                  >Admin Email<input
-                    type="email"
-                    placeholder="admin@ua.edu"
-                    required
-                /></label>
-                <label
-                  >Access Code<input
-                    type="password"
-                    placeholder="MisAdmin_2025!"
-                    required
-                /></label>
-                <button class="btn primary" type="submit">
-                  Unlock Admin
-                </button>
-              </form>
-            </div>
+    .auth-sidebar {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-            <div class="card help-card">
-              <h3>Help & Reset</h3>
-              <p class="muted">
-                Need help logging in? These are demo credentials only; no real
-                accounts are used.
-              </p>
-              <ul class="link-list">
-                <li><span>Student: student@ua.edu / MisStu_2025!</span></li>
-                <li><span>TA: ta@ua.edu / MisTa_2025!</span></li>
-                <li><span>Admin: admin@ua.edu / MisAdmin_2025!</span></li>
-              </ul>
-            </div>
-          </section>
-        </main>
+    .auth-sidebar::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+      animation: pulse 15s infinite;
+    }
 
-        <footer class="site-footer">
-          <p>
-            © 2025 University of Alabama MIS · Ultimate Scavenger Hunt Prototype
-          </p>
-          <div class="footer-links">
-            <a href="index.html">Landing</a>
-            <a href="leaderboards.html">Leaderboards</a>
-          </div>
-        </footer>
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .auth-sidebar-content {
+      position: relative;
+      max-width: 400px;
+    }
+
+    .auth-sidebar h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem;
+    }
+
+    .auth-sidebar p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin: 0 0 2rem;
+      line-height: 1.6;
+    }
+
+    .auth-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .auth-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+    }
+
+    .auth-features .feature-icon {
+      font-size: 1.25rem;
+    }
+
+    .auth-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+    }
+
+    .auth-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+
+    .auth-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .auth-title {
+      font-size: 1.75rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .auth-subtitle {
+      color: var(--muted);
+      margin: 0 0 2rem;
+    }
+
+    .auth-tabs {
+      display: flex;
+      background: var(--surface-alt);
+      border-radius: var(--radius);
+      padding: 0.35rem;
+      margin-bottom: 2rem;
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: none;
+      background: transparent;
+      border-radius: calc(var(--radius) - 4px);
+      font: inherit;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .auth-tab.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .auth-form label {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .auth-form input {
+      padding: 0.85rem 1rem;
+      font-size: 1rem;
+    }
+
+    .password-field {
+      position: relative;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .remember-me input {
+      width: auto;
+    }
+
+    .forgot-link {
+      font-size: 0.9rem;
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .sso-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .sso-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .sso-btn:hover {
+      background: var(--surface-alt);
+      border-color: var(--primary);
+    }
+
+    .sso-btn .sso-icon {
+      font-size: 1.25rem;
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .auth-footer a {
+      font-weight: 600;
+    }
+
+    .auth-panel {
+      display: none;
+    }
+
+    .auth-panel.active {
+      display: block;
+    }
+
+    .course-select-group {
+      margin-top: 0.5rem;
+    }
+
+    .course-select-group select {
+      padding: 0.85rem 1rem;
+    }
+
+    .role-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .role-option {
+      cursor: pointer;
+    }
+
+    .role-option input {
+      display: none;
+    }
+
+    .role-card {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .role-option input:checked + .role-card {
+      border-color: var(--primary);
+      background: rgba(157, 34, 53, 0.05);
+    }
+
+    .role-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .role-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .demo-accounts {
+      background: var(--surface-alt);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .demo-accounts h4 {
+      margin: 0 0 1rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .demo-account-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .demo-account {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-account:last-child {
+      border-bottom: none;
+    }
+
+    .demo-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .demo-role {
+      font-size: 0.75rem;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .demo-btn {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.75rem;
+    }
+
+    .success-message {
+      background: var(--success-light);
+      color: var(--success);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .error-message {
+      background: rgba(220, 38, 38, 0.1);
+      color: var(--danger);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .auth-page {
+        grid-template-columns: 1fr;
+      }
+
+      .auth-sidebar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .auth-main {
+        padding: 1.5rem;
+      }
+
+      .role-selector {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+    
+    <!-- Sidebar -->
+    <aside class="auth-sidebar">
+      <div class="auth-sidebar-content">
+        <h1>Welcome Back, Hunters!</h1>
+        <p>Sign in to continue your learning adventure. Complete challenges, earn rewards, and climb the leaderboard.</p>
+        
+        <ul class="auth-features">
+          <li>
+            <span class="feature-icon">🎯</span>
+            <span>Track your progress across all hunts</span>
+          </li>
+          <li>
+            <span class="feature-icon">🏆</span>
+            <span>Compete for top spots on the leaderboard</span>
+          </li>
+          <li>
+            <span class="feature-icon">🎖️</span>
+            <span>Earn badges and unlock achievements</span>
+          </li>
+          <li>
+            <span class="feature-icon">👥</span>
+            <span>Collaborate with your team</span>
+          </li>
+          <li>
+            <span class="feature-icon">📊</span>
+            <span>View detailed analytics and insights</span>
+          </li>
+        </ul>
       </div>
-    </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // simple tab switcher
-        const tabs = document.querySelectorAll(".tabs .tab");
-        tabs.forEach((tab) => {
-          tab.addEventListener("click", () => {
-            const targetId = tab.dataset.tab;
-            tabs.forEach((t) => t.classList.remove("active"));
-            tab.classList.add("active");
-            document
-              .querySelectorAll(".tab-panel")
-              .forEach((panel) =>
-                panel.classList.toggle("active", panel.id === targetId)
-              );
-          });
-        });
+    </aside>
 
-        const studentForm = document.getElementById("studentLogin");
-        const adminForm = document.getElementById("adminLogin");
+    <!-- Main Auth Content -->
+    <main class="auth-main">
+      <div class="auth-header">
+        <a href="index.html" class="auth-logo">
+          <div class="logo">MIS</div>
+          <span class="brand-title">Scavenger Hunt</span>
+        </a>
+        <button class="icon-btn theme-toggle" onclick="toggleTheme()">🌙</button>
+      </div>
 
-        studentForm?.addEventListener("submit", (event) => {
-          event.preventDefault();
-          window.location.href = "student.html";
-        });
+      <div class="auth-container">
+        <h2 class="auth-title">Sign In</h2>
+        <p class="auth-subtitle">Enter your credentials to access your account</p>
 
-        adminForm?.addEventListener("submit", (event) => {
-          event.preventDefault();
-          window.location.href = "admin.html";
+        <!-- Success/Error Messages -->
+        <div class="success-message" id="successMessage"></div>
+        <div class="error-message" id="errorMessage"></div>
+
+        <!-- Auth Type Tabs -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-panel="student-panel">Student / TA</button>
+          <button class="auth-tab" data-panel="admin-panel">Admin</button>
+        </div>
+
+        <!-- Student/TA Login Panel -->
+        <div class="auth-panel active" id="student-panel">
+          <form class="auth-form" id="studentLoginForm">
+            <label>
+              CWID or Email
+              <input type="text" id="studentEmail" placeholder="Enter your CWID or email" required />
+            </label>
+
+            <label>
+              Password
+              <div class="password-field">
+                <input type="password" id="studentPassword" placeholder="Enter your password" required />
+                <button type="button" class="password-toggle" onclick="togglePassword('studentPassword')">👁️</button>
+              </div>
+            </label>
+
+            <div class="form-row">
+              <label class="remember-me">
+                <input type="checkbox" id="rememberStudent" />
+                Remember me
+              </label>
+              <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn primary full-width">Sign In</button>
+          </form>
+
+          <div class="auth-divider">or continue with</div>
+
+          <div class="sso-buttons">
+            <button type="button" class="sso-btn" onclick="handleSSOLogin('ua')">
+              <span class="sso-icon">🎓</span>
+              <span>University of Alabama SSO</span>
+            </button>
+          </div>
+
+          <p class="auth-footer">
+            New to MIS Scavenger Hunt? <a href="#">Request Access</a>
+          </p>
+        </div>
+
+        <!-- Admin Login Panel -->
+        <div class="auth-panel" id="admin-panel">
+          <form class="auth-form" id="adminLoginForm">
+            <label>
+              Admin Email
+              <input type="email" id="adminEmail" placeholder="admin@ua.edu" required />
+            </label>
+
+            <label>
+              Password
+              <div class="password-field">
+                <input type="password" id="adminPassword" placeholder="Enter your password" required />
+                <button type="button" class="password-toggle" onclick="togglePassword('adminPassword')">👁️</button>
+              </div>
+            </label>
+
+            <div class="form-row">
+              <label class="remember-me">
+                <input type="checkbox" id="rememberAdmin" />
+                Remember me
+              </label>
+              <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn primary full-width">Sign In as Admin</button>
+          </form>
+
+          <p class="auth-footer">
+            Need admin access? <a href="mailto:mis-admin@ua.edu">Contact IT</a>
+          </p>
+        </div>
+
+        <!-- Demo Accounts (for prototype) -->
+        <div class="demo-accounts">
+          <h4>Demo Accounts (Prototype Only)</h4>
+          <div class="demo-account-list">
+            <div class="demo-account">
+              <div class="demo-info">
+                <span>student@ua.edu</span>
+                <span class="demo-role">Student</span>
+              </div>
+              <button class="btn small demo-btn" onclick="demoLogin('student')">Use</button>
+            </div>
+            <div class="demo-account">
+              <div class="demo-info">
+                <span>ta@ua.edu</span>
+                <span class="demo-role">TA</span>
+              </div>
+              <button class="btn small demo-btn" onclick="demoLogin('ta')">Use</button>
+            </div>
+            <div class="demo-account">
+              <div class="demo-info">
+                <span>admin@ua.edu</span>
+                <span class="demo-role">Admin</span>
+              </div>
+              <button class="btn small demo-btn" onclick="demoLogin('admin')">Use</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/navigation.js"></script>
+  <script>
+    // Demo users data
+    const demoUsers = {
+      student: {
+        id: 1,
+        name: 'Jordan Davis',
+        email: 'student@ua.edu',
+        role: 'Student',
+        initials: 'JD',
+        course: 'MIS 320',
+        points: 1250,
+        rank: 12
+      },
+      ta: {
+        id: 2,
+        name: 'Alex Chen',
+        email: 'ta@ua.edu',
+        role: 'TA',
+        initials: 'AC',
+        course: 'MIS 320',
+        points: 0,
+        rank: null
+      },
+      admin: {
+        id: 3,
+        name: 'Dr. Sarah Mitchell',
+        email: 'admin@ua.edu',
+        role: 'Admin',
+        initials: 'SM',
+        course: null,
+        points: 0,
+        rank: null
+      }
+    };
+
+    // Theme functions
+    function toggleTheme() {
+      const current = document.documentElement.dataset.theme || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      
+      const btn = document.querySelector('.theme-toggle');
+      if (btn) btn.textContent = next === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Initialize theme
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      document.documentElement.dataset.theme = saved;
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.dataset.theme = 'dark';
+    }
+    const themeBtn = document.querySelector('.theme-toggle');
+    if (themeBtn) themeBtn.textContent = document.documentElement.dataset.theme === 'dark' ? '☀️' : '🌙';
+
+    // Tab switching
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Show corresponding panel
+        const panelId = tab.dataset.panel;
+        document.querySelectorAll('.auth-panel').forEach(panel => {
+          panel.classList.toggle('active', panel.id === panelId);
         });
+        
+        // Clear messages
+        hideMessages();
       });
-    </script>
-  </body>
+    });
+
+    // Password toggle
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const btn = input.parentElement.querySelector('.password-toggle');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        btn.textContent = '👁️';
+      }
+    }
+
+    // Show/hide messages
+    function showSuccess(message) {
+      const el = document.getElementById('successMessage');
+      el.textContent = message;
+      el.style.display = 'block';
+      document.getElementById('errorMessage').style.display = 'none';
+    }
+
+    function showError(message) {
+      const el = document.getElementById('errorMessage');
+      el.textContent = message;
+      el.style.display = 'block';
+      document.getElementById('successMessage').style.display = 'none';
+    }
+
+    function hideMessages() {
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('errorMessage').style.display = 'none';
+    }
+
+    // Demo login
+    function demoLogin(role) {
+      const user = demoUsers[role];
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        showSuccess(`Signing in as ${user.name}...`);
+        
+        // Redirect based on role
+        setTimeout(() => {
+          if (role === 'admin') {
+            window.location.href = 'admin-dashboard.html';
+          } else if (role === 'ta') {
+            window.location.href = 'admin-dashboard.html';
+          } else {
+            window.location.href = 'student-dashboard.html';
+          }
+        }, 1000);
+      }
+    }
+
+    // SSO login
+    function handleSSOLogin(provider) {
+      showSuccess('Redirecting to University SSO...');
+      // In real app, this would redirect to SSO provider
+      setTimeout(() => {
+        demoLogin('student');
+      }, 1500);
+    }
+
+    // Form submissions
+    document.getElementById('studentLoginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('studentEmail').value;
+      const password = document.getElementById('studentPassword').value;
+      
+      // Simple validation
+      if (!email || !password) {
+        showError('Please fill in all fields');
+        return;
+      }
+      
+      // Check demo credentials
+      if (email === 'student@ua.edu' || email === 'ta@ua.edu') {
+        const role = email.includes('ta') ? 'ta' : 'student';
+        demoLogin(role);
+      } else {
+        showError('Invalid credentials. Try a demo account.');
+      }
+    });
+
+    document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('adminEmail').value;
+      const password = document.getElementById('adminPassword').value;
+      
+      if (!email || !password) {
+        showError('Please fill in all fields');
+        return;
+      }
+      
+      if (email === 'admin@ua.edu') {
+        demoLogin('admin');
+      } else {
+        showError('Invalid admin credentials. Try the demo account.');
+      }
+    });
+
+    // Check for logout action in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('logout') === 'true') {
+      localStorage.removeItem('currentUser');
+      // Clean up URL
+      window.history.replaceState({}, document.title, 'auth.html');
+      showSuccess('You have been signed out successfully.');
+    }
+    // Only auto-redirect if NOT logging out and user is logged in
+    else {
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser) {
+        try {
+          const user = JSON.parse(currentUser);
+          if (user.role === 'Admin' || user.role === 'TA') {
+            window.location.href = 'admin-dashboard.html';
+          } else {
+            window.location.href = 'student-dashboard.html';
+          }
+        } catch (e) {
+          localStorage.removeItem('currentUser');
+        }
+      }
+    }
+  </script>
+</body>
 </html>

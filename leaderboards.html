@@ -6,103 +6,496 @@
     <title>Leaderboards · MIS Ultimate Scavenger Hunt</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="app-shell">
+      <!-- Sidebar (shown when logged in) -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Student navigation">
+          <p class="nav-label">Student</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="student-messages.html">Messages</a>
+          <a class="nav-link active" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link" href="student-profile.html">My Profile</a>
+          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
       <div class="app-content">
         <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
           <div>
-            <p class="eyebrow">University of Alabama · MIS 430</p>
-            <h1>MIS Ultimate Scavenger Hunt · Leaderboards</h1>
+            <p class="eyebrow">Competition</p>
+            <h1>Leaderboards</h1>
           </div>
           <div class="header-actions">
-            <a class="btn tertiary" href="index.html">Landing</a>
-            <a class="btn secondary" href="auth.html">Login</a>
+            <a class="btn secondary" href="student-dashboard.html">Back to Dashboard</a>
           </div>
         </header>
 
         <main>
+          <!-- Top Performers Banner -->
+          <section class="welcome-banner" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+            <div class="welcome-content">
+              <h2>🏆 Fall 2025 Leaderboard</h2>
+              <p>Compete with your classmates and climb to the top!</p>
+            </div>
+            <div class="welcome-actions">
+              <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 999px;">
+                Your Rank: <strong>#12</strong>
+              </span>
+            </div>
+          </section>
+
+          <!-- Stats Overview -->
           <section class="section">
-            <header class="section-headline">
-              <div>
-                <p class="eyebrow">Competitive Insight</p>
-                <h2 class="section-title">Leaderboards</h2>
-              </div>
-            </header>
             <div class="cards-grid four stat-cards">
-              <article class="card">
-                <p class="muted">Top Performer</p>
-                <h3>Avery · 3,210 pts</h3>
+              <article class="card stat-card">
+                <div class="stat-icon">👑</div>
+                <div class="stat-content">
+                  <h3>Avery Thompson</h3>
+                  <p>Current Leader</p>
+                  <span class="stat-change positive">3,210 pts</span>
+                </div>
               </article>
-              <article class="card">
-                <p class="muted">Most Improved</p>
-                <h3>Jordan · +180 pts</h3>
+              <article class="card stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-content">
+                  <h3>Jordan Kim</h3>
+                  <p>Most Improved</p>
+                  <span class="stat-change positive">+180 pts this week</span>
+                </div>
               </article>
-              <article class="card">
-                <p class="muted">Team to Watch</p>
-                <h3>Team Crimson</h3>
+              <article class="card stat-card">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-content">
+                  <h3>Team Crimson</h3>
+                  <p>Top Team</p>
+                  <span class="stat-change">12,450 pts total</span>
+                </div>
               </article>
-              <article class="card">
-                <p class="muted">Active Hunts</p>
-                <h3>8</h3>
+              <article class="card stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-content">
+                  <h3>8</h3>
+                  <p>Active Hunts</p>
+                  <span class="stat-change">3 ending this week</span>
+                </div>
               </article>
             </div>
-            <div class="card">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Student</th>
-                    <th>Points</th>
-                    <th>Tasks</th>
-                    <th>Badges</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Avery</td>
-                    <td>3,210</td>
-                    <td>58</td>
-                    <td>Legend</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jordan</td>
-                    <td>3,045</td>
-                    <td>54</td>
-                    <td>Trailblazer</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Sam</td>
-                    <td>2,980</td>
-                    <td>52</td>
-                    <td>Explorer</td>
-                  </tr>
-                </tbody>
-              </table>
+          </section>
+
+          <!-- Leaderboard Tabs -->
+          <section class="section">
+            <div class="section-headline">
+              <h2 class="section-title">Rankings</h2>
+              <div class="tabs">
+                <button class="tab active" data-tab="individual">Individual</button>
+                <button class="tab" data-tab="teams">Teams</button>
+                <button class="tab" data-tab="hunts">By Hunt</button>
+              </div>
+            </div>
+
+            <!-- Individual Leaderboard -->
+            <div class="tab-panel active" data-tab="individual">
+              <div class="filter-bar">
+                <div class="chip-row">
+                  <button class="chip active">All Time</button>
+                  <button class="chip">This Week</button>
+                  <button class="chip">This Month</button>
+                </div>
+                <div class="search-box">
+                  <span class="search-icon">🔍</span>
+                  <input type="search" placeholder="Search students..." />
+                </div>
+              </div>
+
+              <!-- Top 3 Podium -->
+              <div class="cards-grid three" style="margin-bottom: 2rem;">
+                <article class="card" style="text-align: center; border: 2px solid #9ca3af; order: 2;">
+                  <div class="rank silver" style="width: 60px; height: 60px; margin: 0 auto 1rem; font-size: 1.5rem;">2</div>
+                  <div class="user-avatar large" style="margin: 0 auto 0.75rem;">JK</div>
+                  <h4 style="margin: 0;">Jordan Kim</h4>
+                  <p class="muted" style="margin: 0.25rem 0;">Team Tide</p>
+                  <p style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0;">3,045</p>
+                  <span class="badge">54 tasks</span>
+                </article>
+
+                <article class="card" style="text-align: center; border: 2px solid #f59e0b; transform: scale(1.05); order: 1;">
+                  <div class="rank gold" style="width: 70px; height: 70px; margin: 0 auto 1rem; font-size: 1.75rem;">1</div>
+                  <div class="user-avatar large" style="margin: 0 auto 0.75rem; background: linear-gradient(135deg, #f59e0b, #d97706);">AT</div>
+                  <h4 style="margin: 0;">Avery Thompson</h4>
+                  <p class="muted" style="margin: 0.25rem 0;">Team Crimson</p>
+                  <p style="font-size: 1.75rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0;">3,210</p>
+                  <span class="badge success">58 tasks · Legend</span>
+                </article>
+
+                <article class="card" style="text-align: center; border: 2px solid #c2410c; order: 3;">
+                  <div class="rank bronze" style="width: 60px; height: 60px; margin: 0 auto 1rem; font-size: 1.5rem;">3</div>
+                  <div class="user-avatar large" style="margin: 0 auto 0.75rem;">SM</div>
+                  <h4 style="margin: 0;">Sam Martinez</h4>
+                  <p class="muted" style="margin: 0.25rem 0;">Team Elephant</p>
+                  <p style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0;">2,980</p>
+                  <span class="badge">52 tasks</span>
+                </article>
+              </div>
+
+              <!-- Full Leaderboard Table -->
+              <div class="card table-card">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Student</th>
+                      <th>Team</th>
+                      <th>Points</th>
+                      <th>Tasks</th>
+                      <th>Streak</th>
+                      <th>Top Badge</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="rank gold">1</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">AT</div>
+                          <span>Avery Thompson</span>
+                        </div>
+                      </td>
+                      <td>Team Crimson</td>
+                      <td><strong>3,210</strong></td>
+                      <td>58</td>
+                      <td>🔥 21 days</td>
+                      <td><span class="badge success">Legend</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="rank silver">2</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">JK</div>
+                          <span>Jordan Kim</span>
+                        </div>
+                      </td>
+                      <td>Team Tide</td>
+                      <td><strong>3,045</strong></td>
+                      <td>54</td>
+                      <td>🔥 14 days</td>
+                      <td><span class="badge">Trailblazer</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="rank bronze">3</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">SM</div>
+                          <span>Sam Martinez</span>
+                        </div>
+                      </td>
+                      <td>Team Elephant</td>
+                      <td><strong>2,980</strong></td>
+                      <td>52</td>
+                      <td>🔥 18 days</td>
+                      <td><span class="badge">Explorer</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="rank">4</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">RJ</div>
+                          <span>Riley Johnson</span>
+                        </div>
+                      </td>
+                      <td>Team Crimson</td>
+                      <td><strong>2,890</strong></td>
+                      <td>50</td>
+                      <td>🔥 9 days</td>
+                      <td><span class="badge">Achiever</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="rank">5</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">CP</div>
+                          <span>Casey Patel</span>
+                        </div>
+                      </td>
+                      <td>Team Gray</td>
+                      <td><strong>2,780</strong></td>
+                      <td>48</td>
+                      <td>🔥 7 days</td>
+                      <td><span class="badge">Challenger</span></td>
+                    </tr>
+                    <tr style="background: rgba(157, 34, 53, 0.1);">
+                      <td><span class="rank">12</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">JA</div>
+                          <strong>Jamie Alvarez (You)</strong>
+                        </div>
+                      </td>
+                      <td>Team Crimson</td>
+                      <td><strong>2,450</strong></td>
+                      <td>47</td>
+                      <td>🔥 12 days</td>
+                      <td><span class="badge">Rising Star</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="table-pagination">
+                  <span class="page-indicator">Showing 6 of 156 students</span>
+                  <div class="pagination-controls">
+                    <button class="btn small ghost" disabled>← Previous</button>
+                    <span>Page 1 of 26</span>
+                    <button class="btn small ghost">Next →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Teams Leaderboard -->
+            <div class="tab-panel" data-tab="teams">
+              <div class="cards-grid two">
+                <article class="card">
+                  <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <span class="rank gold" style="width: 40px; height: 40px;">1</span>
+                      <div>
+                        <h4 style="margin: 0;">Team Crimson</h4>
+                        <p class="muted" style="margin: 0;">4 members</p>
+                      </div>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">12,450 pts</span>
+                  </div>
+                  <div class="team-members" style="display: flex; margin: 1rem 0;">
+                    <div class="team-member" style="margin-left: 0;">AT</div>
+                    <div class="team-member">RJ</div>
+                    <div class="team-member">JA</div>
+                    <div class="team-member">MK</div>
+                  </div>
+                  <div style="display: flex; gap: 1rem;">
+                    <span class="muted">🎯 156 tasks</span>
+                    <span class="muted">🏆 8 hunts completed</span>
+                  </div>
+                </article>
+
+                <article class="card">
+                  <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <span class="rank silver" style="width: 40px; height: 40px;">2</span>
+                      <div>
+                        <h4 style="margin: 0;">Team Tide</h4>
+                        <p class="muted" style="margin: 0;">4 members</p>
+                      </div>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">11,890 pts</span>
+                  </div>
+                  <div class="team-members" style="display: flex; margin: 1rem 0;">
+                    <div class="team-member" style="margin-left: 0;">JK</div>
+                    <div class="team-member">LW</div>
+                    <div class="team-member">AB</div>
+                    <div class="team-member">TC</div>
+                  </div>
+                  <div style="display: flex; gap: 1rem;">
+                    <span class="muted">🎯 148 tasks</span>
+                    <span class="muted">🏆 7 hunts completed</span>
+                  </div>
+                </article>
+
+                <article class="card">
+                  <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <span class="rank bronze" style="width: 40px; height: 40px;">3</span>
+                      <div>
+                        <h4 style="margin: 0;">Team Elephant</h4>
+                        <p class="muted" style="margin: 0;">4 members</p>
+                      </div>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">11,340 pts</span>
+                  </div>
+                  <div class="team-members" style="display: flex; margin: 1rem 0;">
+                    <div class="team-member" style="margin-left: 0;">SM</div>
+                    <div class="team-member">EP</div>
+                    <div class="team-member">DH</div>
+                    <div class="team-member">NR</div>
+                  </div>
+                  <div style="display: flex; gap: 1rem;">
+                    <span class="muted">🎯 142 tasks</span>
+                    <span class="muted">🏆 7 hunts completed</span>
+                  </div>
+                </article>
+
+                <article class="card">
+                  <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <span class="rank" style="width: 40px; height: 40px;">4</span>
+                      <div>
+                        <h4 style="margin: 0;">Team Gray</h4>
+                        <p class="muted" style="margin: 0;">4 members</p>
+                      </div>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">10,780 pts</span>
+                  </div>
+                  <div class="team-members" style="display: flex; margin: 1rem 0;">
+                    <div class="team-member" style="margin-left: 0;">CP</div>
+                    <div class="team-member">JS</div>
+                    <div class="team-member">ML</div>
+                    <div class="team-member">BT</div>
+                  </div>
+                  <div style="display: flex; gap: 1rem;">
+                    <span class="muted">🎯 135 tasks</span>
+                    <span class="muted">🏆 6 hunts completed</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- By Hunt Leaderboard -->
+            <div class="tab-panel" data-tab="hunts">
+              <div class="filter-bar">
+                <select style="min-width: 250px;">
+                  <option value="">Select a Hunt</option>
+                  <option value="sql" selected>SQL Optimization Challenge</option>
+                  <option value="python">Python Data Analysis</option>
+                  <option value="web">Web Development Basics</option>
+                  <option value="agile">Agile Project Management</option>
+                </select>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>SQL Optimization Challenge - Top Performers</h3>
+                  <span class="badge success">Active</span>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Student</th>
+                      <th>Progress</th>
+                      <th>Points</th>
+                      <th>Completion Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="rank gold">1</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">AT</div>
+                          <span>Avery Thompson</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mini-progress">
+                          <div class="mini-progress-track"><span style="width: 100%"></span></div>
+                          <span>100%</span>
+                        </div>
+                      </td>
+                      <td><strong>450</strong></td>
+                      <td>2d 4h</td>
+                    </tr>
+                    <tr>
+                      <td><span class="rank silver">2</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">JK</div>
+                          <span>Jordan Kim</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mini-progress">
+                          <div class="mini-progress-track"><span style="width: 100%"></span></div>
+                          <span>100%</span>
+                        </div>
+                      </td>
+                      <td><strong>435</strong></td>
+                      <td>2d 8h</td>
+                    </tr>
+                    <tr style="background: rgba(157, 34, 53, 0.1);">
+                      <td><span class="rank">8</span></td>
+                      <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                          <div class="user-avatar small">JA</div>
+                          <strong>Jamie Alvarez (You)</strong>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mini-progress">
+                          <div class="mini-progress-track"><span style="width: 75%"></span></div>
+                          <span>75%</span>
+                        </div>
+                      </td>
+                      <td><strong>320</strong></td>
+                      <td>In progress</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         </main>
 
-        <footer class="site-footer">
-          <p>
-            © 2025 University of Alabama MIS · Ultimate Scavenger Hunt Prototype
-          </p>
-          <div class="footer-links">
-            <a href="index.html">Landing</a>
-            <a href="auth.html">Login</a>
-          </div>
+        <footer style="text-align: center; padding: 1.5rem; color: var(--muted); border-top: 1px solid var(--border);">
+          <p>© 2025 MIS Department, University of Alabama · Roll Tide!</p>
         </footer>
       </div>
     </div>
+
+    <script src="./assets/js/navigation.js"></script>
+    <script>
+      // Mobile nav toggle
+      document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('open');
+      });
+
+      // Tab switching
+      document.querySelectorAll('.tabs .tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.tab;
+          
+          // Update active tab
+          document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          // Update active panel
+          document.querySelectorAll('.tab-panel').forEach(panel => {
+            panel.classList.toggle('active', panel.dataset.tab === target);
+          });
+        });
+      });
+
+      // Chip filtering
+      document.querySelectorAll('.chip-row .chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          chip.closest('.chip-row').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+        });
+      });
+    </script>
   </body>
 </html>
-
-

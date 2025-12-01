@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Tasks · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Student Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Student navigation">
+          <p class="nav-label">Student</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link active" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="student-messages.html">Messages</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link" href="student-profile.html">My Profile</a>
+          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Task Center</p>
+            <h1>My Tasks</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn primary" id="submitNewTaskBtn">
+              <span class="btn-icon">+</span> Submit Task
+            </button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Task Stats -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Active Tasks</p>
+                  <h3>5</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Pending Review</p>
+                  <h3>2</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Completed</p>
+                  <h3>47</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Points Earned</p>
+                  <h3>2,450</h3>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Filters and Search -->
+          <section class="section">
+            <div class="filter-bar">
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="search" placeholder="Search tasks..." id="taskSearch" />
+              </div>
+              <div class="filter-controls">
+                <select id="huntFilter">
+                  <option value="">All Hunts</option>
+                  <option value="data">Data Management Quest</option>
+                  <option value="cyber">Cybersecurity Challenge</option>
+                  <option value="innovation">Innovation Sprint</option>
+                  <option value="community">Community Builder</option>
+                </select>
+                <select id="sortBy">
+                  <option value="due">Sort by Due Date</option>
+                  <option value="points">Sort by Points</option>
+                  <option value="status">Sort by Status</option>
+                  <option value="name">Sort by Name</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- Task Tabs -->
+          <section class="section">
+            <div class="tabs-container">
+              <div class="tabs">
+                <button class="tab active" data-tab="active">Active (5)</button>
+                <button class="tab" data-tab="pending">Pending Review (2)</button>
+                <button class="tab" data-tab="completed">Completed (47)</button>
+                <button class="tab" data-tab="drafts">Drafts (1)</button>
+              </div>
+            </div>
+
+            <!-- Active Tasks -->
+            <div class="tab-panel active" id="active">
+              <div class="cards-grid three">
+                <article class="card task-card">
+                  <div class="task-header">
+                    <span class="pill urgent">Due Tomorrow · 75 pts</span>
+                    <button class="icon-btn bookmark" title="Bookmark task">☆</button>
+                  </div>
+                  <h3>Cyber Lab Reflection</h3>
+                  <p class="muted">Summarize findings from the security scavenger hunt lab session.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Cybersecurity Challenge</span>
+                    <span class="task-type">Written</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn primary" data-open-drawer="task" data-task="cyber-lab">Submit</button>
+                    <button class="btn ghost" data-open-modal="taskDetail" data-task="cyber-lab">View Details</button>
+                  </div>
+                </article>
+
+                <article class="card task-card">
+                  <div class="task-header">
+                    <span class="pill">Active · 100 pts</span>
+                    <button class="icon-btn bookmark" title="Bookmark task">☆</button>
+                  </div>
+                  <h3>Campus Photo Story</h3>
+                  <p class="muted">Upload photos proving each clue completion across campus locations.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Data Management Quest</span>
+                    <span class="task-type">Photo Evidence</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn primary" data-open-drawer="task" data-task="campus-photo">Submit</button>
+                    <button class="btn ghost" data-open-modal="taskDetail" data-task="campus-photo">View Details</button>
+                  </div>
+                </article>
+
+                <article class="card task-card">
+                  <div class="task-header">
+                    <span class="pill">4 Days Left · 120 pts</span>
+                    <button class="icon-btn bookmark bookmarked" title="Remove bookmark">★</button>
+                  </div>
+                  <h3>Data Insights Report</h3>
+                  <p class="muted">Analyze the provided dataset and create a comprehensive insights report.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Data Management Quest</span>
+                    <span class="task-type">Report</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn primary" data-open-drawer="task" data-task="data-insights">Start</button>
+                    <button class="btn ghost" data-open-modal="taskDetail" data-task="data-insights">View Details</button>
+                  </div>
+                </article>
+
+                <article class="card task-card">
+                  <div class="task-header">
+                    <span class="pill">8 Days Left · 50 pts</span>
+                    <button class="icon-btn bookmark" title="Bookmark task">☆</button>
+                  </div>
+                  <h3>Team Collaboration Log</h3>
+                  <p class="muted">Document your team interactions and collaborative moments.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Community Builder</span>
+                    <span class="task-type">Log Entry</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn secondary" data-open-drawer="task" data-task="collab-log">Start</button>
+                    <button class="btn ghost" data-open-modal="taskDetail" data-task="collab-log">View Details</button>
+                  </div>
+                </article>
+
+                <article class="card task-card">
+                  <div class="task-header">
+                    <span class="pill">12 Days Left · 80 pts</span>
+                    <button class="icon-btn bookmark" title="Bookmark task">☆</button>
+                  </div>
+                  <h3>Innovation Pitch Video</h3>
+                  <p class="muted">Record a 3-minute pitch presenting your innovative solution.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Innovation Sprint</span>
+                    <span class="task-type">Video</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn secondary" data-open-drawer="task" data-task="pitch-video">Start</button>
+                    <button class="btn ghost" data-open-modal="taskDetail" data-task="pitch-video">View Details</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Pending Review -->
+            <div class="tab-panel" id="pending">
+              <div class="cards-grid three">
+                <article class="card task-card pending">
+                  <div class="task-header">
+                    <span class="pill warn">Pending Review · 100 pts</span>
+                  </div>
+                  <h3>Security Assessment</h3>
+                  <p class="muted">Vulnerability assessment of the mock network environment.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Cybersecurity Challenge</span>
+                    <span class="task-date">Submitted Nov 12</span>
+                  </div>
+                  <div class="task-status-bar">
+                    <div class="status-step completed">Submitted</div>
+                    <div class="status-step active">In Review</div>
+                    <div class="status-step">Graded</div>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn ghost" data-open-modal="submissionDetail">View Submission</button>
+                  </div>
+                </article>
+
+                <article class="card task-card revision">
+                  <div class="task-header">
+                    <span class="pill warn">Revision Needed · 75 pts</span>
+                  </div>
+                  <h3>Ethics Case Study</h3>
+                  <p class="muted">Analysis of ethical considerations in data management.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Data Management Quest</span>
+                    <span class="task-date">Feedback received Nov 10</span>
+                  </div>
+                  <div class="revision-feedback">
+                    <p class="eyebrow">TA Feedback:</p>
+                    <p class="muted">"Good analysis, but please expand on the privacy implications section. Add 2-3 more examples."</p>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn primary" data-open-drawer="task" data-task="ethics-case">Revise & Resubmit</button>
+                    <button class="btn ghost" data-open-modal="submissionDetail">View Original</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Completed -->
+            <div class="tab-panel" id="completed">
+              <div class="completed-summary">
+                <p>You've completed <strong>47 tasks</strong> and earned <strong>2,450 points</strong> this semester!</p>
+              </div>
+              <div class="cards-grid three">
+                <article class="card task-card completed">
+                  <div class="task-header">
+                    <span class="pill success">Complete · 50 pts</span>
+                    <span class="grade-badge">A</span>
+                  </div>
+                  <h3>Leadership Forum</h3>
+                  <p class="muted">Attended panel, captured insights, submitted notes.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Community Builder</span>
+                    <span class="task-date">Completed Nov 8</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn ghost" data-open-modal="submissionDetail">View Submission</button>
+                    <button class="btn ghost">Download</button>
+                  </div>
+                </article>
+
+                <article class="card task-card completed">
+                  <div class="task-header">
+                    <span class="pill success">Complete · 80 pts</span>
+                    <span class="grade-badge">A+</span>
+                  </div>
+                  <h3>User Interview Summary</h3>
+                  <p class="muted">Conducted and documented 5 user interviews.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Innovation Sprint</span>
+                    <span class="task-date">Completed Nov 5</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn ghost" data-open-modal="submissionDetail">View Submission</button>
+                    <button class="btn ghost">Download</button>
+                  </div>
+                </article>
+
+                <article class="card task-card completed">
+                  <div class="task-header">
+                    <span class="pill success">Complete · 60 pts</span>
+                    <span class="grade-badge">B+</span>
+                  </div>
+                  <h3>Network Diagram</h3>
+                  <p class="muted">Created network topology diagram for the scenario.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Cybersecurity Challenge</span>
+                    <span class="task-date">Completed Nov 1</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn ghost" data-open-modal="submissionDetail">View Submission</button>
+                    <button class="btn ghost">Download</button>
+                  </div>
+                </article>
+              </div>
+              <div class="load-more">
+                <button class="btn secondary">Load More Completed Tasks</button>
+              </div>
+            </div>
+
+            <!-- Drafts -->
+            <div class="tab-panel" id="drafts">
+              <div class="cards-grid three">
+                <article class="card task-card draft">
+                  <div class="task-header">
+                    <span class="pill neutral">Draft · 100 pts</span>
+                    <span class="draft-date">Last edited 2 days ago</span>
+                  </div>
+                  <h3>Campus Photo Story</h3>
+                  <p class="muted">3 of 5 photos uploaded. Continue to complete submission.</p>
+                  <div class="task-meta">
+                    <span class="task-hunt">Data Management Quest</span>
+                  </div>
+                  <div class="draft-progress">
+                    <div class="progress-track">
+                      <span style="width: 60%"></span>
+                    </div>
+                    <span>60% complete</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="btn primary" data-open-drawer="task" data-task="campus-photo">Continue Editing</button>
+                    <button class="btn ghost delete-draft">Delete Draft</button>
+                  </div>
+                </article>
+              </div>
+              <div class="empty-state" style="display: none;">
+                <p class="muted">No drafts saved. Start a task submission to save as draft.</p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Task Submission Drawer -->
+    <div class="drawer" id="taskDrawer" aria-hidden="true">
+      <div class="drawer__header">
+        <h3>Submit Task</h3>
+        <button type="button" class="icon-btn" data-close-drawer="task" aria-label="Close">×</button>
+      </div>
+      <div class="drawer__body">
+        <div class="task-drawer-info">
+          <p class="eyebrow">Selected Task</p>
+          <h4 id="drawerTaskTitle">Campus Photo Story</h4>
+          <p class="muted" id="drawerTaskDesc">Upload photos proving each clue completion. Worth 100 points.</p>
+        </div>
+        <form class="stacked-form" id="taskSubmitForm">
+          <label>
+            Evidence Upload
+            <div class="file-upload-area">
+              <input type="file" id="evidenceFile" accept="image/*,.pdf,.doc,.docx" multiple />
+              <div class="file-upload-placeholder">
+                <span class="upload-icon">📁</span>
+                <p>Click to upload or drag files here</p>
+                <p class="muted">Supports images, PDFs, and documents</p>
+              </div>
+            </div>
+          </label>
+          <div class="uploaded-files" id="uploadedFiles">
+            <!-- Files will be listed here -->
+          </div>
+          <label>
+            Evidence URL (optional)
+            <input type="url" placeholder="https://example.com/my-evidence" />
+          </label>
+          <label>
+            Notes for Grader
+            <textarea rows="4" placeholder="Describe what you did and any context for the grader..."></textarea>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" required />
+            I confirm this is my own work and follows the honor code
+          </label>
+        </form>
+      </div>
+      <div class="drawer__footer">
+        <button type="button" class="btn ghost" data-close-drawer="task">Cancel</button>
+        <button type="button" class="btn secondary" id="saveDraftBtn">Save Draft</button>
+        <button type="button" class="btn primary" id="submitTaskFormBtn">Submit for Review</button>
+      </div>
+    </div>
+
+    <!-- Task Detail Modal -->
+    <div class="modal" id="taskDetailModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="taskDetail"></div>
+      <div class="modal__content large">
+        <div class="modal__header">
+          <div>
+            <p class="eyebrow">Task Details</p>
+            <h3>Campus Photo Story</h3>
+          </div>
+          <button type="button" class="icon-btn" data-close-modal="taskDetail" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <div class="task-detail-grid">
+            <div class="task-detail-main">
+              <h4>Description</h4>
+              <p>Capture photographic evidence at each of the 5 designated campus locations. Each photo should clearly show you at the location with any relevant context.</p>
+              
+              <h4>Requirements</h4>
+              <ul>
+                <li>Visit all 5 locations listed below</li>
+                <li>Take a clear photo at each location</li>
+                <li>Include a brief caption for each photo</li>
+                <li>Submit all photos together as a single submission</li>
+              </ul>
+
+              <h4>Locations</h4>
+              <ol>
+                <li>Ferguson Student Center - Main Lobby</li>
+                <li>Bryant-Denny Stadium - Gate 10</li>
+                <li>Gorgas Library - 2nd Floor Study Area</li>
+                <li>University Recreation Center - Entrance</li>
+                <li>Denny Chimes - Base of the tower</li>
+              </ol>
+
+              <h4>Grading Criteria</h4>
+              <ul>
+                <li>Photo clarity and composition (20 pts)</li>
+                <li>All locations visited (50 pts)</li>
+                <li>Captions and context (20 pts)</li>
+                <li>Creativity bonus (10 pts)</li>
+              </ul>
+            </div>
+            <div class="task-detail-sidebar">
+              <div class="task-info-card">
+                <dl>
+                  <dt>Points</dt>
+                  <dd>100 pts</dd>
+                  <dt>Due Date</dt>
+                  <dd>Nov 20, 2025</dd>
+                  <dt>Hunt</dt>
+                  <dd>Data Management Quest</dd>
+                  <dt>Type</dt>
+                  <dd>Photo Evidence</dd>
+                  <dt>Difficulty</dt>
+                  <dd>Medium</dd>
+                  <dt>Est. Time</dt>
+                  <dd>2-3 hours</dd>
+                </dl>
+              </div>
+              <div class="task-resources">
+                <h4>Resources</h4>
+                <ul class="resource-list">
+                  <li><a href="#">📄 Campus Map PDF</a></li>
+                  <li><a href="#">📝 Photo Tips Guide</a></li>
+                  <li><a href="#">❓ Task FAQ</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="taskDetail">Close</button>
+          <button class="btn primary" id="startTaskFromModal">Start Task</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submission Detail Modal -->
+    <div class="modal" id="submissionDetailModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="submissionDetail"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <div>
+            <p class="eyebrow">Submission</p>
+            <h3>Security Assessment</h3>
+          </div>
+          <button type="button" class="icon-btn" data-close-modal="submissionDetail" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <div class="submission-info">
+            <dl>
+              <dt>Submitted</dt>
+              <dd>Nov 12, 2025 at 3:45 PM</dd>
+              <dt>Status</dt>
+              <dd><span class="badge warn">In Review</span></dd>
+              <dt>Files</dt>
+              <dd>security_assessment.pdf, screenshots.zip</dd>
+            </dl>
+          </div>
+          <div class="submission-notes">
+            <h4>Your Notes</h4>
+            <p class="muted">Completed the full vulnerability assessment as described. Found 3 critical issues and 5 medium-priority items. All findings documented in the PDF.</p>
+          </div>
+          <div class="submission-files">
+            <h4>Submitted Files</h4>
+            <div class="file-list">
+              <div class="file-item">
+                <span class="file-icon">📄</span>
+                <div class="file-info">
+                  <p>security_assessment.pdf</p>
+                  <p class="muted">2.4 MB</p>
+                </div>
+                <button class="btn small ghost">Download</button>
+              </div>
+              <div class="file-item">
+                <span class="file-icon">📦</span>
+                <div class="file-info">
+                  <p>screenshots.zip</p>
+                  <p class="muted">8.1 MB</p>
+                </div>
+                <button class="btn small ghost">Download</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="submissionDetail">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Toast notification
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const sidebar = document.getElementById('sidebar');
+        mobileNavToggle?.addEventListener('click', () => {
+          sidebar.classList.toggle('open');
+        });
+
+        // Tab switching
+        document.querySelectorAll('.tabs .tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            const targetId = tab.dataset.tab;
+            document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+              panel.classList.toggle('active', panel.id === targetId);
+            });
+          });
+        });
+
+        // Drawer controls
+        document.querySelectorAll('[data-open-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const drawerId = btn.dataset.openDrawer + 'Drawer';
+            const drawer = document.getElementById(drawerId);
+            drawer?.classList.add('open');
+            drawer?.setAttribute('aria-hidden', 'false');
+          });
+        });
+
+        document.querySelectorAll('[data-close-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const drawerId = btn.dataset.closeDrawer + 'Drawer';
+            const drawer = document.getElementById(drawerId);
+            drawer?.classList.remove('open');
+            drawer?.setAttribute('aria-hidden', 'true');
+          });
+        });
+
+        // Modal controls
+        document.querySelectorAll('[data-open-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const modalId = btn.dataset.openModal + 'Modal';
+            const modal = document.getElementById(modalId);
+            modal?.classList.add('open');
+            modal?.setAttribute('aria-hidden', 'false');
+          });
+        });
+
+        document.querySelectorAll('[data-close-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const modalId = btn.dataset.closeModal + 'Modal';
+            const modal = document.getElementById(modalId);
+            modal?.classList.remove('open');
+            modal?.setAttribute('aria-hidden', 'true');
+          });
+        });
+
+        // Submit new task button
+        document.getElementById('submitNewTaskBtn')?.addEventListener('click', () => {
+          const drawer = document.getElementById('taskDrawer');
+          drawer?.classList.add('open');
+          drawer?.setAttribute('aria-hidden', 'false');
+        });
+
+        // Task form actions
+        document.getElementById('submitTaskFormBtn')?.addEventListener('click', () => {
+          showToast('Task submitted for review!', 'success');
+          document.getElementById('taskDrawer')?.classList.remove('open');
+        });
+
+        document.getElementById('saveDraftBtn')?.addEventListener('click', () => {
+          showToast('Draft saved successfully!', 'info');
+        });
+
+        document.getElementById('startTaskFromModal')?.addEventListener('click', () => {
+          document.getElementById('taskDetailModal')?.classList.remove('open');
+          const drawer = document.getElementById('taskDrawer');
+          drawer?.classList.add('open');
+          drawer?.setAttribute('aria-hidden', 'false');
+        });
+
+        // Bookmark toggle
+        document.querySelectorAll('.bookmark').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            btn.classList.toggle('bookmarked');
+            btn.textContent = btn.classList.contains('bookmarked') ? '★' : '☆';
+            showToast(btn.classList.contains('bookmarked') ? 'Task bookmarked!' : 'Bookmark removed', 'info');
+          });
+        });
+
+        // Delete draft
+        document.querySelectorAll('.delete-draft').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to delete this draft?')) {
+              showToast('Draft deleted', 'info');
+              btn.closest('.task-card').remove();
+            }
+          });
+        });
+
+        // Search functionality
+        document.getElementById('taskSearch')?.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          document.querySelectorAll('.task-card').forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            card.style.display = title.includes(query) ? 'flex' : 'none';
+          });
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.drawer.open, .modal.open').forEach(el => {
+              el.classList.remove('open');
+              el.setAttribute('aria-hidden', 'true');
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

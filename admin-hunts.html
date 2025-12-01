@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manage Hunts · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Admin Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Admin navigation">
+          <p class="nav-label">Overview</p>
+          <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
+          <a class="nav-link active" href="admin-hunts.html">Manage Hunts</a>
+          <a class="nav-link" href="admin-tasks.html">Task Management</a>
+          <a class="nav-link" href="admin-students.html">Students</a>
+          <a class="nav-link" href="admin-analytics.html">Analytics</a>
+          <p class="nav-label">Communication</p>
+          <a class="nav-link" href="admin-messages.html">Messages</a>
+          <a class="nav-link" href="admin-announcements.html">Announcements</a>
+          <p class="nav-label">System</p>
+          <a class="nav-link" href="admin-settings.html">Settings</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar admin">DR</div>
+            <div>
+              <p class="user-name">Dr. Reed</p>
+              <p class="user-role">Program Admin</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Hunt Management</p>
+            <h1>Manage Hunts</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn primary" id="createHuntBtn">
+              <span class="btn-icon">+</span> Create Hunt
+            </button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Stats -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Total Hunts</p>
+                  <h3>24</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Active</p>
+                  <h3>8</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Draft</p>
+                  <h3>3</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Archived</p>
+                  <h3>13</h3>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Filters -->
+          <section class="section">
+            <div class="filter-bar">
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="search" placeholder="Search hunts..." id="huntSearch" />
+              </div>
+              <div class="filter-controls">
+                <select id="statusFilter">
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="draft">Draft</option>
+                  <option value="archived">Archived</option>
+                </select>
+                <select id="sortBy">
+                  <option value="recent">Recently Updated</option>
+                  <option value="name">Name A-Z</option>
+                  <option value="participants">Most Participants</option>
+                  <option value="date">End Date</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- Hunts Table -->
+          <section class="section">
+            <div class="card table-card">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Hunt Name</th>
+                    <th>Status</th>
+                    <th>Participants</th>
+                    <th>Tasks</th>
+                    <th>Avg Progress</th>
+                    <th>End Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-hunt-id="data">
+                    <td>
+                      <div class="hunt-name-cell">
+                        <span class="hunt-icon">📊</span>
+                        <div>
+                          <p class="hunt-title">Data Management Quest</p>
+                          <p class="muted">Medium · Hybrid</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>112</td>
+                    <td>10</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 72%"></span>
+                        </div>
+                        <span>72%</span>
+                      </div>
+                    </td>
+                    <td>Nov 25, 2025</td>
+                    <td>
+                      <div class="action-buttons">
+                        <button class="btn small secondary" data-edit-hunt="data">Edit</button>
+                        <button class="btn small ghost" data-view-hunt="data">View</button>
+                        <button class="icon-btn small" data-more-hunt="data">⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-hunt-id="cyber">
+                    <td>
+                      <div class="hunt-name-cell">
+                        <span class="hunt-icon">🛡️</span>
+                        <div>
+                          <p class="hunt-title">Cybersecurity Challenge</p>
+                          <p class="muted">Hard · On Campus</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>48</td>
+                    <td>8</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 58%"></span>
+                        </div>
+                        <span>58%</span>
+                      </div>
+                    </td>
+                    <td>Nov 20, 2025</td>
+                    <td>
+                      <div class="action-buttons">
+                        <button class="btn small secondary" data-edit-hunt="cyber">Edit</button>
+                        <button class="btn small ghost" data-view-hunt="cyber">View</button>
+                        <button class="icon-btn small" data-more-hunt="cyber">⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-hunt-id="innovation">
+                    <td>
+                      <div class="hunt-name-cell">
+                        <span class="hunt-icon">💡</span>
+                        <div>
+                          <p class="hunt-title">Innovation Sprint</p>
+                          <p class="muted">Medium · Hybrid</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>72</td>
+                    <td>6</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 35%"></span>
+                        </div>
+                        <span>35%</span>
+                      </div>
+                    </td>
+                    <td>Dec 3, 2025</td>
+                    <td>
+                      <div class="action-buttons">
+                        <button class="btn small secondary" data-edit-hunt="innovation">Edit</button>
+                        <button class="btn small ghost" data-view-hunt="innovation">View</button>
+                        <button class="icon-btn small" data-more-hunt="innovation">⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-hunt-id="community">
+                    <td>
+                      <div class="hunt-name-cell">
+                        <span class="hunt-icon">🤝</span>
+                        <div>
+                          <p class="hunt-title">Community Builder</p>
+                          <p class="muted">Easy · Online</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>110</td>
+                    <td>5</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 85%"></span>
+                        </div>
+                        <span>85%</span>
+                      </div>
+                    </td>
+                    <td>Ongoing</td>
+                    <td>
+                      <div class="action-buttons">
+                        <button class="btn small secondary" data-edit-hunt="community">Edit</button>
+                        <button class="btn small ghost" data-view-hunt="community">View</button>
+                        <button class="icon-btn small" data-more-hunt="community">⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-hunt-id="analytics-champ">
+                    <td>
+                      <div class="hunt-name-cell">
+                        <span class="hunt-icon">📈</span>
+                        <div>
+                          <p class="hunt-title">Analytics Championship</p>
+                          <p class="muted">Hard · Team Event</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge warn">Draft</span></td>
+                    <td>—</td>
+                    <td>12</td>
+                    <td>—</td>
+                    <td>Dec 7, 2025</td>
+                    <td>
+                      <div class="action-buttons">
+                        <button class="btn small secondary" data-edit-hunt="analytics-champ">Edit</button>
+                        <button class="btn small primary" data-publish-hunt="analytics-champ">Publish</button>
+                        <button class="icon-btn small" data-more-hunt="analytics-champ">⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-hunt-id="welcome" class="archived-row">
+                    <td>
+                      <div class="hunt-name-cell">
+                        <span class="hunt-icon">👋</span>
+                        <div>
+                          <p class="hunt-title">Welcome Week Quest</p>
+                          <p class="muted">Easy · Hybrid</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="badge neutral">Archived</span></td>
+                    <td>156</td>
+                    <td>8</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 95%"></span>
+                        </div>
+                        <span>95%</span>
+                      </div>
+                    </td>
+                    <td>Aug 25, 2025</td>
+                    <td>
+                      <div class="action-buttons">
+                        <button class="btn small ghost" data-view-hunt="welcome">View</button>
+                        <button class="btn small ghost" data-clone-hunt="welcome">Clone</button>
+                        <button class="icon-btn small" data-more-hunt="welcome">⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-pagination">
+              <p class="muted">Showing 6 of 24 hunts</p>
+              <div class="pagination-controls">
+                <button class="btn ghost small" disabled>← Previous</button>
+                <span class="page-indicator">Page 1 of 4</span>
+                <button class="btn ghost small">Next →</button>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Create/Edit Hunt Drawer -->
+    <div class="drawer large" id="huntDrawer" aria-hidden="true">
+      <div class="drawer__header">
+        <h3 id="huntDrawerTitle">Create New Hunt</h3>
+        <button type="button" class="icon-btn" data-close-drawer="hunt" aria-label="Close">×</button>
+      </div>
+      <div class="drawer__body">
+        <form class="stacked-form" id="huntForm">
+          <div class="form-section">
+            <h4>Basic Information</h4>
+            <label>
+              Hunt Name *
+              <input type="text" id="huntName" placeholder="e.g., Data Management Quest" required />
+            </label>
+            <label>
+              Description
+              <textarea rows="3" id="huntDesc" placeholder="Describe what students will learn and accomplish..."></textarea>
+            </label>
+            <div class="form-row">
+              <label>
+                Difficulty
+                <select id="huntDifficulty">
+                  <option value="easy">Easy</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </label>
+              <label>
+                Mode
+                <select id="huntMode">
+                  <option value="online">Online</option>
+                  <option value="campus">On Campus</option>
+                  <option value="hybrid" selected>Hybrid</option>
+                  <option value="team">Team Event</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4>Schedule</h4>
+            <div class="form-row">
+              <label>
+                Start Date
+                <input type="date" id="huntStartDate" />
+              </label>
+              <label>
+                End Date
+                <input type="date" id="huntEndDate" />
+              </label>
+            </div>
+            <label class="checkbox">
+              <input type="checkbox" id="huntOngoing" />
+              This is an ongoing hunt (no end date)
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h4>Rewards</h4>
+            <div class="form-row">
+              <label>
+                Points Reward
+                <input type="number" id="huntPoints" placeholder="250" />
+              </label>
+              <label>
+                Badge Name (optional)
+                <input type="text" id="huntBadge" placeholder="e.g., Data Pioneer" />
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4>Enrollment</h4>
+            <label>
+              Who can join?
+              <select id="huntEnrollment">
+                <option value="all">All Students</option>
+                <option value="class">Specific Class/Section</option>
+                <option value="invite">Invite Only</option>
+              </select>
+            </label>
+            <label>
+              Max Participants (optional)
+              <input type="number" id="huntMaxParticipants" placeholder="Leave blank for unlimited" />
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h4>Settings</h4>
+            <div class="settings-grid">
+              <label class="checkbox">
+                <input type="checkbox" id="huntLeaderboard" checked />
+                Show on leaderboard
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="huntLateSubmissions" checked />
+                Allow late submissions
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" id="huntTeamProgress" />
+                Enable team progress tracking
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="drawer__footer">
+        <button type="button" class="btn ghost" data-close-drawer="hunt">Cancel</button>
+        <button type="button" class="btn secondary" id="saveDraftBtn">Save as Draft</button>
+        <button type="button" class="btn primary" id="publishHuntBtn">Publish Hunt</button>
+      </div>
+    </div>
+
+    <!-- Hunt Actions Dropdown (positioned near click) -->
+    <div class="dropdown-menu" id="huntActionsMenu" aria-hidden="true">
+      <button class="dropdown-item" data-action="duplicate">📋 Duplicate Hunt</button>
+      <button class="dropdown-item" data-action="export">📥 Export Data</button>
+      <button class="dropdown-item" data-action="archive">📦 Archive Hunt</button>
+      <hr />
+      <button class="dropdown-item danger" data-action="delete">🗑️ Delete Hunt</button>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal" id="deleteModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="delete"></div>
+      <div class="modal__content small">
+        <div class="modal__header">
+          <h3>Delete Hunt?</h3>
+          <button type="button" class="icon-btn" data-close-modal="delete" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <p>Are you sure you want to delete this hunt? This action cannot be undone.</p>
+          <div class="warning-box">
+            <p>⚠️ All associated tasks, submissions, and student progress will be permanently deleted.</p>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="delete">Cancel</button>
+          <button class="btn danger" id="confirmDeleteBtn">Delete Hunt</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Toast notification
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav toggle
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Create hunt drawer
+        document.getElementById('createHuntBtn')?.addEventListener('click', () => {
+          document.getElementById('huntDrawerTitle').textContent = 'Create New Hunt';
+          document.getElementById('huntDrawer')?.classList.add('open');
+        });
+
+        // Edit hunt buttons
+        document.querySelectorAll('[data-edit-hunt]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById('huntDrawerTitle').textContent = 'Edit Hunt';
+            document.getElementById('huntDrawer')?.classList.add('open');
+          });
+        });
+
+        // View hunt buttons
+        document.querySelectorAll('[data-view-hunt]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            window.location.href = `hunt-detail.html?id=${btn.dataset.viewHunt}`;
+          });
+        });
+
+        // Publish buttons
+        document.querySelectorAll('[data-publish-hunt]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            showToast('Hunt published successfully!', 'success');
+          });
+        });
+
+        // Clone buttons
+        document.querySelectorAll('[data-clone-hunt]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            showToast('Hunt cloned! Opening editor...', 'info');
+            document.getElementById('huntDrawerTitle').textContent = 'Create Hunt (Cloned)';
+            document.getElementById('huntDrawer')?.classList.add('open');
+          });
+        });
+
+        // More options dropdown
+        let currentHuntId = null;
+        document.querySelectorAll('[data-more-hunt]').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentHuntId = btn.dataset.moreHunt;
+            const menu = document.getElementById('huntActionsMenu');
+            const rect = btn.getBoundingClientRect();
+            menu.style.top = `${rect.bottom + 5}px`;
+            menu.style.left = `${rect.left - 150}px`;
+            menu.classList.toggle('open');
+          });
+        });
+
+        // Dropdown actions
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const action = item.dataset.action;
+            document.getElementById('huntActionsMenu').classList.remove('open');
+            
+            if (action === 'delete') {
+              document.getElementById('deleteModal')?.classList.add('open');
+            } else if (action === 'duplicate') {
+              showToast('Hunt duplicated!', 'success');
+            } else if (action === 'export') {
+              showToast('Exporting hunt data...', 'info');
+            } else if (action === 'archive') {
+              showToast('Hunt archived', 'success');
+            }
+          });
+        });
+
+        // Confirm delete
+        document.getElementById('confirmDeleteBtn')?.addEventListener('click', () => {
+          showToast('Hunt deleted', 'success');
+          document.getElementById('deleteModal')?.classList.remove('open');
+        });
+
+        // Save/Publish hunt
+        document.getElementById('saveDraftBtn')?.addEventListener('click', () => {
+          showToast('Hunt saved as draft', 'success');
+          document.getElementById('huntDrawer')?.classList.remove('open');
+        });
+
+        document.getElementById('publishHuntBtn')?.addEventListener('click', () => {
+          showToast('Hunt published successfully!', 'success');
+          document.getElementById('huntDrawer')?.classList.remove('open');
+        });
+
+        // Close drawer
+        document.querySelectorAll('[data-close-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById(btn.dataset.closeDrawer + 'Drawer')?.classList.remove('open');
+          });
+        });
+
+        // Close modal
+        document.querySelectorAll('[data-close-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById(btn.dataset.closeModal + 'Modal')?.classList.remove('open');
+          });
+        });
+
+        // Click outside to close dropdown
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('[data-more-hunt]')) {
+            document.getElementById('huntActionsMenu')?.classList.remove('open');
+          }
+        });
+
+        // Search
+        document.getElementById('huntSearch')?.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          document.querySelectorAll('tbody tr').forEach(row => {
+            const title = row.querySelector('.hunt-title')?.textContent.toLowerCase() || '';
+            row.style.display = title.includes(query) ? '' : 'none';
+          });
+        });
+
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.drawer.open, .modal.open, .dropdown-menu.open').forEach(el => {
+              el.classList.remove('open');
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

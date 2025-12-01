@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Admin Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Admin navigation">
+          <p class="nav-label">Overview</p>
+          <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="admin-hunts.html">Manage Hunts</a>
+          <a class="nav-link" href="admin-tasks.html">Task Management</a>
+          <a class="nav-link" href="admin-students.html">Students</a>
+          <a class="nav-link" href="admin-analytics.html">Analytics</a>
+          <p class="nav-label">Communication</p>
+          <a class="nav-link" href="admin-messages.html">Messages</a>
+          <a class="nav-link" href="admin-announcements.html">Announcements</a>
+          <p class="nav-label">System</p>
+          <a class="nav-link active" href="admin-settings.html">Settings</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar admin">DR</div>
+            <div>
+              <p class="user-name">Dr. Reed</p>
+              <p class="user-role">Program Admin</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">System Administration</p>
+            <h1>Settings</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn primary" id="saveAllBtn">Save All Changes</button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Settings Navigation -->
+          <section class="section">
+            <div class="settings-layout">
+              <nav class="settings-nav">
+                <a href="#general" class="settings-nav-item active">General</a>
+                <a href="#features" class="settings-nav-item">Features</a>
+                <a href="#notifications" class="settings-nav-item">Notifications</a>
+                <a href="#security" class="settings-nav-item">Security</a>
+                <a href="#data" class="settings-nav-item">Data & Privacy</a>
+                <a href="#appearance" class="settings-nav-item">Appearance</a>
+              </nav>
+
+              <div class="settings-content">
+                <!-- General Settings -->
+                <section class="settings-section" id="general">
+                  <h2>General Settings</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Program Information</h3>
+                      <label>
+                        Program Name
+                        <input type="text" value="MIS Ultimate Scavenger Hunt" />
+                      </label>
+                      <label>
+                        Institution
+                        <input type="text" value="University of Alabama" />
+                      </label>
+                      <label>
+                        Department
+                        <input type="text" value="Management Information Systems" />
+                      </label>
+                      <label>
+                        Current Semester
+                        <select>
+                          <option selected>Fall 2025</option>
+                          <option>Spring 2026</option>
+                          <option>Summer 2026</option>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Default Hunt Settings</h3>
+                      <div class="form-row">
+                        <label>
+                          Default Points per Task
+                          <input type="number" value="100" />
+                        </label>
+                        <label>
+                          Default Task Duration
+                          <select>
+                            <option>1 week</option>
+                            <option selected>2 weeks</option>
+                            <option>1 month</option>
+                          </select>
+                        </label>
+                      </div>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Allow late submissions by default
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Enable leaderboards by default
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Features -->
+                <section class="settings-section" id="features">
+                  <h2>Feature Toggles</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Core Features</h3>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Leaderboards</p>
+                          <p class="muted">Show public leaderboard rankings</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Team Features</p>
+                          <p class="muted">Enable team creation and collaboration</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Direct Messaging</p>
+                          <p class="muted">Allow students to message each other</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Badges & Achievements</p>
+                          <p class="muted">Award badges for completing milestones</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Experimental Features</h3>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">AI Grading Suggestions</p>
+                          <p class="muted">Use AI to suggest grades for submissions</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row warn">
+                        <div>
+                          <p class="toggle-label">Maintenance Mode</p>
+                          <p class="muted">Disable access for all non-admin users</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Notifications -->
+                <section class="settings-section" id="notifications">
+                  <h2>Notification Settings</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Email Notifications</h3>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Send daily digest to instructors
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Notify students on task feedback
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Deadline reminder emails (24 hours before)
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" />
+                        Weekly progress report to students
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>System Alerts</h3>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Alert on low student engagement
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Alert when submission queue exceeds 50
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Storage usage warnings
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Security -->
+                <section class="settings-section" id="security">
+                  <h2>Security Settings</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Access Control</h3>
+                      <label>
+                        Session Timeout
+                        <select>
+                          <option>30 minutes</option>
+                          <option selected>2 hours</option>
+                          <option>8 hours</option>
+                          <option>24 hours</option>
+                        </select>
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" checked />
+                        Require university email for registration
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" />
+                        Require two-factor authentication for admins
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Admin Access</h3>
+                      <p class="muted">Manage who has administrative access.</p>
+                      <ul class="admin-list">
+                        <li class="admin-item">
+                          <div class="admin-info">
+                            <div class="user-avatar small">DR</div>
+                            <div>
+                              <p>Dr. Reed</p>
+                              <p class="muted">dreed@ua.edu · Super Admin</p>
+                            </div>
+                          </div>
+                          <span class="badge success">Owner</span>
+                        </li>
+                        <li class="admin-item">
+                          <div class="admin-info">
+                            <div class="user-avatar small">IE</div>
+                            <div>
+                              <p>Instructor Evans</p>
+                              <p class="muted">ievans@ua.edu · Instructor</p>
+                            </div>
+                          </div>
+                          <button class="btn small ghost">Edit</button>
+                        </li>
+                        <li class="admin-item">
+                          <div class="admin-info">
+                            <div class="user-avatar small">MR</div>
+                            <div>
+                              <p>Marta Rivers</p>
+                              <p class="muted">mrivers@ua.edu · Teaching Assistant</p>
+                            </div>
+                          </div>
+                          <button class="btn small ghost">Edit</button>
+                        </li>
+                      </ul>
+                      <button class="btn secondary">+ Add Administrator</button>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Data & Privacy -->
+                <section class="settings-section" id="data">
+                  <h2>Data & Privacy</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Data Export</h3>
+                      <p class="muted">Export program data for reporting or backup.</p>
+                      <div class="cta-row">
+                        <button class="btn secondary" id="exportAllBtn">Export All Data (CSV)</button>
+                        <button class="btn ghost" id="exportPdfBtn">Download PDF Report</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Data Retention</h3>
+                      <label>
+                        Keep archived hunts for
+                        <select>
+                          <option>6 months</option>
+                          <option selected>1 year</option>
+                          <option>2 years</option>
+                          <option>Forever</option>
+                        </select>
+                      </label>
+                      <label>
+                        Keep message history for
+                        <select>
+                          <option>3 months</option>
+                          <option selected>1 year</option>
+                          <option>Forever</option>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="card danger-zone">
+                    <div class="settings-group">
+                      <h3>⚠️ Danger Zone</h3>
+                      <p class="muted">These actions are irreversible.</p>
+                      <button class="btn warn" id="clearDataBtn">Clear All Student Data</button>
+                      <button class="btn danger" id="resetProgramBtn">Reset Entire Program</button>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Appearance -->
+                <section class="settings-section" id="appearance">
+                  <h2>Appearance</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Theme</h3>
+                      <div class="theme-options">
+                        <label class="theme-option">
+                          <input type="radio" name="theme" value="light" checked />
+                          <div class="theme-preview light">
+                            <span>Light</span>
+                          </div>
+                        </label>
+                        <label class="theme-option">
+                          <input type="radio" name="theme" value="dark" />
+                          <div class="theme-preview dark">
+                            <span>Dark</span>
+                          </div>
+                        </label>
+                        <label class="theme-option">
+                          <input type="radio" name="theme" value="system" />
+                          <div class="theme-preview system">
+                            <span>System</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Branding</h3>
+                      <label>
+                        Logo Upload
+                        <div class="file-upload-area small">
+                          <input type="file" accept="image/*" />
+                          <div class="file-upload-placeholder">
+                            <p>Drop logo here or click to upload</p>
+                          </div>
+                        </div>
+                      </label>
+                      <label>
+                        Primary Color
+                        <div class="color-input">
+                          <input type="color" value="#9d2235" />
+                          <input type="text" value="#9d2235" />
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Settings nav
+        document.querySelectorAll('.settings-nav-item').forEach(link => {
+          link.addEventListener('click', (e) => {
+            document.querySelectorAll('.settings-nav-item').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          });
+        });
+
+        // Save all
+        document.getElementById('saveAllBtn')?.addEventListener('click', () => {
+          showToast('All settings saved successfully!', 'success');
+        });
+
+        // Export buttons
+        document.getElementById('exportAllBtn')?.addEventListener('click', () => {
+          showToast('Exporting all data...', 'info');
+        });
+
+        document.getElementById('exportPdfBtn')?.addEventListener('click', () => {
+          showToast('Generating PDF report...', 'info');
+        });
+
+        // Danger zone
+        document.getElementById('clearDataBtn')?.addEventListener('click', () => {
+          if (confirm('Are you sure you want to clear all student data? This cannot be undone.')) {
+            showToast('Student data cleared', 'warn');
+          }
+        });
+
+        document.getElementById('resetProgramBtn')?.addEventListener('click', () => {
+          if (confirm('Are you absolutely sure? This will delete ALL data including hunts, tasks, and students.')) {
+            showToast('Program has been reset', 'warn');
+          }
+        });
+
+        // Theme selection
+        document.querySelectorAll('input[name="theme"]').forEach(radio => {
+          radio.addEventListener('change', () => {
+            const theme = radio.value;
+            if (theme === 'dark') {
+              document.documentElement.dataset.theme = 'dark';
+            } else if (theme === 'light') {
+              document.documentElement.dataset.theme = 'light';
+            }
+            showToast(`Theme changed to ${theme}`, 'info');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+

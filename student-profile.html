@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Profile · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Student Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Student navigation">
+          <p class="nav-label">Student</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="student-messages.html">Messages</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link active" href="student-profile.html">My Profile</a>
+          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true"
+            >Sign Out</a
+          >
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button
+            class="icon-btn mobile-nav-toggle"
+            id="mobileNavToggle"
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+          <div>
+            <p class="eyebrow">Account</p>
+            <h1>My Profile</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn secondary" id="editProfileBtn">
+              Edit Profile
+            </button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Profile Header -->
+          <section class="section">
+            <div class="profile-header-card card">
+              <div class="profile-cover"></div>
+              <div class="profile-info">
+                <div class="profile-avatar-large">
+                  <span>JA</span>
+                  <button
+                    class="avatar-edit-btn"
+                    id="changeAvatarBtn"
+                    title="Change avatar"
+                  >
+                    📷
+                  </button>
+                </div>
+                <div class="profile-details">
+                  <h2>Jamie Alvarez</h2>
+                  <p class="profile-role">Student · MIS Major</p>
+                  <p class="muted">Team Crimson · Class of 2026</p>
+                  <div class="profile-tags">
+                    <span class="tag">Data Analytics</span>
+                    <span class="tag">UX Design</span>
+                    <span class="tag">Project Management</span>
+                  </div>
+                </div>
+                <div class="profile-quick-stats">
+                  <div class="quick-stat">
+                    <span class="stat-value">#12</span>
+                    <span class="stat-label">Rank</span>
+                  </div>
+                  <div class="quick-stat">
+                    <span class="stat-value">2,450</span>
+                    <span class="stat-label">Points</span>
+                  </div>
+                  <div class="quick-stat">
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">Day Streak</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Stats Grid -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-content">
+                  <p class="muted">Total Points</p>
+                  <h3>2,450</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">✓</div>
+                <div class="stat-content">
+                  <p class="muted">Tasks Completed</p>
+                  <h3>47</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-content">
+                  <p class="muted">Hunts Completed</p>
+                  <h3>6</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">🎖️</div>
+                <div class="stat-content">
+                  <p class="muted">Badges Earned</p>
+                  <h3>9</h3>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Main Profile Content -->
+          <section class="section">
+            <div class="profile-grid">
+              <!-- Left Column -->
+              <div class="profile-column">
+                <!-- Bio -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3>About Me</h3>
+                    <button class="link-btn" id="editBioBtn">Edit</button>
+                  </div>
+                  <p>
+                    MIS student passionate about data analytics and user
+                    experience design. I enjoy solving complex problems and
+                    collaborating with others on innovative projects. Currently
+                    focusing on building my skills in data visualization and
+                    project management.
+                  </p>
+                  <div class="profile-contact">
+                    <div class="contact-item">
+                      <span class="contact-icon">📧</span>
+                      <span>jalvarez@crimson.ua.edu</span>
+                    </div>
+                    <div class="contact-item">
+                      <span class="contact-icon">🔗</span>
+                      <a href="#">linkedin.com/in/jamiealvarez</a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Badges Section -->
+                <article class="card" id="badges">
+                  <div class="card-header">
+                    <h3>Badges & Achievements</h3>
+                    <span class="badge-count">9 of 24 earned</span>
+                  </div>
+                  <div class="badges-showcase">
+                    <div class="badge-showcase-item earned">
+                      <span class="badge-icon-large">🌅</span>
+                      <div class="badge-info">
+                        <span class="badge-name">Early Bird</span>
+                        <span class="badge-desc"
+                          >Complete 5 tasks before deadline</span
+                        >
+                        <span class="badge-date">Earned Oct 15</span>
+                      </div>
+                    </div>
+                    <div class="badge-showcase-item earned">
+                      <span class="badge-icon-large">🤝</span>
+                      <div class="badge-info">
+                        <span class="badge-name">Team Player</span>
+                        <span class="badge-desc"
+                          >Participate in 3 group hunts</span
+                        >
+                        <span class="badge-date">Earned Oct 28</span>
+                      </div>
+                    </div>
+                    <div class="badge-showcase-item earned">
+                      <span class="badge-icon-large">🧭</span>
+                      <div class="badge-info">
+                        <span class="badge-name">Explorer</span>
+                        <span class="badge-desc">Complete 10 unique tasks</span>
+                        <span class="badge-date">Earned Nov 5</span>
+                      </div>
+                    </div>
+                    <div class="badge-showcase-item earned">
+                      <span class="badge-icon-large">💬</span>
+                      <div class="badge-info">
+                        <span class="badge-name">Communicator</span>
+                        <span class="badge-desc">Send 50 messages</span>
+                        <span class="badge-date">Earned Nov 8</span>
+                      </div>
+                    </div>
+                    <div class="badge-showcase-item earned">
+                      <span class="badge-icon-large">🔥</span>
+                      <div class="badge-info">
+                        <span class="badge-name">On Fire</span>
+                        <span class="badge-desc">7-day activity streak</span>
+                        <span class="badge-date">Earned Nov 10</span>
+                      </div>
+                    </div>
+                    <div class="badge-showcase-item locked">
+                      <span class="badge-icon-large">📊</span>
+                      <div class="badge-info">
+                        <span class="badge-name">Data Pioneer</span>
+                        <span class="badge-desc"
+                          >Complete Data Management Quest</span
+                        >
+                        <span class="badge-progress">70% progress</span>
+                      </div>
+                    </div>
+                    <div class="badge-showcase-item locked">
+                      <span class="badge-icon-large">🛡️</span>
+                      <div class="badge-info">
+                        <span class="badge-name">Cyber Shield</span>
+                        <span class="badge-desc"
+                          >Complete Cybersecurity Challenge</span
+                        >
+                        <span class="badge-progress">55% progress</span>
+                      </div>
+                    </div>
+                    <div class="badge-showcase-item locked">
+                      <span class="badge-icon-large">💡</span>
+                      <div class="badge-info">
+                        <span class="badge-name">Innovator</span>
+                        <span class="badge-desc"
+                          >Complete Innovation Sprint</span
+                        >
+                        <span class="badge-progress">40% progress</span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="btn secondary full-width"
+                    id="viewAllBadgesBtn"
+                  >
+                    View All Badges
+                  </button>
+                </article>
+              </div>
+
+              <!-- Right Column -->
+              <div class="profile-column">
+                <!-- Activity Timeline -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3>Recent Activity</h3>
+                    <select id="activityFilter" class="small-select">
+                      <option value="all">All Activity</option>
+                      <option value="tasks">Tasks</option>
+                      <option value="hunts">Hunts</option>
+                      <option value="badges">Badges</option>
+                    </select>
+                  </div>
+                  <ul class="timeline extended">
+                    <li>
+                      <span class="badge success">✓</span>
+                      <div>
+                        <p>Submitted "Data Insights"</p>
+                        <p class="muted">Today · 3:05 PM</p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="badge warn">↻</span>
+                      <div>
+                        <p>Revision requested – "Cyber Lab"</p>
+                        <p class="muted">Yesterday · 9:12 PM</p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="badge success">+</span>
+                      <div>
+                        <p>Earned 50 points from Forum task</p>
+                        <p class="muted">Yesterday · 2:30 PM</p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="badge neutral">•</span>
+                      <div>
+                        <p>Joined Team Crimson</p>
+                        <p class="muted">Mon · 11:00 AM</p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="badge success">🏅</span>
+                      <div>
+                        <p>Earned "On Fire" badge</p>
+                        <p class="muted">Sun · 4:00 PM</p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="badge success">✓</span>
+                      <div>
+                        <p>Completed "Community Builder" hunt</p>
+                        <p class="muted">Sat · 10:15 AM</p>
+                      </div>
+                    </li>
+                  </ul>
+                  <button class="btn ghost full-width">Load More</button>
+                </article>
+
+                <!-- Hunt History -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3>Hunt History</h3>
+                    <a class="link-btn" href="student-hunts.html">View All</a>
+                  </div>
+                  <div class="hunt-history-list">
+                    <div class="hunt-history-item">
+                      <div class="hunt-history-info">
+                        <h4>Community Builder</h4>
+                        <p class="muted">Completed Nov 10 · 150 pts</p>
+                      </div>
+                      <span class="badge success">✓</span>
+                    </div>
+                    <div class="hunt-history-item">
+                      <div class="hunt-history-info">
+                        <h4>Welcome Week Quest</h4>
+                        <p class="muted">Completed Aug 25 · 200 pts</p>
+                      </div>
+                      <span class="badge success">✓</span>
+                    </div>
+                    <div class="hunt-history-item">
+                      <div class="hunt-history-info">
+                        <h4>MIS Foundations</h4>
+                        <p class="muted">Completed Sep 15 · 300 pts</p>
+                      </div>
+                      <span class="badge success">✓</span>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Team -->
+                <article class="card">
+                  <div class="card-header">
+                    <h3>My Team</h3>
+                    <a class="link-btn" href="student-messages.html"
+                      >Team Chat</a
+                    >
+                  </div>
+                  <div class="team-card">
+                    <div class="team-header">
+                      <div class="team-avatar">TC</div>
+                      <div>
+                        <h4>Team Crimson</h4>
+                        <p class="muted">5 members · Rank #3</p>
+                      </div>
+                    </div>
+                    <div class="team-members">
+                      <div class="team-member" title="Jamie Alvarez">JA</div>
+                      <div class="team-member" title="Sam Hart">SH</div>
+                      <div class="team-member" title="Avery Chen">AC</div>
+                      <div class="team-member" title="Jordan Patel">JP</div>
+                      <div class="team-member" title="Taylor Williams">TW</div>
+                    </div>
+                    <div class="team-stats">
+                      <div class="team-stat">
+                        <span class="stat-value">12,450</span>
+                        <span class="stat-label">Total Points</span>
+                      </div>
+                      <div class="team-stat">
+                        <span class="stat-value">87%</span>
+                        <span class="stat-label">Avg Completion</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <!-- Preferences -->
+          <section class="section">
+            <h3 class="section-title">Profile Preferences</h3>
+            <div class="card">
+              <div class="preferences-grid">
+                <label class="checkbox">
+                  <input type="checkbox" checked id="prefEmailUpdates" />
+                  Receive email updates about my progress
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" checked id="prefPushNotifications" />
+                  Push notifications for new messages
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="prefLeaderboard" />
+                  Display my profile on public leaderboard
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" checked id="prefTeamVisible" />
+                  Allow team members to see my progress
+                </label>
+              </div>
+              <div class="preferences-actions">
+                <button class="btn primary" id="savePrefsBtn">
+                  Save Preferences
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="editProfile"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Edit Profile</h3>
+          <button
+            type="button"
+            class="icon-btn"
+            data-close-modal="editProfile"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal__body">
+          <form class="stacked-form" id="editProfileForm">
+            <label>
+              Display Name
+              <input type="text" value="Jamie Alvarez" />
+            </label>
+            <label>
+              Email
+              <input type="email" value="jalvarez@crimson.ua.edu" />
+            </label>
+            <label>
+              Bio
+              <textarea rows="4">
+MIS student passionate about data analytics and user experience design. I enjoy solving complex problems and collaborating with others on innovative projects.</textarea
+              >
+            </label>
+            <label>
+              LinkedIn URL
+              <input type="url" value="https://linkedin.com/in/jamiealvarez" />
+            </label>
+            <label>
+              Skills/Interests (comma separated)
+              <input
+                type="text"
+                value="Data Analytics, UX Design, Project Management"
+              />
+            </label>
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="editProfile">
+            Cancel
+          </button>
+          <button class="btn primary" id="saveProfileBtn">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- All Badges Modal -->
+    <div class="modal" id="allBadgesModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="allBadges"></div>
+      <div class="modal__content large">
+        <div class="modal__header">
+          <h3>All Badges</h3>
+          <button
+            type="button"
+            class="icon-btn"
+            data-close-modal="allBadges"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal__body">
+          <p class="muted">You've earned 9 of 24 available badges</p>
+          <div class="badges-grid-large">
+            <!-- Earned badges would be listed here -->
+            <div class="badge-item earned">
+              <span class="badge-icon-large">🌅</span>
+              <span class="badge-name">Early Bird</span>
+            </div>
+            <div class="badge-item earned">
+              <span class="badge-icon-large">🤝</span>
+              <span class="badge-name">Team Player</span>
+            </div>
+            <div class="badge-item earned">
+              <span class="badge-icon-large">🧭</span>
+              <span class="badge-name">Explorer</span>
+            </div>
+            <div class="badge-item earned">
+              <span class="badge-icon-large">💬</span>
+              <span class="badge-name">Communicator</span>
+            </div>
+            <div class="badge-item earned">
+              <span class="badge-icon-large">🔥</span>
+              <span class="badge-name">On Fire</span>
+            </div>
+            <div class="badge-item locked">
+              <span class="badge-icon-large">📊</span>
+              <span class="badge-name">Data Pioneer</span>
+            </div>
+            <div class="badge-item locked">
+              <span class="badge-icon-large">🛡️</span>
+              <span class="badge-name">Cyber Shield</span>
+            </div>
+            <div class="badge-item locked">
+              <span class="badge-icon-large">💡</span>
+              <span class="badge-name">Innovator</span>
+            </div>
+            <div class="badge-item locked">
+              <span class="badge-icon-large">🎯</span>
+              <span class="badge-name">Perfectionist</span>
+            </div>
+            <div class="badge-item locked">
+              <span class="badge-icon-large">👑</span>
+              <span class="badge-name">Legend</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn secondary" data-close-modal="allBadges">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Toast notification
+        function showToast(message, type = "info") {
+          let toast = document.querySelector(".toast");
+          if (!toast) {
+            toast = document.createElement("div");
+            toast.className = "toast";
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove("visible"), 3000);
+        }
+
+        // Mobile nav toggle
+        const mobileNavToggle = document.getElementById("mobileNavToggle");
+        const sidebar = document.getElementById("sidebar");
+        mobileNavToggle?.addEventListener("click", () => {
+          sidebar.classList.toggle("open");
+        });
+
+        // Edit profile modal
+        document
+          .getElementById("editProfileBtn")
+          ?.addEventListener("click", () => {
+            document.getElementById("editProfileModal")?.classList.add("open");
+          });
+
+        document.getElementById("editBioBtn")?.addEventListener("click", () => {
+          document.getElementById("editProfileModal")?.classList.add("open");
+        });
+
+        document
+          .getElementById("saveProfileBtn")
+          ?.addEventListener("click", () => {
+            showToast("Profile updated successfully!", "success");
+            document
+              .getElementById("editProfileModal")
+              ?.classList.remove("open");
+          });
+
+        // All badges modal
+        document
+          .getElementById("viewAllBadgesBtn")
+          ?.addEventListener("click", () => {
+            document.getElementById("allBadgesModal")?.classList.add("open");
+          });
+
+        // Modal close buttons
+        document.querySelectorAll("[data-close-modal]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const modalId = btn.dataset.closeModal + "Modal";
+            document.getElementById(modalId)?.classList.remove("open");
+          });
+        });
+
+        // Change avatar
+        document
+          .getElementById("changeAvatarBtn")
+          ?.addEventListener("click", () => {
+            showToast("Avatar upload coming soon!", "info");
+          });
+
+        // Save preferences
+        document
+          .getElementById("savePrefsBtn")
+          ?.addEventListener("click", () => {
+            showToast("Preferences saved!", "success");
+          });
+
+        // Escape key
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            document.querySelectorAll(".modal.open").forEach((el) => {
+              el.classList.remove("open");
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

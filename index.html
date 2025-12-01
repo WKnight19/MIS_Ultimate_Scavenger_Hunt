@@ -1,1884 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MIS Ultimate Scavenger Hunt</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIS Ultimate Scavenger Hunt - University of Alabama</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* Landing Page Specific Styles */
+      .landing-page {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--surface) 0%,
+          var(--surface-alt) 100%
+        );
+      }
+
+      .landing-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 3rem;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .landing-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .landing-nav {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .landing-nav a {
+        color: var(--text);
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .landing-nav a:hover {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .landing-actions {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .hero-section {
+        padding: 6rem 3rem;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 50%
+        );
+        animation: pulse 15s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin: 0 0 1rem;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        margin: 0 0 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-actions .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+
+      .hero-actions .btn.primary {
+        background: #fff;
+        color: var(--primary);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-actions .btn.secondary {
+        background: transparent;
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .hero-stat {
+        text-align: center;
+      }
+
+      .hero-stat-value {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      .hero-stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .features-section {
+        padding: 5rem 3rem;
+        background: var(--surface);
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.25rem;
+        margin: 0 0 1rem;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin: 0;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature-card {
+        background: var(--surface-alt);
+        border-radius: var(--radius);
+        padding: 2rem;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+        border-color: var(--primary);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card h3 {
+        margin: 0 0 0.75rem;
+        font-size: 1.25rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .how-it-works {
+        padding: 5rem 3rem;
+        background: var(--surface-alt);
+      }
+
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .step {
+        text-align: center;
+        position: relative;
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 1.5rem;
+      }
+
+      .step h3 {
+        margin: 0 0 0.5rem;
+      }
+
+      .step p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .testimonials-section {
+        padding: 5rem 3rem;
+        background: var(--surface);
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonial-card {
+        background: var(--surface-alt);
+        border-radius: var(--radius);
+        padding: 2rem;
+        border: 1px solid var(--border);
+      }
+
+      .testimonial-content {
+        font-style: italic;
+        margin: 0 0 1.5rem;
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .testimonial-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 600;
+      }
+
+      .testimonial-info h4 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .testimonial-info p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .cta-section {
+        padding: 5rem 3rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        font-size: 2.5rem;
+        margin: 0 0 1rem;
+      }
+
+      .cta-content p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin: 0 0 2rem;
+      }
+
+      .cta-content .btn {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        background: #fff;
+        color: var(--primary);
+      }
+
+      .landing-footer {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        padding: 3rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr repeat(3, 1fr);
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-brand h3 {
+        margin: 0 0 0.75rem;
+      }
+
+      .footer-brand p {
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+
+      .footer-column h4 {
+        margin: 0 0 1rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-column a {
+        color: var(--text);
+        transition: color 0.2s ease;
+      }
+
+      .footer-column a:hover {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 2rem auto 0;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        font-size: 1.25rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .landing-header {
+          padding: 1rem 1.5rem;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .landing-nav {
+          display: none;
+        }
+
+        .hero-section {
+          padding: 4rem 1.5rem;
+        }
+
+        .hero-title {
+          font-size: 2.25rem;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .features-section,
+        .how-it-works,
+        .testimonials-section,
+        .cta-section {
+          padding: 3rem 1.5rem;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <div class="app-shell">
-      <aside class="sidebar sidebar--locked" id="appSidebar" aria-live="polite">
-        <div class="sidebar__brand">
-          <div class="logo">MIS</div>
-          <div>
-            <p class="brand-title">Ultimate Scavenger Hunt</p>
-            <p class="brand-meta">UA · Group 11</p>
+  <body class="landing-page">
+    <!-- Header -->
+    <header class="landing-header">
+      <div class="landing-brand">
+        <div class="logo">MIS</div>
+        <div>
+          <h1 class="brand-title" style="font-size: 1.1rem">Scavenger Hunt</h1>
+          <p class="brand-meta" style="margin: 0">University of Alabama</p>
+        </div>
+      </div>
+
+      <nav class="landing-nav">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+      </nav>
+
+      <div class="landing-actions">
+        <button
+          class="icon-btn theme-toggle"
+          onclick="toggleTheme()"
+          aria-label="Toggle theme"
+        >
+          🌙
+        </button>
+        <a href="auth.html" class="btn secondary">Sign In</a>
+        <a href="auth.html" class="btn primary">Get Started</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">🎯 Fall 2025 Semester Now Active</div>
+        <h1 class="hero-title">Learn MIS Through Adventure</h1>
+        <p class="hero-subtitle">
+          Complete engaging challenges, explore real-world concepts, and compete
+          with classmates in the ultimate gamified learning experience.
+        </p>
+        <div class="hero-actions">
+          <a href="auth.html" class="btn primary">Join the Hunt →</a>
+          <a href="about.html" class="btn secondary">Learn More</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value">500+</span>
+            <span class="hero-stat-label">Active Students</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">24</span>
+            <span class="hero-stat-label">Scavenger Hunts</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">150+</span>
+            <span class="hero-stat-label">Challenges</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">98%</span>
+            <span class="hero-stat-label">Completion Rate</span>
           </div>
         </div>
-        <nav class="sidebar__nav" aria-label="Primary navigation">
-          <p class="nav-label" data-roles="guest,student,ta,admin">Explore</p>
-          <button
-            class="nav-link active"
-            data-route="landing"
-            data-roles="guest,student,ta,admin"
-          >
-            Landing
-          </button>
-          <button class="nav-link" data-route="auth" data-roles="guest">
-            Login & Access
-          </button>
-          <button
-            class="nav-link"
-            data-route="leaderboards"
-            data-roles="student,ta,admin"
-          >
-            Leaderboards
-          </button>
-          <button
-            class="nav-link"
-            data-route="browse-hunts"
-            data-roles="student,ta,admin"
-          >
-            Browse Hunts
-          </button>
-          <button
-            class="nav-link"
-            data-route="hunt-detail"
-            data-roles="student,ta,admin"
-          >
-            Hunt Detail
-          </button>
-          <p class="nav-label" data-roles="student">Student</p>
-          <button
-            class="nav-link"
-            data-route="student-dashboard"
-            data-roles="student"
-          >
-            Student Dashboard
-          </button>
-          <button
-            class="nav-link"
-            data-route="student-tasks"
-            data-roles="student"
-          >
-            My Tasks
-          </button>
-          <button class="nav-link" data-route="messaging" data-roles="student">
-            Messages & Discussions
-          </button>
-          <button class="nav-link" data-route="profile" data-roles="student">
-            My Profile
-          </button>
-          <button
-            class="nav-link"
-            data-route="peer-profile"
-            data-roles="student"
-          >
-            Peer Profile
-          </button>
-          <p class="nav-label" data-roles="ta,admin">Faculty & Admin</p>
-          <button
-            class="nav-link"
-            data-route="instructor-dashboard"
-            data-roles="ta,admin"
-          >
-            TA / Instructor
-          </button>
-          <button
-            class="nav-link"
-            data-route="admin-messages"
-            data-roles="ta,admin"
-          >
-            Messages
-          </button>
-          <button
-            class="nav-link"
-            data-route="admin-profile"
-            data-roles="ta,admin"
-          >
-            Profile
-          </button>
-          <button
-            class="nav-link"
-            data-route="management"
-            data-roles="ta,admin"
-          >
-            Task Management
-          </button>
-          <button class="nav-link" data-route="analytics" data-roles="ta,admin">
-            Students & Analytics
-          </button>
-          <button class="nav-link" data-route="admin" data-roles="admin">
-            Admin Control
-          </button>
-          <p class="nav-label" data-roles="student,ta,admin">Utilities</p>
-          <button
-            class="nav-link"
-            data-route="settings"
-            data-roles="student,ta,admin"
-          >
-            Settings
-          </button>
-          <button
-            class="nav-link"
-            data-route="support"
-            data-roles="student,ta,admin"
-          >
-            Help & Policies
-          </button>
-          <button
-            class="nav-link"
-            data-route="not-found"
-            data-roles="guest,student,ta,admin"
-          >
-            Misc Links
-          </button>
-          <button
-            class="nav-link nav-link--signout"
-            id="signOutBtn"
-            type="button"
-            data-roles="student,ta,admin"
-          >
-            Sign Out
-          </button>
-        </nav>
-        <div class="sidebar__footer">
-          <button
-            class="btn ghost"
-            id="collapseSidebar"
-            type="button"
-            aria-expanded="true"
-          >
-            Collapse Sidebar
-          </button>
-          <button class="btn secondary" id="themeToggle" type="button">
-            <span class="icon" aria-hidden="true">☀️</span>
-            <span>Light mode</span>
-          </button>
-        </div>
-      </aside>
+      </div>
+    </section>
 
-      <div class="app-content">
-        <header class="site-header">
-          <button
-            class="icon-btn"
-            id="mobileNavToggle"
-            aria-label="Toggle navigation"
-          >
-            ☰
-          </button>
-          <div>
-            <p class="eyebrow">University of Alabama · MIS 430</p>
-            <h1>MIS Ultimate Scavenger Hunt Companion</h1>
-          </div>
-          <div class="header-actions">
-            <button class="btn tertiary" data-scroll="#support">Support</button>
-            <button class="btn primary" data-scroll="#auth">Get Started</button>
-          </div>
-          <div class="user-pill" id="userBadge" aria-live="polite">
-            Signed out
-          </div>
-        </header>
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="section-header">
+        <h2>Why Students Love It</h2>
+        <p>
+          Our platform transforms traditional coursework into an engaging
+          adventure that makes learning stick.
+        </p>
+      </div>
 
-        <main id="viewContainer">
-          <!-- Landing -->
-          <section
-            class="view active"
-            id="landing"
-            data-roles="guest,student,ta,admin"
-          >
-            <div class="section two-column">
-              <div>
-                <p class="eyebrow">Interactive Hunts · Community · Analytics</p>
-                <h2 class="section-title">
-                  Engage MIS students on campus and beyond.
-                </h2>
-                <p class="section-body">
-                  Track progress, tackle challenges, and keep conversation
-                  flowing between students, TAs, and instructors. Built for
-                  quick prototyping with Canva and ready to evolve into a full
-                  platform.
-                </p>
-                <div class="cta-row">
-                  <a class="btn primary" href="auth.html">
-                    Student / TA Login
-                  </a>
-                  <a class="btn secondary" href="auth.html"> Admin Login </a>
-                  <a class="btn ghost" href="leaderboards.html">
-                    View Leaderboards
-                  </a>
-                </div>
-                <ul class="feature-list">
-                  <li>Responsive layout with crimson / cool gray palette</li>
-                  <li>Dark & light mode with font sizing controls</li>
-                  <li>Reusable header, sidebar, and footer components</li>
-                </ul>
-                <div class="card demo-credentials" role="note">
-                  <p class="eyebrow">Demo access</p>
-                  <p class="muted">
-                    Sign in to unlock hunts, dashboards, and admin tooling.
-                  </p>
-                  <ul class="pill-list">
-                    <li>
-                      <p>Student</p>
-                      <span>student@ua.edu / student123</span>
-                    </li>
-                    <li>
-                      <p>TA</p>
-                      <span>ta@ua.edu / ta123</span>
-                    </li>
-                    <li>
-                      <p>Admin</p>
-                      <span>admin@ua.edu / admin!2024</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="card hero-card">
-                <p class="eyebrow">Live metrics</p>
-                <h3>Current Hunt Snapshot</h3>
-                <dl class="stat-grid">
-                  <div>
-                    <dt>Total Hunts</dt>
-                    <dd>24</dd>
-                  </div>
-                  <div>
-                    <dt>Active Students</dt>
-                    <dd>342</dd>
-                  </div>
-                  <div>
-                    <dt>Avg. Completion</dt>
-                    <dd>82%</dd>
-                  </div>
-                  <div>
-                    <dt>Feedback Score</dt>
-                    <dd>4.7</dd>
-                  </div>
-                </dl>
-                <p class="muted">
-                  Updated 5 minutes ago · synced with prototype data.
-                </p>
-              </div>
-            </div>
-
-            <div class="section">
-              <h3 class="section-title">Why students care</h3>
-              <div class="cards-grid three">
-                <article class="card">
-                  <h4>Community & Collaboration</h4>
-                  <p>
-                    Group access tooling, discussion spaces, and messaging keep
-                    every team aligned even when schedules don’t.
-                  </p>
-                </article>
-                <article class="card">
-                  <h4>Gamified Progress</h4>
-                  <p>
-                    Leaderboards, streaks, and badge showcases make hunt
-                    completion tangible and fun.
-                  </p>
-                </article>
-                <article class="card">
-                  <h4>Actionable Data</h4>
-                  <p>
-                    KPIs across hunts, classes, and cohorts highlight who’s
-                    thriving and who needs nudges.
-                  </p>
-                </article>
-              </div>
-            </div>
-
-            <div class="section testimonials">
-              <h3 class="section-title">What early testers said</h3>
-              <div class="carousel">
-                <figure class="card">
-                  <blockquote>
-                    “I can finally prove my engagement outside class without
-                    remembering every detail.”
-                  </blockquote>
-                  <figcaption>Jamie · MIS Junior</figcaption>
-                </figure>
-                <figure class="card">
-                  <blockquote>
-                    “The TA dashboard cut grading time in half—we triage
-                    everything in one view.”
-                  </blockquote>
-                  <figcaption>Marta · Graduate TA</figcaption>
-                </figure>
-                <figure class="card">
-                  <blockquote>
-                    “Analytics surfaced which group stalled, so I scheduled help
-                    sessions proactively.”
-                  </blockquote>
-                  <figcaption>Dr. Evans · Instructor</figcaption>
-                </figure>
-              </div>
-            </div>
-          </section>
-
-          <!-- Admin / TA Messages -->
-          <section class="view" id="admin-messages" data-roles="ta,admin">
-            <div class="section two-column messaging-layout">
-              <div class="card conversations">
-                <header>
-                  <h3>Faculty Messages</h3>
-                  <input type="search" placeholder="Search threads" />
-                </header>
-                <ul id="adminMessageList">
-                  <li class="active">
-                    <div>
-                      <p>Flagged Reports</p>
-                      <p class="muted">“Need review on Hunt #4”</p>
-                    </div>
-                    <span class="badge warn">2</span>
-                  </li>
-                  <li>
-                    <div>
-                      <p>MIS Faculty</p>
-                      <p class="muted">Meeting agenda posted</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="card chat">
-                <header>
-                  <div>
-                    <p class="eyebrow">Thread</p>
-                    <h3 id="adminChatTitle">Flagged Reports</h3>
-                  </div>
-                  <div class="chip-row">
-                    <button class="chip small">Resolve</button>
-                    <button class="chip small">Escalate</button>
-                  </div>
-                </header>
-                <div class="chat-thread" id="adminChatThread">
-                  <p>
-                    <strong>System</strong> User submitted duplicate evidence on
-                    Task #12.
-                  </p>
-                  <p>
-                    <strong>Dr. Reed</strong> Reviewing evidence now, will
-                    reply.
-                  </p>
-                </div>
-                <form class="chat-input">
-                  <input type="text" placeholder="Send guidance…" />
-                  <button type="submit" class="btn primary">Send</button>
-                </form>
-              </div>
-            </div>
-          </section>
-
-          <!-- Admin / TA Profile -->
-          <section class="view" id="admin-profile" data-roles="ta,admin">
-            <div class="section two-column">
-              <div class="card">
-                <p class="eyebrow">Staff Profile</p>
-                <h2 id="adminProfileName">Dr. Reed</h2>
-                <p class="muted" id="adminProfileMeta">Program Admin</p>
-                <div class="cards-grid four stat-cards">
-                  <article>
-                    <p class="muted">Cohorts</p>
-                    <h4 id="adminProfileCohorts">3</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Active Hunts</p>
-                    <h4 id="adminProfileHunts">8</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Reviews this week</p>
-                    <h4 id="adminProfileReviews">48</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Open alerts</p>
-                    <h4 id="adminProfileAlerts">2</h4>
-                  </article>
-                </div>
-              </div>
-              <div class="card">
-                <h3>Responsibilities</h3>
-                <ul class="pill-list" id="adminResponsibilities">
-                  <li>
-                    <p>Approve hunts</p>
-                    <span class="badge success">Active</span>
-                  </li>
-                  <li>
-                    <p>Review flagged evidence</p>
-                    <span class="badge warn">High</span>
-                  </li>
-                  <li>
-                    <p>Publish analytics briefs</p>
-                    <span class="badge neutral">Weekly</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <!-- Hunt Detail -->
-          <section class="view" id="hunt-detail" data-roles="student,ta,admin">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Hunt Detail</p>
-                  <h2 class="section-title" id="huntDetailTitle">
-                    Select a hunt
-                  </h2>
-                  <p class="muted" id="huntDetailMeta">
-                    Use “View Hunt” from the directory to populate this page.
-                  </p>
-                </div>
-                <button class="btn secondary" data-route="browse-hunts">
-                  Back to Hunts
-                </button>
-              </header>
-              <div class="two-column">
-                <div class="card">
-                  <h3>Overview</h3>
-                  <p id="huntDetailSummary">
-                    Browse hunts and pick one to see information here.
-                  </p>
-                  <dl class="stat-grid" id="huntDetailStats">
-                    <div>
-                      <dt>Reward</dt>
-                      <dd>—</dd>
-                    </div>
-                    <div>
-                      <dt>Duration</dt>
-                      <dd>—</dd>
-                    </div>
-                    <div>
-                      <dt>Mode</dt>
-                      <dd>—</dd>
-                    </div>
-                    <div>
-                      <dt>Enrolled</dt>
-                      <dd>—</dd>
-                    </div>
-                  </dl>
-                </div>
-                <div class="card">
-                  <h3>Milestones</h3>
-                  <ul class="timeline" id="huntMilestones">
-                    <li>
-                      <span class="badge neutral">•</span>
-                      <div>
-                        <p>Milestones will appear here once a hunt loads.</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="card">
-                <h3>Assigned Tasks</h3>
-                <table id="huntTasksTable">
-                  <thead>
-                    <tr>
-                      <th>Task</th>
-                      <th>Points</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Select a hunt to view tasks.</td>
-                      <td>—</td>
-                      <td>—</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-          <!-- Student Profile -->
-          <section class="view" id="profile" data-roles="student">
-            <div class="section two-column">
-              <div class="card">
-                <p class="eyebrow">My Profile</p>
-                <h2 id="profileName">Jamie Alvarez</h2>
-                <p class="muted" id="profileMeta">Student · Team Crimson</p>
-                <div class="cards-grid four stat-cards">
-                  <article>
-                    <p class="muted">Points</p>
-                    <h4 id="profilePoints">2,450</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Completed Hunts</p>
-                    <h4 id="profileHunts">6</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Badges</p>
-                    <h4 id="profileBadges">9</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Messages</p>
-                    <h4 id="profileMessages">38</h4>
-                  </article>
-                </div>
-                <div class="preferences">
-                  <label class="checkbox"
-                    ><input type="checkbox" checked />Email updates</label
-                  >
-                  <label class="checkbox"
-                    ><input type="checkbox" checked />Push notifications</label
-                  >
-                  <label class="checkbox"
-                    ><input type="checkbox" />Display on leaderboard</label
-                  >
-                </div>
-              </div>
-              <div class="card">
-                <h3>Activity Log</h3>
-                <ul class="timeline" id="profileTimeline">
-                  <li>
-                    <span class="badge success">✔</span>
-                    <div>
-                      <p>Submitted “Campus Story”</p>
-                      <p class="muted">Today</p>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="badge neutral">•</span>
-                    <div>
-                      <p>Joined Hunt “Innovation Sprint”</p>
-                      <p class="muted">Yesterday</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <!-- Peer Profile -->
-          <section class="view" id="peer-profile" data-roles="student,ta,admin">
-            <div class="section two-column">
-              <div class="card">
-                <p class="eyebrow">Peer Spotlight</p>
-                <h2 id="peerProfileName">Select a teammate</h2>
-                <p class="muted" id="peerProfileMeta">
-                  View a peer from the leaderboard to see their highlights.
-                </p>
-                <div class="cards-grid three stat-cards" id="peerProfileStats">
-                  <article>
-                    <p class="muted">Points</p>
-                    <h4>—</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Tasks</p>
-                    <h4>—</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Badges</p>
-                    <h4>—</h4>
-                  </article>
-                </div>
-                <button
-                  class="btn secondary"
-                  data-route="leaderboards"
-                  type="button"
-                >
-                  Back to Leaderboard
-                </button>
-              </div>
-              <div class="card">
-                <h3>Recent Highlights</h3>
-                <ul class="message-list" id="peerHighlights">
-                  <li>
-                    <p>Select a peer to populate highlights.</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <!-- Leaderboards -->
-          <section
-            class="view"
-            id="leaderboards"
-            data-roles="guest,student,ta,admin"
-          >
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Competitive Insight</p>
-                  <h2 class="section-title">Leaderboards</h2>
-                </div>
-                <div class="tabs small">
-                  <button class="tab active" data-tab="leaderboardClass">
-                    Class
-                  </button>
-                  <button class="tab" data-tab="leaderboardGroup">
-                    Groups
-                  </button>
-                  <button class="tab" data-tab="leaderboardGlobal">
-                    Global
-                  </button>
-                </div>
-              </header>
-              <div class="cards-grid three stat-cards">
-                <article class="card">
-                  <p class="muted">Top Performer</p>
-                  <h3 id="lbTopPerformer">Avery · 3,210 pts</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Most Improved</p>
-                  <h3 id="lbImproved">Jordan · +180 pts</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Team to Watch</p>
-                  <h3 id="lbTeam">Team Crimson</h3>
-                </article>
-              </div>
-              <div class="tab-panel active" id="leaderboardClass">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Rank</th>
-                      <th>Student</th>
-                      <th>Points</th>
-                      <th>Tasks</th>
-                      <th>Badges</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Avery</td>
-                      <td>3,210</td>
-                      <td>58</td>
-                      <td>Legend</td>
-                      <td>
-                        <button class="link-btn" data-profile="avery">
-                          View profile
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Jordan</td>
-                      <td>3,045</td>
-                      <td>54</td>
-                      <td>Trailblazer</td>
-                      <td>
-                        <button class="link-btn" data-profile="jordan">
-                          View profile
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Sam</td>
-                      <td>2,980</td>
-                      <td>52</td>
-                      <td>Explorer</td>
-                      <td>
-                        <button class="link-btn" data-profile="sam">
-                          View profile
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="tab-panel" id="leaderboardGroup">
-                <p class="muted">
-                  Team Crimson and Team Silver are separated by just 35 points.
-                </p>
-                <div class="cards-grid two">
-                  <article class="card">
-                    <h4>Team Crimson</h4>
-                    <p>Avg completion 86%</p>
-                  </article>
-                  <article class="card">
-                    <h4>Team Silver</h4>
-                    <p>Avg completion 83%</p>
-                  </article>
-                </div>
-              </div>
-              <div class="tab-panel" id="leaderboardGlobal">
-                <p class="muted">
-                  Global leaderboard pulls multiple MIS cohorts. Enable it from
-                  settings when you are ready.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Auth -->
-          <section class="view" id="auth" data-roles="guest,student,ta,admin">
-            <div class="section two-column">
-              <div class="card auth-card">
-                <div class="tabs" role="tablist">
-                  <button
-                    class="tab active"
-                    data-tab="studentLogin"
-                    role="tab"
-                    aria-selected="true"
-                  >
-                    Student / TA
-                  </button>
-                  <button
-                    class="tab"
-                    data-tab="adminLogin"
-                    role="tab"
-                    aria-selected="false"
-                  >
-                    Admin
-                  </button>
-                </div>
-                <form
-                  id="studentLogin"
-                  class="tab-panel active"
-                  role="tabpanel"
-                >
-                  <label
-                    >Email<input
-                      type="email"
-                      placeholder="crimson@email.ua.edu"
-                      required
-                  /></label>
-                  <label
-                    >Password<input
-                      type="password"
-                      placeholder="••••••••"
-                      required
-                  /></label>
-                  <label class="checkbox"
-                    ><input type="checkbox" />Remember me</label
-                  >
-                  <button class="btn primary" type="submit">Sign in</button>
-                </form>
-                <form id="adminLogin" class="tab-panel" role="tabpanel">
-                  <label
-                    >Admin Email<input
-                      type="email"
-                      placeholder="admin@ua.edu"
-                      required
-                  /></label>
-                  <label
-                    >Access Code<input
-                      type="password"
-                      placeholder="Access code"
-                      required
-                  /></label>
-                  <button class="btn primary" type="submit">
-                    Unlock Admin
-                  </button>
-                </form>
-              </div>
-
-              <div class="card help-card">
-                <h3>Help & Reset</h3>
-                <p class="muted">
-                  Need help logging in? Use the quick links below or open the
-                  full support center.
-                </p>
-                <ul class="link-list">
-                  <li>
-                    <button class="link-btn dead-link" data-route="not-found">
-                      Reset password
-                    </button>
-                  </li>
-                  <li>
-                    <button class="link-btn dead-link" data-route="not-found">
-                      Report an issue
-                    </button>
-                  </li>
-                  <li>
-                    <button class="link-btn dead-link" data-route="not-found">
-                      Contact MIS support
-                    </button>
-                  </li>
-                  <li>
-                    <button class="link-btn dead-link" data-route="not-found">
-                      See FAQ
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <!-- Student Dashboard -->
-          <section class="view" id="student-dashboard" data-roles="student">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Student experience</p>
-                  <h2 class="section-title">Dashboard overview</h2>
-                </div>
-                <div class="cta-row">
-                  <button class="btn secondary">Submit Task</button>
-                  <button class="btn ghost">Browse Hunts</button>
-                </div>
-              </header>
-              <div class="cards-grid four stat-cards">
-                <article class="card">
-                  <p class="muted">Leaderboard Rank</p>
-                  <h3 id="studentRank">#12 Overall</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Total Points</p>
-                  <h3 id="studentPoints">2,450 pts</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Tasks Complete</p>
-                  <h3 id="studentTasks">47</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Streak</p>
-                  <h3 id="studentStreak">12 days</h3>
-                </article>
-              </div>
-              <div class="dashboard-grid">
-                <article class="card progress-card">
-                  <h3>Current Hunt Progress</h3>
-                  <p class="progress-value">70% complete</p>
-                  <p class="muted">Data Management Quest · due Nov 25</p>
-                  <div class="progress-track">
-                    <span class="width-70"></span>
-                  </div>
-                </article>
-                <article class="card">
-                  <h3>Active Hunts</h3>
-                  <ul class="pill-list">
-                    <li>
-                      <p>Cybersecurity Challenge</p>
-                      <span>55%</span>
-                    </li>
-                    <li>
-                      <p>Innovation Sprint</p>
-                      <span>40%</span>
-                    </li>
-                    <li>
-                      <p>Community Builder</p>
-                      <span>Complete</span>
-                    </li>
-                  </ul>
-                </article>
-                <article class="card">
-                  <h3>Timeline</h3>
-                  <ul class="timeline">
-                    <li>
-                      <span class="badge success">✔</span>
-                      <div>
-                        <p>Submitted “Data Insights”</p>
-                        <p class="muted">Today · 3:05 PM</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="badge warn">↻</span>
-                      <div>
-                        <p>Revision requested – “Cyber Lab”</p>
-                        <p class="muted">Yesterday · 9:12 PM</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="badge neutral">•</span>
-                      <div>
-                        <p>Joined Team Crimson</p>
-                        <p class="muted">Mon · 11:00 AM</p>
-                      </div>
-                    </li>
-                  </ul>
-                </article>
-                <article class="card">
-                  <h3>Messages</h3>
-                  <ul class="message-list">
-                    <li>
-                      <p>Marta (TA)</p>
-                      <p class="muted">“Reviewing your evidence now!”</p>
-                    </li>
-                    <li>
-                      <p>Team Crimson</p>
-                      <p class="muted">“Meeting tonight @ 6”</p>
-                    </li>
-                    <li>
-                      <p>System</p>
-                      <p class="muted">“Leaderboard refresh complete.”</p>
-                    </li>
-                  </ul>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          <!-- Student Tasks -->
-          <section class="view" id="student-tasks" data-roles="student">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Task Center</p>
-                  <h2 class="section-title">Plan, submit, repeat.</h2>
-                </div>
-                <div class="filter-row">
-                  <input type="search" placeholder="Search tasks" />
-                  <select aria-label="Sort tasks">
-                    <option>Sort by Due Date</option>
-                    <option>Sort by Points</option>
-                    <option>Sort by Status</option>
-                  </select>
-                </div>
-              </header>
-              <div class="tabs">
-                <button class="tab active" data-tab="tasksActive">
-                  Active
-                </button>
-                <button class="tab" data-tab="tasksCompleted">Completed</button>
-                <button class="tab" data-tab="tasksHistory">History</button>
-              </div>
-              <div class="tab-panel active" id="tasksActive">
-                <div class="cards-grid three">
-                  <article class="card task-card">
-                    <p class="pill">Active · 100 pts</p>
-                    <h3>Campus Photo Story</h3>
-                    <p class="muted">
-                      Upload photos proving each clue completion.
-                    </p>
-                    <button class="btn secondary" data-open="taskDrawer">
-                      Open Task
-                    </button>
-                  </article>
-                  <article class="card task-card">
-                    <p class="pill warn">Due Tomorrow · 75 pts</p>
-                    <h3>Cyber Lab Reflection</h3>
-                    <p class="muted">
-                      Summarize findings from the security scavenger.
-                    </p>
-                    <button class="btn secondary" data-open="taskDrawer">
-                      Open Task
-                    </button>
-                  </article>
-                  <article class="card task-card">
-                    <p class="pill success">Complete · 50 pts</p>
-                    <h3>Leadership Forum</h3>
-                    <p class="muted">
-                      Attend panel, capture insights, submit notes.
-                    </p>
-                    <button class="btn ghost" disabled>Submitted</button>
-                  </article>
-                </div>
-              </div>
-              <div class="tab-panel" id="tasksCompleted">
-                <p class="muted">
-                  12 tasks completed this semester. Filter by hunt to revisit
-                  submissions.
-                </p>
-              </div>
-              <div class="tab-panel" id="tasksHistory">
-                <p class="muted">
-                  Full history stored for audits and KPI exports.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Browse Hunts -->
-          <section class="view" id="browse-hunts" data-roles="student,ta,admin">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Discovery</p>
-                  <h2 class="section-title">Find your next hunt.</h2>
-                </div>
-                <div class="filter-row">
-                  <input type="search" placeholder="Search hunts" />
-                  <div class="chip-row">
-                    <button class="chip active">Easy</button>
-                    <button class="chip">Medium</button>
-                    <button class="chip">Hard</button>
-                    <button class="chip">Online</button>
-                    <button class="chip">Team</button>
-                  </div>
-                </div>
-              </header>
-              <div class="cards-grid three">
-                <article class="card hunt-card">
-                  <h3>Innovation Sprint</h3>
-                  <p>72 enrolled · ends in 5 days · hybrid</p>
-                  <ul>
-                    <li>Reward: 250 pts + badge</li>
-                    <li>Difficulty: Medium</li>
-                  </ul>
-                  <div class="cta-row">
-                    <button class="btn primary" type="button">Join Hunt</button>
-                    <button
-                      class="btn secondary"
-                      type="button"
-                      data-hunt="innovation"
-                    >
-                      View Hunt
-                    </button>
-                  </div>
-                </article>
-                <article class="card hunt-card">
-                  <h3>Cybersecurity Challenge</h3>
-                  <p>48 enrolled · campus · 1 week</p>
-                  <ul>
-                    <li>Reward: 300 pts</li>
-                    <li>Difficulty: Hard</li>
-                  </ul>
-                  <div class="cta-row">
-                    <button class="btn primary" type="button">Join Hunt</button>
-                    <button
-                      class="btn secondary"
-                      type="button"
-                      data-hunt="cyber"
-                    >
-                      View Hunt
-                    </button>
-                  </div>
-                </article>
-                <article class="card hunt-card">
-                  <h3>Community Builder</h3>
-                  <p>110 enrolled · online · ongoing</p>
-                  <ul>
-                    <li>Reward: 150 pts</li>
-                    <li>Difficulty: Easy</li>
-                  </ul>
-                  <div class="cta-row">
-                    <button class="btn primary" type="button">Join Hunt</button>
-                    <button
-                      class="btn secondary"
-                      type="button"
-                      data-hunt="community"
-                    >
-                      View Hunt
-                    </button>
-                  </div>
-                </article>
-              </div>
-
-              <div class="section leaderboard">
-                <header class="section-headline">
-                  <div>
-                    <p class="eyebrow">Competition</p>
-                    <h3>Class Leaderboard</h3>
-                  </div>
-                  <div class="tabs small">
-                    <button class="tab active" data-tab="boardClass">
-                      Class
-                    </button>
-                    <button class="tab" data-tab="boardGroup">Group</button>
-                    <button class="tab" data-tab="boardGlobal">Global</button>
-                  </div>
-                </header>
-                <div class="tab-panel active" id="boardClass">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Rank</th>
-                        <th>Student</th>
-                        <th>Points</th>
-                        <th>Tasks</th>
-                        <th>Badges</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Avery</td>
-                        <td>3,210</td>
-                        <td>58</td>
-                        <td>Legend</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Jordan</td>
-                        <td>3,045</td>
-                        <td>54</td>
-                        <td>Trailblazer</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Sam</td>
-                        <td>2,980</td>
-                        <td>52</td>
-                        <td>Explorer</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="tab-panel" id="boardGroup">
-                  <p class="muted">Team Crimson currently leads the cohort.</p>
-                </div>
-                <div class="tab-panel" id="boardGlobal">
-                  <p class="muted">
-                    Global ranking available for inter-class events.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Messaging & Profile -->
-          <section class="view" id="messaging" data-roles="student">
-            <div class="section two-column messaging-layout">
-              <div class="card conversations">
-                <header>
-                  <h3>Conversations</h3>
-                  <input type="search" placeholder="Search people or groups" />
-                </header>
-                <ul>
-                  <li class="active">
-                    <div>
-                      <p>Team Crimson</p>
-                      <p class="muted">“Slides updated. Thoughts?”</p>
-                    </div>
-                    <span class="badge">3</span>
-                  </li>
-                  <li>
-                    <div>
-                      <p>Marta · TA</p>
-                      <p class="muted">“Ready for your submission.”</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <p>Instructor Evans</p>
-                      <p class="muted">“Schedule office hours?”</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="card chat">
-                <header>
-                  <div>
-                    <p class="eyebrow">Chat</p>
-                    <h3>Team Crimson</h3>
-                  </div>
-                  <div class="chip-row">
-                    <button class="chip small">Start Discussion</button>
-                    <button class="chip small">Report Issue</button>
-                  </div>
-                </header>
-                <div class="chat-thread">
-                  <p>
-                    <strong>You</strong> Shared field notes from Bryant-Denny
-                    clue.
-                  </p>
-                  <p>
-                    <strong>Marta</strong> “Looks great – finishing review.”
-                  </p>
-                  <p>
-                    <strong>Sam</strong> “Need help with final clue? I can grab
-                    photos.”
-                  </p>
-                </div>
-                <form class="chat-input">
-                  <input type="text" placeholder="Type a message…" />
-                  <button type="submit" class="btn primary">Send</button>
-                </form>
-              </div>
-            </div>
-            <div class="section">
-              <div class="card profile">
-                <header>
-                  <div>
-                    <p class="muted">Profile</p>
-                    <h3>Jamie Alvarez</h3>
-                    <p class="muted">Student · Team Crimson</p>
-                  </div>
-                  <button class="btn secondary">Edit Profile</button>
-                </header>
-                <div class="cards-grid four stat-cards">
-                  <article>
-                    <p class="muted">Points</p>
-                    <h4>2,450</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Hunts</p>
-                    <h4>6</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Badges</p>
-                    <h4>9</h4>
-                  </article>
-                  <article>
-                    <p class="muted">Messages</p>
-                    <h4>38</h4>
-                  </article>
-                </div>
-                <div class="preferences">
-                  <label class="checkbox"
-                    ><input type="checkbox" checked />Email updates</label
-                  >
-                  <label class="checkbox"
-                    ><input type="checkbox" checked />Push notifications</label
-                  >
-                  <label class="checkbox"
-                    ><input type="checkbox" />Display on leaderboard</label
-                  >
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Instructor Dashboard -->
-          <section class="view" id="instructor-dashboard">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">TA / Instructor</p>
-                  <h2 class="section-title">Operational dashboard</h2>
-                </div>
-                <button class="btn primary">Create Task</button>
-              </header>
-              <div class="cards-grid four stat-cards">
-                <article class="card">
-                  <p class="muted">Pending Submissions</p>
-                  <h3>23</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Average Score</p>
-                  <h3>87.5%</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Active Hunts</p>
-                  <h3>8</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">At-Risk Students</p>
-                  <h3>7</h3>
-                </article>
-              </div>
-              <div class="dashboard-grid">
-                <article class="card">
-                  <h3>Completion Trend</h3>
-                  <p class="muted">Last 4 weeks</p>
-                  <div class="sparkline">
-                    <span class="h-65"></span>
-                    <span class="h-80"></span>
-                    <span class="h-72"></span>
-                    <span class="h-88"></span>
-                  </div>
-                </article>
-                <article class="card">
-                  <h3>Top Performers</h3>
-                  <ul class="pill-list">
-                    <li>
-                      <p>Avery · 3,210 pts</p>
-                      <span>🥇</span>
-                    </li>
-                    <li>
-                      <p>Jordan · 3,045 pts</p>
-                      <span>🥈</span>
-                    </li>
-                    <li>
-                      <p>Sam · 2,980 pts</p>
-                      <span>🥉</span>
-                    </li>
-                  </ul>
-                </article>
-                <article class="card table-card">
-                  <h3>Recent Submissions</h3>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Student</th>
-                        <th>Task</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Jamie</td>
-                        <td>Data Insights</td>
-                        <td><span class="badge success">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <td>Sam</td>
-                        <td>Cyber Lab</td>
-                        <td><span class="badge warn">Revision</span></td>
-                      </tr>
-                      <tr>
-                        <td>Taylor</td>
-                        <td>Community Report</td>
-                        <td><span class="badge neutral">Reviewed</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </article>
-                <article class="card">
-                  <h3>Inbox Preview</h3>
-                  <ul class="message-list">
-                    <li>
-                      <p>Team Crimson</p>
-                      <p class="muted">Need rubric clarification</p>
-                    </li>
-                    <li>
-                      <p>Instructor Evans</p>
-                      <p class="muted">“Share analytics export.”</p>
-                    </li>
-                    <li>
-                      <p>Sam</p>
-                      <p class="muted">“Submitted revision.”</p>
-                    </li>
-                  </ul>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          <!-- Management Workspace -->
-          <section class="view" id="management">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Task Workspace</p>
-                  <h2 class="section-title">Create & review tasks.</h2>
-                </div>
-                <div class="cta-row">
-                  <button class="btn primary">New Task</button>
-                  <button class="btn secondary">Bulk Actions</button>
-                </div>
-              </header>
-              <div class="table-card card">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Task</th>
-                      <th>Hunt</th>
-                      <th>Groups</th>
-                      <th>Due</th>
-                      <th>Points</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Data Insights</td>
-                      <td>Data Quest</td>
-                      <td>Alpha, Beta</td>
-                      <td>Nov 18</td>
-                      <td>120</td>
-                      <td><span class="badge success">Active</span></td>
-                    </tr>
-                    <tr>
-                      <td>Cyber Lab</td>
-                      <td>Security</td>
-                      <td>Gamma</td>
-                      <td>Nov 20</td>
-                      <td>90</td>
-                      <td><span class="badge warn">Draft</span></td>
-                    </tr>
-                    <tr>
-                      <td>Community Report</td>
-                      <td>Builder</td>
-                      <td>All</td>
-                      <td>Nov 22</td>
-                      <td>80</td>
-                      <td><span class="badge neutral">Archived</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="two-column">
-                <div class="card">
-                  <h3>Submission Queue</h3>
-                  <div class="tabs small">
-                    <button class="tab active" data-tab="queuePending">
-                      Pending
-                    </button>
-                    <button class="tab" data-tab="queueFeedback">
-                      Needs Feedback
-                    </button>
-                    <button class="tab" data-tab="queueComplete">
-                      Completed
-                    </button>
-                  </div>
-                  <div class="tab-panel active" id="queuePending">
-                    <ul class="message-list">
-                      <li>
-                        <p>Avery · Data Insights</p>
-                        <p class="muted">5 min ago</p>
-                      </li>
-                      <li>
-                        <p>Jordan · Cyber Lab</p>
-                        <p class="muted">20 min ago</p>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="tab-panel" id="queueFeedback">
-                    <p class="muted">2 submissions awaiting comments.</p>
-                  </div>
-                  <div class="tab-panel" id="queueComplete">
-                    <p class="muted">All caught up.</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <h3>Grading Drawer</h3>
-                  <p class="muted">View evidence, assign score, leave notes.</p>
-                  <label
-                    >Score<input type="range" min="0" max="100" value="85"
-                  /></label>
-                  <label
-                    >Feedback<textarea
-                      rows="4"
-                      placeholder="Great job highlighting insights!"
-                    ></textarea>
-                  </label>
-                  <div class="cta-row">
-                    <button class="btn success">Approve</button>
-                    <button class="btn warn">Request Revision</button>
-                    <button class="btn ghost">Reject</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Students & Analytics -->
-          <section class="view" id="analytics">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Roster & Analytics</p>
-                  <h2 class="section-title">See the big picture.</h2>
-                </div>
-                <button class="btn secondary">Export CSV</button>
-              </header>
-              <div class="cards-grid four stat-cards">
-                <article class="card">
-                  <p class="muted">Active Students</p>
-                  <h3>156</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Engagement Rate</p>
-                  <h3>87.5%</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Completion Rate</p>
-                  <h3>82.3%</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">At-Risk</p>
-                  <h3>7</h3>
-                </article>
-              </div>
-              <div class="table-card card">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Student</th>
-                      <th>Role</th>
-                      <th>Group</th>
-                      <th>Points</th>
-                      <th>Late Tasks</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Jamie Alvarez</td>
-                      <td>Student</td>
-                      <td>Crimson</td>
-                      <td>2,450</td>
-                      <td>0</td>
-                      <td>
-                        <button class="link-btn" data-open="studentDrawer">
-                          View
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sam Hart</td>
-                      <td>Student</td>
-                      <td>Silver</td>
-                      <td>2,980</td>
-                      <td>1</td>
-                      <td>
-                        <button class="link-btn" data-open="studentDrawer">
-                          View
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Marta Rivers</td>
-                      <td>TA</td>
-                      <td>All</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>
-                        <button class="link-btn" data-open="studentDrawer">
-                          View
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="cards-grid three">
-                <article class="card chart-card">
-                  <h3>Completion by Group</h3>
-                  <div class="bar-chart">
-                    <div>
-                      <span class="h-80"></span>
-                      <p>Alpha</p>
-                    </div>
-                    <div>
-                      <span class="h-72"></span>
-                      <p>Beta</p>
-                    </div>
-                    <div>
-                      <span class="h-90"></span>
-                      <p>Gamma</p>
-                    </div>
-                  </div>
-                </article>
-                <article class="card chart-card">
-                  <h3>Submission Heatmap</h3>
-                  <div class="heatmap">
-                    <span data-value="low"></span>
-                    <span data-value="mid"></span>
-                    <span data-value="high"></span>
-                    <span data-value="mid"></span>
-                    <span data-value="low"></span>
-                  </div>
-                </article>
-                <article class="card chart-card">
-                  <h3>Task Categories</h3>
-                  <ul class="pill-list">
-                    <li>
-                      <p>Technical</p>
-                      <span>35%</span>
-                    </li>
-                    <li>
-                      <p>Research</p>
-                      <span>25%</span>
-                    </li>
-                    <li>
-                      <p>Design</p>
-                      <span>15%</span>
-                    </li>
-                    <li>
-                      <p>Community</p>
-                      <span>25%</span>
-                    </li>
-                  </ul>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          <!-- Admin -->
-          <section class="view" id="admin" data-roles="admin">
-            <div class="section">
-              <header class="section-headline">
-                <div>
-                  <p class="eyebrow">Admin Control</p>
-                  <h2 class="section-title">Governance & alerts.</h2>
-                </div>
-                <button class="btn primary">Open Documentation</button>
-              </header>
-              <div class="cards-grid four stat-cards">
-                <article class="card">
-                  <p class="muted">Total Hunts</p>
-                  <h3>24</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Active Users</p>
-                  <h3>342</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">Satisfaction</p>
-                  <h3>4.7 / 5</h3>
-                </article>
-                <article class="card">
-                  <p class="muted">System Health</p>
-                  <h3>98%</h3>
-                </article>
-              </div>
-              <div class="two-column">
-                <div class="card">
-                  <h3>Activity Feed</h3>
-                  <ul class="timeline">
-                    <li>
-                      <span class="badge success">+</span>
-                      <div>
-                        <p>New hunt “Analytics Sprint” created</p>
-                        <p class="muted">2 min ago</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="badge neutral">•</span>
-                      <div>
-                        <p>5 students imported</p>
-                        <p class="muted">30 min ago</p>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="badge warn">!</span>
-                      <div>
-                        <p>Flagged message pending review</p>
-                        <p class="muted">1 hr ago</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="card">
-                  <h3>System Alerts</h3>
-                  <p class="muted">
-                    Resolve open alerts to maintain 99% uptime.
-                  </p>
-                  <ul class="pill-list">
-                    <li>
-                      <p>Storage nearing limit</p>
-                      <span class="badge warn">Warning</span>
-                    </li>
-                    <li>
-                      <p>Leaderboard sync delayed</p>
-                      <span class="badge neutral">Info</span>
-                    </li>
-                    <li>
-                      <p>No critical alerts</p>
-                      <span class="badge success">Healthy</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="cards-grid three">
-                <article class="card">
-                  <h3>Hunt Rules</h3>
-                  <p class="muted">
-                    Condition builder for scoring / unlock logic.
-                  </p>
-                  <button class="btn secondary">Open Builder</button>
-                </article>
-                <article class="card">
-                  <h3>User Access</h3>
-                  <p class="muted">Manage roles, permissions, and 2FA.</p>
-                  <button class="btn secondary">Manage Access</button>
-                </article>
-                <article class="card">
-                  <h3>Feature Toggles</h3>
-                  <p class="muted">Rapidly enable or pause modules.</p>
-                  <button class="btn secondary">Adjust Features</button>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          <!-- Support -->
-          <section class="view" id="settings" data-roles="student,ta,admin">
-            <div class="section two-column">
-              <div class="card">
-                <h3>Preferences</h3>
-                <div class="settings-grid">
-                  <label class="checkbox"
-                    ><input type="checkbox" id="settingTheme" />Enable dark mode
-                    automatically</label
-                  >
-                  <label class="checkbox"
-                    ><input type="checkbox" id="settingEmails" checked />Email
-                    digests</label
-                  >
-                  <label class="checkbox"
-                    ><input type="checkbox" id="settingPush" checked />Push
-                    notifications</label
-                  >
-                </div>
-              </div>
-              <div class="card">
-                <h3>Data & Privacy</h3>
-                <p class="muted">
-                  Export your submissions or anonymize leaderboard results.
-                </p>
-                <div class="cta-row">
-                  <button class="btn secondary" type="button">
-                    Export Activity
-                  </button>
-                  <button class="btn ghost" type="button">
-                    Request Data Removal
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="view" id="support" data-roles="student,ta,admin">
-            <div class="section two-column">
-              <div class="card">
-                <h3>Help Center</h3>
-                <details open>
-                  <summary>Getting started</summary>
-                  <p>
-                    Walkthroughs for landing, student, instructor, and admin
-                    experiences.
-                  </p>
-                </details>
-                <details>
-                  <summary>Accessibility controls</summary>
-                  <p>Adjust font size, toggle high contrast, switch themes.</p>
-                </details>
-                <details>
-                  <summary>Policies</summary>
-                  <p>
-                    Terms of service, privacy policy, and data retention
-                    guidelines.
-                  </p>
-                </details>
-              </div>
-              <div class="card">
-                <h3>Contact & Bug Report</h3>
-                <form class="stacked-form">
-                  <label
-                    >Name<input type="text" placeholder="Your name"
-                  /></label>
-                  <label
-                    >Email<input type="email" placeholder="you@ua.edu"
-                  /></label>
-                  <label
-                    >Topic<select>
-                      <option>General question</option>
-                      <option>Bug</option>
-                      <option>Feature request</option>
-                    </select></label
-                  >
-                  <label>Message<textarea rows="4"></textarea></label>
-                  <button type="submit" class="btn primary">Send</button>
-                </form>
-              </div>
-            </div>
-            <div class="section footer-cta">
-              <div>
-                <p class="eyebrow">Need more?</p>
-                <h3>Documentation, socials, FAQs, and more lives here.</h3>
-              </div>
-              <div class="chip-row">
-                <button class="chip dead-link" data-route="not-found">
-                  FAQ
-                </button>
-                <button class="chip dead-link" data-route="not-found">
-                  About MIS
-                </button>
-                <button class="chip dead-link" data-route="not-found">
-                  Documentation
-                </button>
-                <button class="chip dead-link" data-route="not-found">
-                  Socials
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <section
-            class="view"
-            id="not-found"
-            data-roles="guest,student,ta,admin"
-          >
-            <div class="section">
-              <div class="card">
-                <p class="eyebrow">Coming Soon</p>
-                <h2>Page not ready yet.</h2>
-                <p class="muted">
-                  This link points to a page still being designed. Check back
-                  later or head to the dashboard.
-                </p>
-                <div class="cta-row">
-                  <button class="btn primary" data-route="landing">
-                    Go to Landing
-                  </button>
-                  <button class="btn secondary" data-route="leaderboards">
-                    View Leaderboards
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        <footer class="site-footer">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎮</div>
+          <h3>Gamified Learning</h3>
           <p>
-            © 2025 University of Alabama MIS · Ultimate Scavenger Hunt Prototype
+            Earn points, unlock badges, and climb the leaderboard as you
+            complete challenges and master new concepts.
           </p>
-          <div class="footer-links">
-            <a href="#" class="dead-link" data-route="not-found">FAQ</a>
-            <a href="#" class="dead-link" data-route="not-found">Contact</a>
-            <a href="#" class="dead-link" data-route="not-found">Terms</a>
-            <a href="#" class="dead-link" data-route="not-found">Privacy</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Team Collaboration</h3>
+          <p>
+            Work together with classmates on group challenges that build real
+            teamwork and communication skills.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Real-World Skills</h3>
+          <p>
+            Apply MIS concepts to practical scenarios that mirror actual
+            business challenges you'll face in your career.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Competitive Spirit</h3>
+          <p>
+            Compete in weekly challenges and semester-long hunts for bonus
+            points and exclusive rewards.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile Friendly</h3>
+          <p>
+            Access challenges anywhere, anytime. Complete tasks on-the-go with
+            our responsive design.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Progress Tracking</h3>
+          <p>
+            Monitor your growth with detailed analytics, milestone tracking, and
+            personalized insights.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>
+          Getting started is easy. Jump into the action in just a few simple
+          steps.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Sign Up</h3>
+          <p>
+            Create your account using your University credentials and join your
+            class.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Choose a Hunt</h3>
+          <p>
+            Browse available scavenger hunts and pick one that matches your
+            interests.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Complete Tasks</h3>
+          <p>
+            Work through challenges, submit your work, and earn points for each
+            completion.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Earn Rewards</h3>
+          <p>
+            Unlock badges, climb the leaderboard, and earn bonus credit for your
+            course.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+      <div class="section-header">
+        <h2>What Students Say</h2>
+        <p>Hear from students who've transformed their learning experience.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-content">
+            "The scavenger hunts made MIS concepts click for me. Instead of just
+            reading about databases, I was actually building them to solve real
+            problems."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JD</div>
+            <div class="testimonial-info">
+              <h4>Jordan Davis</h4>
+              <p>MIS 320 Student</p>
+            </div>
           </div>
-        </footer>
-      </div>
-    </div>
+        </div>
 
-    <div class="drawer" id="taskDrawer" aria-hidden="true">
-      <div class="drawer__header">
-        <h3>Task Details</h3>
-        <button class="icon-btn" data-close="taskDrawer">×</button>
-      </div>
-      <div class="drawer__body">
-        <p class="muted">Campus Photo Story · 100 pts</p>
-        <ol>
-          <li>Capture evidence for each clue.</li>
-          <li>Upload photo or note per checkpoint.</li>
-          <li>Leave comments for TA review.</li>
-        </ol>
-        <label>Evidence<input type="file" /></label>
-        <label
-          >Notes<textarea rows="3" placeholder="Add context..."></textarea>
-        </label>
-      </div>
-      <div class="drawer__footer">
-        <button class="btn ghost" data-close="taskDrawer">Cancel</button>
-        <button class="btn primary">Submit Evidence</button>
-      </div>
-    </div>
-
-    <div class="drawer" id="studentDrawer" aria-hidden="true">
-      <div class="drawer__header">
-        <h3>Student Overview</h3>
-        <button class="icon-btn" data-close="studentDrawer">×</button>
-      </div>
-      <div class="drawer__body">
-        <p class="muted">Jamie Alvarez · Team Crimson</p>
-        <ul class="pill-list">
-          <li>
-            <p>Points</p>
-            <span>2,450</span>
-          </li>
-          <li>
-            <p>Completion</p>
-            <span>92%</span>
-          </li>
-          <li>
-            <p>Late Tasks</p>
-            <span>0</span>
-          </li>
-        </ul>
-        <h4>Recent Activity</h4>
-        <ul class="timeline">
-          <li>
-            <span class="badge success">✔</span>
-            <div>
-              <p>Submitted “Campus Story”</p>
-              <p class="muted">Today</p>
+        <div class="testimonial-card">
+          <p class="testimonial-content">
+            "I loved competing with my classmates. The leaderboard motivated me
+            to stay on top of my work and actually enjoy studying for once!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SM</div>
+            <div class="testimonial-info">
+              <h4>Sarah Mitchell</h4>
+              <p>MIS 430 Student</p>
             </div>
-          </li>
-          <li>
-            <span class="badge neutral">•</span>
-            <div>
-              <p>Joined Hunt “Innovation Sprint”</p>
-              <p class="muted">Yesterday</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="drawer__footer">
-        <button class="btn secondary">Message Student</button>
-        <button class="btn primary">Export Profile</button>
-      </div>
-    </div>
+          </div>
+        </div>
 
-    <script src="./assets/js/app.js"></script>
+        <div class="testimonial-card">
+          <p class="testimonial-content">
+            "The team challenges helped me build connections with classmates I
+            never would have worked with otherwise. Great for networking!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MP</div>
+            <div class="testimonial-info">
+              <h4>Marcus Patel</h4>
+              <p>MIS 385 Student</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Start Your Adventure?</h2>
+        <p>
+          Join hundreds of students already learning through play. Your next
+          challenge awaits!
+        </p>
+        <a href="auth.html" class="btn">Get Started Free →</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>MIS Scavenger Hunt</h3>
+          <p>
+            Transforming MIS education through gamified learning experiences at
+            the University of Alabama.
+          </p>
+          <div class="social-links">
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="LinkedIn">💼</a>
+            <a href="#" title="GitHub">💻</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="leaderboards.html">Leaderboards</a></li>
+            <li><a href="about.html">About MIS</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Student Guide</a></li>
+            <li><a href="#">Instructor Portal</a></li>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Report a Bug</a></li>
+            <li><a href="#">Request a Feature</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 MIS Department, University of Alabama. All rights reserved.
+        </p>
+        <p>Roll Tide! 🐘</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/navigation.js"></script>
+    <script>
+      // Theme toggle function for landing page
+      function toggleTheme() {
+        const current = document.documentElement.dataset.theme || "light";
+        const next = current === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem("theme", next);
+
+        const btn = document.querySelector(".theme-toggle");
+        if (btn) btn.textContent = next === "dark" ? "☀️" : "🌙";
+      }
+
+      // Initialize theme on load
+      const saved = localStorage.getItem("theme");
+      if (saved) {
+        document.documentElement.dataset.theme = saved;
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.dataset.theme = "dark";
+      }
+      const btn = document.querySelector(".theme-toggle");
+      if (btn)
+        btn.textContent =
+          document.documentElement.dataset.theme === "dark" ? "☀️" : "🌙";
+    </script>
   </body>
 </html>

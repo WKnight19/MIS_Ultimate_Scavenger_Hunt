@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav">
+          <p class="nav-label">Student</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="student-messages.html">Messages</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link" href="student-profile.html">My Profile</a>
+          <a class="nav-link active" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Account</p>
+            <h1>Settings</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn primary" id="saveSettingsBtn">Save Changes</button>
+          </div>
+        </header>
+
+        <main>
+          <section class="section">
+            <div class="settings-page-layout">
+              <!-- Settings Navigation -->
+              <nav class="settings-nav">
+                <a href="#appearance" class="settings-nav-item active">Appearance</a>
+                <a href="#notifications" class="settings-nav-item">Notifications</a>
+                <a href="#privacy" class="settings-nav-item">Privacy</a>
+                <a href="#account" class="settings-nav-item">Account</a>
+              </nav>
+
+              <div class="settings-content">
+                <!-- Appearance -->
+                <section class="settings-section" id="appearance">
+                  <h2>Appearance</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Theme</h3>
+                      <div class="theme-options">
+                        <label class="theme-option">
+                          <input type="radio" name="theme" value="light" />
+                          <div class="theme-preview light">
+                            <span>Light</span>
+                          </div>
+                        </label>
+                        <label class="theme-option">
+                          <input type="radio" name="theme" value="dark" />
+                          <div class="theme-preview dark">
+                            <span>Dark</span>
+                          </div>
+                        </label>
+                        <label class="theme-option">
+                          <input type="radio" name="theme" value="system" checked />
+                          <div class="theme-preview system">
+                            <span>System</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Accessibility</h3>
+                      <label>
+                        Font Size
+                        <select id="fontSizeSelect">
+                          <option value="small">Small</option>
+                          <option value="medium" selected>Medium</option>
+                          <option value="large">Large</option>
+                          <option value="xl">Extra Large</option>
+                        </select>
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" id="reduceMotion" />
+                        Reduce motion effects
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" id="highContrast" />
+                        High contrast mode
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Notifications -->
+                <section class="settings-section" id="notifications">
+                  <h2>Notifications</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Email Notifications</h3>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Task Reminders</p>
+                          <p class="muted">Get reminders 24 hours before deadlines</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Feedback Notifications</p>
+                          <p class="muted">When instructors provide feedback on your work</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Weekly Progress Digest</p>
+                          <p class="muted">Summary of your weekly activity</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Push Notifications</h3>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">New Messages</p>
+                          <p class="muted">When you receive a new message</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Team Activity</p>
+                          <p class="muted">Updates from your team</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Leaderboard Changes</p>
+                          <p class="muted">When your ranking changes</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Privacy -->
+                <section class="settings-section" id="privacy">
+                  <h2>Privacy</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Profile Visibility</h3>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Show on Public Leaderboard</p>
+                          <p class="muted">Display your name on the public leaderboard</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Allow Team to See Progress</p>
+                          <p class="muted">Team members can view your task completion</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                      <div class="toggle-row">
+                        <div>
+                          <p class="toggle-label">Show Activity Status</p>
+                          <p class="muted">Let others see when you're online</p>
+                        </div>
+                        <label class="toggle">
+                          <input type="checkbox" checked />
+                          <span class="toggle-slider"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Data</h3>
+                      <p class="muted">Download or delete your data.</p>
+                      <div class="cta-row">
+                        <button class="btn secondary" id="downloadDataBtn">Download My Data</button>
+                        <button class="btn ghost" id="requestDeletionBtn">Request Data Deletion</button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Account -->
+                <section class="settings-section" id="account">
+                  <h2>Account</h2>
+                  <div class="card">
+                    <div class="settings-group">
+                      <h3>Change Password</h3>
+                      <form class="stacked-form" id="passwordForm">
+                        <label>
+                          Current Password
+                          <input type="password" placeholder="••••••••" />
+                        </label>
+                        <label>
+                          New Password
+                          <input type="password" placeholder="••••••••" />
+                        </label>
+                        <label>
+                          Confirm New Password
+                          <input type="password" placeholder="••••••••" />
+                        </label>
+                        <button type="submit" class="btn secondary">Update Password</button>
+                      </form>
+                    </div>
+                  </div>
+
+                  <div class="card danger-zone">
+                    <div class="settings-group">
+                      <h3>⚠️ Danger Zone</h3>
+                      <p class="muted">Permanently delete your account and all associated data.</p>
+                      <button class="btn danger" id="deleteAccountBtn">Delete Account</button>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Settings nav
+        document.querySelectorAll('.settings-nav-item').forEach(link => {
+          link.addEventListener('click', () => {
+            document.querySelectorAll('.settings-nav-item').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          });
+        });
+
+        // Theme
+        document.querySelectorAll('input[name="theme"]').forEach(radio => {
+          radio.addEventListener('change', () => {
+            const theme = radio.value;
+            if (theme === 'dark') {
+              document.documentElement.dataset.theme = 'dark';
+            } else if (theme === 'light') {
+              document.documentElement.dataset.theme = 'light';
+            }
+            showToast(`Theme changed to ${theme}`, 'info');
+          });
+        });
+
+        // Save
+        document.getElementById('saveSettingsBtn')?.addEventListener('click', () => {
+          showToast('Settings saved successfully!', 'success');
+        });
+
+        // Password form
+        document.getElementById('passwordForm')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          showToast('Password updated successfully!', 'success');
+        });
+
+        // Data buttons
+        document.getElementById('downloadDataBtn')?.addEventListener('click', () => {
+          showToast('Preparing your data download...', 'info');
+        });
+
+        document.getElementById('requestDeletionBtn')?.addEventListener('click', () => {
+          showToast('Data deletion request submitted', 'info');
+        });
+
+        document.getElementById('deleteAccountBtn')?.addEventListener('click', () => {
+          if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
+            showToast('Account deletion initiated', 'warn');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task Management · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Admin Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Admin navigation">
+          <p class="nav-label">Overview</p>
+          <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="admin-hunts.html">Manage Hunts</a>
+          <a class="nav-link active" href="admin-tasks.html">Task Management</a>
+          <a class="nav-link" href="admin-students.html">Students</a>
+          <a class="nav-link" href="admin-analytics.html">Analytics</a>
+          <p class="nav-label">Communication</p>
+          <a class="nav-link" href="admin-messages.html">Messages</a>
+          <a class="nav-link" href="admin-announcements.html">Announcements</a>
+          <p class="nav-label">System</p>
+          <a class="nav-link" href="admin-settings.html">Settings</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar admin">DR</div>
+            <div>
+              <p class="user-name">Dr. Reed</p>
+              <p class="user-role">Program Admin</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Task Workspace</p>
+            <h1>Task Management</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn secondary" id="bulkActionsBtn">Bulk Actions</button>
+            <button class="btn primary" id="createTaskBtn">
+              <span class="btn-icon">+</span> Create Task
+            </button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Stats -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Total Tasks</p>
+                  <h3>87</h3>
+                </div>
+              </article>
+              <article class="card stat-card clickable" id="pendingCard">
+                <div class="stat-content">
+                  <p class="muted">Pending Review</p>
+                  <h3>23</h3>
+                  <span class="stat-change warn">3 urgent</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Reviewed Today</p>
+                  <h3>15</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Avg Review Time</p>
+                  <h3>4.2 hrs</h3>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Tabs for different views -->
+          <section class="section">
+            <div class="tabs-container">
+              <div class="tabs">
+                <button class="tab active" data-tab="review">Review Queue (23)</button>
+                <button class="tab" data-tab="tasks">All Tasks (87)</button>
+                <button class="tab" data-tab="templates">Task Templates (12)</button>
+              </div>
+            </div>
+
+            <!-- Review Queue Tab -->
+            <div class="tab-panel active" id="review">
+              <div class="filter-bar">
+                <div class="search-box">
+                  <span class="search-icon">🔍</span>
+                  <input type="search" placeholder="Search submissions..." />
+                </div>
+                <div class="chip-row">
+                  <button class="chip active">All</button>
+                  <button class="chip">Urgent</button>
+                  <button class="chip">Revisions</button>
+                  <button class="chip">New</button>
+                </div>
+              </div>
+
+              <div class="review-queue-grid">
+                <!-- Left: Submission List -->
+                <div class="submission-list-panel">
+                  <ul class="submission-list">
+                    <li class="submission-item active" data-submission-id="1">
+                      <div class="submission-info">
+                        <p class="submission-title">Data Insights Report</p>
+                        <p class="muted">Jamie Alvarez · 5 min ago</p>
+                      </div>
+                      <span class="badge warn">Urgent</span>
+                    </li>
+                    <li class="submission-item" data-submission-id="2">
+                      <div class="submission-info">
+                        <p class="submission-title">Cyber Lab (Revision)</p>
+                        <p class="muted">Sam Hart · 20 min ago</p>
+                      </div>
+                      <span class="badge neutral">Revision</span>
+                    </li>
+                    <li class="submission-item" data-submission-id="3">
+                      <div class="submission-info">
+                        <p class="submission-title">Campus Photo Story</p>
+                        <p class="muted">Jordan Patel · 1 hour ago</p>
+                      </div>
+                      <span class="badge">New</span>
+                    </li>
+                    <li class="submission-item" data-submission-id="4">
+                      <div class="submission-info">
+                        <p class="submission-title">Innovation Pitch Video</p>
+                        <p class="muted">Avery Chen · 2 hours ago</p>
+                      </div>
+                      <span class="badge">New</span>
+                    </li>
+                    <li class="submission-item" data-submission-id="5">
+                      <div class="submission-info">
+                        <p class="submission-title">Team Collaboration Log</p>
+                        <p class="muted">Taylor Williams · 3 hours ago</p>
+                      </div>
+                      <span class="badge">New</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Right: Review Panel -->
+                <div class="review-panel card">
+                  <div class="review-header">
+                    <div>
+                      <h3>Data Insights Report</h3>
+                      <p class="muted">Submitted by Jamie Alvarez · Data Management Quest</p>
+                    </div>
+                    <div class="review-meta">
+                      <span class="badge warn">Urgent - Due Tomorrow</span>
+                    </div>
+                  </div>
+
+                  <div class="review-content">
+                    <div class="review-section">
+                      <h4>Task Requirements</h4>
+                      <ul class="requirements-list">
+                        <li>✓ Analyze the provided dataset</li>
+                        <li>✓ Create at least 3 visualizations</li>
+                        <li>✓ Write summary of key findings</li>
+                        <li>○ Present recommendations</li>
+                      </ul>
+                    </div>
+
+                    <div class="review-section">
+                      <h4>Student Notes</h4>
+                      <p class="student-notes">I analyzed the customer data and found some interesting patterns. I focused on the seasonal trends and customer segments. Please see my visualizations attached.</p>
+                    </div>
+
+                    <div class="review-section">
+                      <h4>Submitted Files</h4>
+                      <div class="file-list">
+                        <div class="file-item">
+                          <span class="file-icon">📄</span>
+                          <div class="file-info">
+                            <p>data_insights_report.pdf</p>
+                            <p class="muted">2.4 MB</p>
+                          </div>
+                          <button class="btn small ghost">View</button>
+                          <button class="btn small ghost">Download</button>
+                        </div>
+                        <div class="file-item">
+                          <span class="file-icon">📊</span>
+                          <div class="file-info">
+                            <p>visualizations.xlsx</p>
+                            <p class="muted">890 KB</p>
+                          </div>
+                          <button class="btn small ghost">View</button>
+                          <button class="btn small ghost">Download</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="review-section grading">
+                      <h4>Grading</h4>
+                      <div class="grading-controls">
+                        <label>
+                          Score (0-100)
+                          <input type="number" min="0" max="100" value="85" id="scoreInput" />
+                        </label>
+                        <div class="score-slider">
+                          <input type="range" min="0" max="100" value="85" id="scoreSlider" />
+                        </div>
+                        <div class="quick-scores">
+                          <button class="chip small" data-score="100">100 (A+)</button>
+                          <button class="chip small" data-score="90">90 (A)</button>
+                          <button class="chip small" data-score="80">80 (B)</button>
+                          <button class="chip small" data-score="70">70 (C)</button>
+                        </div>
+                      </div>
+                      <label>
+                        Feedback for Student
+                        <textarea rows="4" placeholder="Provide constructive feedback...">Great analysis! Your visualizations are clear and the insights are well-documented. Consider adding more specific recommendations in future submissions.</textarea>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="review-actions">
+                    <button class="btn ghost">Skip</button>
+                    <button class="btn warn" id="requestRevisionBtn">Request Revision</button>
+                    <button class="btn success" id="approveBtn">Approve</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- All Tasks Tab -->
+            <div class="tab-panel" id="tasks">
+              <div class="filter-bar">
+                <div class="search-box">
+                  <span class="search-icon">🔍</span>
+                  <input type="search" placeholder="Search tasks..." />
+                </div>
+                <div class="filter-controls">
+                  <select>
+                    <option value="">All Hunts</option>
+                    <option>Data Management Quest</option>
+                    <option>Cybersecurity Challenge</option>
+                    <option>Innovation Sprint</option>
+                  </select>
+                  <select>
+                    <option value="">All Status</option>
+                    <option>Active</option>
+                    <option>Draft</option>
+                    <option>Archived</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="card table-card">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th><input type="checkbox" id="selectAllTasks" /></th>
+                      <th>Task Name</th>
+                      <th>Hunt</th>
+                      <th>Points</th>
+                      <th>Due Date</th>
+                      <th>Submissions</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" /></td>
+                      <td>Data Insights Report</td>
+                      <td>Data Management Quest</td>
+                      <td>120</td>
+                      <td>Nov 18, 2025</td>
+                      <td>45/112</td>
+                      <td><span class="badge success">Active</span></td>
+                      <td>
+                        <button class="btn small secondary">Edit</button>
+                        <button class="btn small ghost">View</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" /></td>
+                      <td>Campus Photo Story</td>
+                      <td>Data Management Quest</td>
+                      <td>100</td>
+                      <td>Nov 20, 2025</td>
+                      <td>32/112</td>
+                      <td><span class="badge success">Active</span></td>
+                      <td>
+                        <button class="btn small secondary">Edit</button>
+                        <button class="btn small ghost">View</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" /></td>
+                      <td>Cyber Lab Reflection</td>
+                      <td>Cybersecurity Challenge</td>
+                      <td>75</td>
+                      <td>Nov 15, 2025</td>
+                      <td>28/48</td>
+                      <td><span class="badge success">Active</span></td>
+                      <td>
+                        <button class="btn small secondary">Edit</button>
+                        <button class="btn small ghost">View</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" /></td>
+                      <td>Innovation Pitch Video</td>
+                      <td>Innovation Sprint</td>
+                      <td>150</td>
+                      <td>Dec 1, 2025</td>
+                      <td>12/72</td>
+                      <td><span class="badge success">Active</span></td>
+                      <td>
+                        <button class="btn small secondary">Edit</button>
+                        <button class="btn small ghost">View</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Templates Tab -->
+            <div class="tab-panel" id="templates">
+              <p class="muted">Reusable task templates for quick creation.</p>
+              <div class="cards-grid three">
+                <article class="card template-card">
+                  <h4>Photo Evidence Task</h4>
+                  <p class="muted">Standard task for photo submissions with location requirements.</p>
+                  <div class="template-meta">
+                    <span>📷 Photo</span>
+                    <span>100 pts default</span>
+                  </div>
+                  <div class="template-actions">
+                    <button class="btn primary">Use Template</button>
+                    <button class="btn ghost">Edit</button>
+                  </div>
+                </article>
+                <article class="card template-card">
+                  <h4>Written Reflection</h4>
+                  <p class="muted">Essay or reflection task with word count requirements.</p>
+                  <div class="template-meta">
+                    <span>📝 Written</span>
+                    <span>75 pts default</span>
+                  </div>
+                  <div class="template-actions">
+                    <button class="btn primary">Use Template</button>
+                    <button class="btn ghost">Edit</button>
+                  </div>
+                </article>
+                <article class="card template-card">
+                  <h4>Video Submission</h4>
+                  <p class="muted">Video presentation or demonstration task.</p>
+                  <div class="template-meta">
+                    <span>🎥 Video</span>
+                    <span>150 pts default</span>
+                  </div>
+                  <div class="template-actions">
+                    <button class="btn primary">Use Template</button>
+                    <button class="btn ghost">Edit</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Create Task Drawer -->
+    <div class="drawer large" id="taskDrawer" aria-hidden="true">
+      <div class="drawer__header">
+        <h3>Create New Task</h3>
+        <button type="button" class="icon-btn" data-close-drawer="task" aria-label="Close">×</button>
+      </div>
+      <div class="drawer__body">
+        <form class="stacked-form" id="taskForm">
+          <div class="form-section">
+            <h4>Task Details</h4>
+            <label>
+              Task Name *
+              <input type="text" placeholder="e.g., Campus Photo Story" required />
+            </label>
+            <label>
+              Description
+              <textarea rows="3" placeholder="Describe what students need to do..."></textarea>
+            </label>
+            <label>
+              Assign to Hunt *
+              <select required>
+                <option value="">Select a hunt...</option>
+                <option>Data Management Quest</option>
+                <option>Cybersecurity Challenge</option>
+                <option>Innovation Sprint</option>
+                <option>Community Builder</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h4>Requirements</h4>
+            <label>
+              Task Type
+              <select>
+                <option>Photo Evidence</option>
+                <option>Written Submission</option>
+                <option>Video Upload</option>
+                <option>File Upload</option>
+                <option>URL Submission</option>
+              </select>
+            </label>
+            <label>
+              Points
+              <input type="number" value="100" />
+            </label>
+            <label>
+              Due Date
+              <input type="date" />
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h4>Grading</h4>
+            <label>
+              Grading Rubric (optional)
+              <textarea rows="4" placeholder="Describe grading criteria..."></textarea>
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="drawer__footer">
+        <button type="button" class="btn ghost" data-close-drawer="task">Cancel</button>
+        <button type="button" class="btn secondary">Save Draft</button>
+        <button type="button" class="btn primary" id="saveTaskBtn">Create Task</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Toast
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Tab switching
+        document.querySelectorAll('.tabs .tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+              panel.classList.toggle('active', panel.id === tab.dataset.tab);
+            });
+          });
+        });
+
+        // Submission list selection
+        document.querySelectorAll('.submission-item').forEach(item => {
+          item.addEventListener('click', () => {
+            document.querySelectorAll('.submission-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+          });
+        });
+
+        // Score sync between input and slider
+        const scoreInput = document.getElementById('scoreInput');
+        const scoreSlider = document.getElementById('scoreSlider');
+        scoreInput?.addEventListener('input', () => {
+          if (scoreSlider) scoreSlider.value = scoreInput.value;
+        });
+        scoreSlider?.addEventListener('input', () => {
+          if (scoreInput) scoreInput.value = scoreSlider.value;
+        });
+
+        // Quick score buttons
+        document.querySelectorAll('[data-score]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const score = btn.dataset.score;
+            if (scoreInput) scoreInput.value = score;
+            if (scoreSlider) scoreSlider.value = score;
+          });
+        });
+
+        // Review actions
+        document.getElementById('approveBtn')?.addEventListener('click', () => {
+          showToast('Submission approved! +120 points awarded.', 'success');
+        });
+
+        document.getElementById('requestRevisionBtn')?.addEventListener('click', () => {
+          showToast('Revision requested. Student notified.', 'info');
+        });
+
+        // Create task
+        document.getElementById('createTaskBtn')?.addEventListener('click', () => {
+          document.getElementById('taskDrawer')?.classList.add('open');
+        });
+
+        document.getElementById('saveTaskBtn')?.addEventListener('click', () => {
+          showToast('Task created successfully!', 'success');
+          document.getElementById('taskDrawer')?.classList.remove('open');
+        });
+
+        // Close drawer
+        document.querySelectorAll('[data-close-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById(btn.dataset.closeDrawer + 'Drawer')?.classList.remove('open');
+          });
+        });
+
+        // Filter chips
+        document.querySelectorAll('.chip-row .chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.chip-row .chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+          });
+        });
+
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.drawer.open').forEach(el => el.classList.remove('open'));
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

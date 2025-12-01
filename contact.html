@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Contact Us</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav">
+          <p class="nav-label">Navigation</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Support</p>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <a class="nav-link" href="faq.html">FAQ</a>
+          <a class="nav-link" href="about.html">About MIS</a>
+          <a class="nav-link active" href="contact.html">Contact</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+          <a class="nav-link" href="auth.html">Login</a>
+        </nav>
+        <div class="sidebar__footer">
+          <a class="btn ghost full-width" href="auth.html">Sign In</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Get in Touch</p>
+            <h1>Contact Us</h1>
+          </div>
+        </header>
+
+        <main>
+          <section class="section">
+            <div class="two-column">
+              <!-- Contact Form -->
+              <div class="card">
+                <h3>Send us a message</h3>
+                <p class="muted">Fill out the form below and we'll get back to you within 24 hours.</p>
+                <form class="stacked-form" id="contactForm">
+                  <label>
+                    Your Name *
+                    <input type="text" placeholder="John Doe" required />
+                  </label>
+                  <label>
+                    Email Address *
+                    <input type="email" placeholder="you@ua.edu" required />
+                  </label>
+                  <label>
+                    Topic
+                    <select>
+                      <option value="">Select a topic...</option>
+                      <option>General Question</option>
+                      <option>Technical Issue</option>
+                      <option>Bug Report</option>
+                      <option>Feature Request</option>
+                      <option>Account Help</option>
+                      <option>Other</option>
+                    </select>
+                  </label>
+                  <label>
+                    Subject *
+                    <input type="text" placeholder="Brief description of your inquiry" required />
+                  </label>
+                  <label>
+                    Message *
+                    <textarea rows="5" placeholder="Please provide as much detail as possible..." required></textarea>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" />
+                    Send me a copy of this message
+                  </label>
+                  <button type="submit" class="btn primary">Send Message</button>
+                </form>
+              </div>
+
+              <!-- Contact Info -->
+              <div>
+                <div class="card">
+                  <h3>Other Ways to Reach Us</h3>
+                  <div class="contact-methods">
+                    <div class="contact-method">
+                      <span class="contact-icon">📧</span>
+                      <div>
+                        <h4>Email</h4>
+                        <p>mis-hunt@ua.edu</p>
+                        <p class="muted">We respond within 24 hours</p>
+                      </div>
+                    </div>
+                    <div class="contact-method">
+                      <span class="contact-icon">📍</span>
+                      <div>
+                        <h4>Location</h4>
+                        <p>Culverhouse College of Business</p>
+                        <p class="muted">University of Alabama, Tuscaloosa, AL</p>
+                      </div>
+                    </div>
+                    <div class="contact-method">
+                      <span class="contact-icon">🕐</span>
+                      <div>
+                        <h4>Office Hours</h4>
+                        <p>Monday - Friday: 9am - 5pm CST</p>
+                        <p class="muted">Closed on university holidays</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>Quick Links</h3>
+                  <ul class="quick-links-list">
+                    <li><a href="faq.html">📚 Frequently Asked Questions</a></li>
+                    <li><a href="support.html">🔧 Technical Support</a></li>
+                    <li><a href="about.html">ℹ️ About the Program</a></li>
+                    <li><a href="#">📋 Report a Bug</a></li>
+                    <li><a href="#">💡 Request a Feature</a></li>
+                  </ul>
+                </div>
+
+                <div class="card">
+                  <h3>For Instructors</h3>
+                  <p class="muted">Need admin access or have questions about setting up hunts for your class?</p>
+                  <a href="#" class="btn secondary full-width">Instructor Inquiry Form</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+          toast.className = 'toast success visible';
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+          e.target.reset();
+        });
+      });
+    </script>
+  </body>
+</html>
+

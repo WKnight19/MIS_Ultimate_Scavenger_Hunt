@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analytics · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Admin Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Admin navigation">
+          <p class="nav-label">Overview</p>
+          <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="admin-hunts.html">Manage Hunts</a>
+          <a class="nav-link" href="admin-tasks.html">Task Management</a>
+          <a class="nav-link" href="admin-students.html">Students</a>
+          <a class="nav-link active" href="admin-analytics.html">Analytics</a>
+          <p class="nav-label">Communication</p>
+          <a class="nav-link" href="admin-messages.html">Messages</a>
+          <a class="nav-link" href="admin-announcements.html">Announcements</a>
+          <p class="nav-label">System</p>
+          <a class="nav-link" href="admin-settings.html">Settings</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar admin">DR</div>
+            <div>
+              <p class="user-name">Dr. Reed</p>
+              <p class="user-role">Program Admin</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Program Analytics</p>
+            <h1>Analytics Dashboard</h1>
+          </div>
+          <div class="header-actions">
+            <select class="date-range-select">
+              <option>Last 7 Days</option>
+              <option selected>Last 30 Days</option>
+              <option>This Semester</option>
+              <option>All Time</option>
+            </select>
+            <button class="btn secondary" id="exportAnalyticsBtn">Export Report</button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Key Metrics -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-content">
+                  <p class="muted">Active Students</p>
+                  <h3>342</h3>
+                  <span class="stat-change positive">↑ 12% from last month</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-content">
+                  <p class="muted">Engagement Rate</p>
+                  <h3>87.5%</h3>
+                  <span class="stat-change positive">↑ 5.2%</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">✓</div>
+                <div class="stat-content">
+                  <p class="muted">Completion Rate</p>
+                  <h3>82.3%</h3>
+                  <span class="stat-change positive">↑ 3.1%</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-content">
+                  <p class="muted">Satisfaction</p>
+                  <h3>4.7 / 5</h3>
+                  <span class="stat-change positive">↑ 0.2</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Charts Row 1 -->
+          <section class="section">
+            <div class="two-column">
+              <article class="card chart-card">
+                <div class="card-header">
+                  <h3>Engagement Over Time</h3>
+                  <div class="chart-controls">
+                    <button class="chip small active">Daily</button>
+                    <button class="chip small">Weekly</button>
+                    <button class="chip small">Monthly</button>
+                  </div>
+                </div>
+                <div class="chart-area">
+                  <div class="line-chart-placeholder">
+                    <svg viewBox="0 0 400 150" class="line-chart">
+                      <polyline
+                        fill="none"
+                        stroke="var(--primary)"
+                        stroke-width="2"
+                        points="0,120 50,100 100,80 150,95 200,60 250,50 300,45 350,30 400,35"
+                      />
+                      <circle cx="0" cy="120" r="4" fill="var(--primary)" />
+                      <circle cx="50" cy="100" r="4" fill="var(--primary)" />
+                      <circle cx="100" cy="80" r="4" fill="var(--primary)" />
+                      <circle cx="150" cy="95" r="4" fill="var(--primary)" />
+                      <circle cx="200" cy="60" r="4" fill="var(--primary)" />
+                      <circle cx="250" cy="50" r="4" fill="var(--primary)" />
+                      <circle cx="300" cy="45" r="4" fill="var(--primary)" />
+                      <circle cx="350" cy="30" r="4" fill="var(--primary)" />
+                      <circle cx="400" cy="35" r="4" fill="var(--primary)" />
+                    </svg>
+                  </div>
+                  <div class="chart-x-labels">
+                    <span>Nov 1</span>
+                    <span>Nov 5</span>
+                    <span>Nov 10</span>
+                    <span>Nov 14</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card chart-card">
+                <div class="card-header">
+                  <h3>Submissions by Day</h3>
+                </div>
+                <div class="chart-area">
+                  <div class="bar-chart">
+                    <div class="bar-item">
+                      <span class="h-65" title="Monday: 45"></span>
+                      <p>Mon</p>
+                    </div>
+                    <div class="bar-item">
+                      <span class="h-80" title="Tuesday: 62"></span>
+                      <p>Tue</p>
+                    </div>
+                    <div class="bar-item">
+                      <span class="h-72" title="Wednesday: 55"></span>
+                      <p>Wed</p>
+                    </div>
+                    <div class="bar-item">
+                      <span class="h-88" title="Thursday: 78"></span>
+                      <p>Thu</p>
+                    </div>
+                    <div class="bar-item">
+                      <span class="h-90" title="Friday: 85"></span>
+                      <p>Fri</p>
+                    </div>
+                    <div class="bar-item">
+                      <span class="h-65" title="Saturday: 42"></span>
+                      <p>Sat</p>
+                    </div>
+                    <div class="bar-item">
+                      <span class="h-72" title="Sunday: 58"></span>
+                      <p>Sun</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Charts Row 2 -->
+          <section class="section">
+            <div class="cards-grid three">
+              <article class="card chart-card">
+                <div class="card-header">
+                  <h3>Completion by Hunt</h3>
+                </div>
+                <div class="completion-bars">
+                  <div class="completion-bar-item">
+                    <div class="completion-label">
+                      <span>Data Management Quest</span>
+                      <span>72%</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 72%"></span>
+                    </div>
+                  </div>
+                  <div class="completion-bar-item">
+                    <div class="completion-label">
+                      <span>Cybersecurity Challenge</span>
+                      <span>58%</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 58%"></span>
+                    </div>
+                  </div>
+                  <div class="completion-bar-item">
+                    <div class="completion-label">
+                      <span>Innovation Sprint</span>
+                      <span>35%</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 35%"></span>
+                    </div>
+                  </div>
+                  <div class="completion-bar-item">
+                    <div class="completion-label">
+                      <span>Community Builder</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 85%"></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card chart-card">
+                <div class="card-header">
+                  <h3>Team Performance</h3>
+                </div>
+                <div class="bar-chart horizontal">
+                  <div class="h-bar-item">
+                    <span class="h-bar-label">Crimson</span>
+                    <div class="h-bar-track">
+                      <span style="width: 92%"></span>
+                    </div>
+                    <span class="h-bar-value">92%</span>
+                  </div>
+                  <div class="h-bar-item">
+                    <span class="h-bar-label">Silver</span>
+                    <div class="h-bar-track">
+                      <span style="width: 88%"></span>
+                    </div>
+                    <span class="h-bar-value">88%</span>
+                  </div>
+                  <div class="h-bar-item">
+                    <span class="h-bar-label">Gold</span>
+                    <div class="h-bar-track">
+                      <span style="width: 78%"></span>
+                    </div>
+                    <span class="h-bar-value">78%</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card chart-card">
+                <div class="card-header">
+                  <h3>Task Categories</h3>
+                </div>
+                <div class="donut-chart-placeholder">
+                  <div class="donut-legend">
+                    <div class="legend-item">
+                      <span class="legend-dot" style="background: var(--primary)"></span>
+                      <span>Technical (35%)</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-dot" style="background: var(--success)"></span>
+                      <span>Research (25%)</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-dot" style="background: var(--warn)"></span>
+                      <span>Design (15%)</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-dot" style="background: var(--muted)"></span>
+                      <span>Community (25%)</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Activity Heatmap -->
+          <section class="section">
+            <div class="card">
+              <div class="card-header">
+                <h3>Submission Activity Heatmap</h3>
+                <p class="muted">Activity intensity by day and hour</p>
+              </div>
+              <div class="heatmap-grid">
+                <div class="heatmap-row">
+                  <span class="heatmap-label">Mon</span>
+                  <span data-value="low"></span>
+                  <span data-value="low"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="low"></span>
+                </div>
+                <div class="heatmap-row">
+                  <span class="heatmap-label">Tue</span>
+                  <span data-value="low"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="low"></span>
+                  <span data-value="low"></span>
+                </div>
+                <div class="heatmap-row">
+                  <span class="heatmap-label">Wed</span>
+                  <span data-value="mid"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="low"></span>
+                  <span data-value="low"></span>
+                </div>
+                <div class="heatmap-row">
+                  <span class="heatmap-label">Thu</span>
+                  <span data-value="low"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="low"></span>
+                </div>
+                <div class="heatmap-row">
+                  <span class="heatmap-label">Fri</span>
+                  <span data-value="mid"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="high"></span>
+                  <span data-value="mid"></span>
+                  <span data-value="low"></span>
+                  <span data-value="low"></span>
+                  <span data-value="low"></span>
+                </div>
+              </div>
+              <div class="heatmap-x-labels">
+                <span>8am</span>
+                <span>10am</span>
+                <span>12pm</span>
+                <span>2pm</span>
+                <span>4pm</span>
+                <span>6pm</span>
+                <span>8pm</span>
+                <span>10pm</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Bottom Metrics -->
+          <section class="section">
+            <div class="two-column">
+              <article class="card">
+                <div class="card-header">
+                  <h3>Top Performing Tasks</h3>
+                </div>
+                <table class="data-table small">
+                  <thead>
+                    <tr>
+                      <th>Task</th>
+                      <th>Completion</th>
+                      <th>Avg Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Community Report</td>
+                      <td>95%</td>
+                      <td>88/100</td>
+                    </tr>
+                    <tr>
+                      <td>Campus Photo Story</td>
+                      <td>92%</td>
+                      <td>85/100</td>
+                    </tr>
+                    <tr>
+                      <td>Team Collaboration</td>
+                      <td>88%</td>
+                      <td>82/100</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+
+              <article class="card">
+                <div class="card-header">
+                  <h3>Needs Attention</h3>
+                </div>
+                <table class="data-table small">
+                  <thead>
+                    <tr>
+                      <th>Task</th>
+                      <th>Completion</th>
+                      <th>Issue</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Innovation Pitch</td>
+                      <td>28%</td>
+                      <td><span class="badge warn">Low engagement</span></td>
+                    </tr>
+                    <tr>
+                      <td>Cyber Lab</td>
+                      <td>45%</td>
+                      <td><span class="badge warn">High revision rate</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Chart control chips
+        document.querySelectorAll('.chart-controls .chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.chart-controls .chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+          });
+        });
+
+        // Export
+        document.getElementById('exportAnalyticsBtn')?.addEventListener('click', () => {
+          showToast('Generating analytics report...', 'info');
+        });
+      });
+    </script>
+  </body>
+</html>
+

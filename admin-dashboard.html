@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Admin Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Admin navigation">
+          <p class="nav-label">Overview</p>
+          <a class="nav-link active" href="admin-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="admin-hunts.html">Manage Hunts</a>
+          <a class="nav-link" href="admin-tasks.html">Task Management</a>
+          <a class="nav-link" href="admin-students.html">Students</a>
+          <a class="nav-link" href="admin-analytics.html">Analytics</a>
+          <p class="nav-label">Communication</p>
+          <a class="nav-link" href="admin-messages.html">Messages</a>
+          <a class="nav-link" href="admin-announcements.html">Announcements</a>
+          <p class="nav-label">System</p>
+          <a class="nav-link" href="admin-settings.html">Settings</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar admin">DR</div>
+            <div>
+              <p class="user-name">Dr. Reed</p>
+              <p class="user-role">Program Admin</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Administration</p>
+            <h1>Dashboard</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn secondary" id="exportReportBtn">Export Report</button>
+            <button class="btn primary" id="quickActionsBtn">Quick Actions</button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Welcome Banner -->
+          <section class="admin-welcome">
+            <div class="welcome-content">
+              <h2>Welcome, Dr. Reed</h2>
+              <p>Here's an overview of your scavenger hunt program</p>
+            </div>
+            <div class="welcome-alerts">
+              <span class="alert-badge warn">3 pending reviews</span>
+              <span class="alert-badge">2 new messages</span>
+            </div>
+          </section>
+
+          <!-- Key Metrics -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card clickable" onclick="window.location.href='admin-hunts.html'">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-content">
+                  <p class="muted">Active Hunts</p>
+                  <h3>8</h3>
+                  <span class="stat-change positive">+2 this month</span>
+                </div>
+              </article>
+              <article class="card stat-card clickable" onclick="window.location.href='admin-students.html'">
+                <div class="stat-icon">👥</div>
+                <div class="stat-content">
+                  <p class="muted">Active Students</p>
+                  <h3>342</h3>
+                  <span class="stat-change positive">87% engaged</span>
+                </div>
+              </article>
+              <article class="card stat-card clickable" onclick="window.location.href='admin-tasks.html'">
+                <div class="stat-icon">📋</div>
+                <div class="stat-content">
+                  <p class="muted">Pending Reviews</p>
+                  <h3>23</h3>
+                  <span class="stat-change warn">3 urgent</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-content">
+                  <p class="muted">Satisfaction Score</p>
+                  <h3>4.7 / 5</h3>
+                  <span class="stat-change positive">↑ 0.2</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Main Dashboard Grid -->
+          <section class="section">
+            <div class="admin-dashboard-grid">
+              <!-- Recent Activity -->
+              <article class="card span-2">
+                <div class="card-header">
+                  <h3>Recent Activity</h3>
+                  <div class="activity-filters">
+                    <button class="chip small active">All</button>
+                    <button class="chip small">Submissions</button>
+                    <button class="chip small">System</button>
+                  </div>
+                </div>
+                <ul class="activity-feed">
+                  <li class="activity-item">
+                    <span class="activity-icon submission">📤</span>
+                    <div class="activity-content">
+                      <p><strong>Jamie Alvarez</strong> submitted "Data Insights Report"</p>
+                      <p class="muted">Data Management Quest · 5 minutes ago</p>
+                    </div>
+                    <button class="btn small primary" onclick="window.location.href='admin-tasks.html'">Review</button>
+                  </li>
+                  <li class="activity-item">
+                    <span class="activity-icon submission">📤</span>
+                    <div class="activity-content">
+                      <p><strong>Sam Hart</strong> resubmitted "Cyber Lab Reflection"</p>
+                      <p class="muted">Cybersecurity Challenge · 20 minutes ago</p>
+                    </div>
+                    <button class="btn small primary" onclick="window.location.href='admin-tasks.html'">Review</button>
+                  </li>
+                  <li class="activity-item">
+                    <span class="activity-icon enrollment">➕</span>
+                    <div class="activity-content">
+                      <p><strong>12 students</strong> joined Innovation Sprint</p>
+                      <p class="muted">1 hour ago</p>
+                    </div>
+                    <button class="btn small ghost" onclick="window.location.href='admin-hunts.html'">View</button>
+                  </li>
+                  <li class="activity-item">
+                    <span class="activity-icon completion">✓</span>
+                    <div class="activity-content">
+                      <p><strong>Taylor Williams</strong> completed Community Builder hunt</p>
+                      <p class="muted">2 hours ago</p>
+                    </div>
+                  </li>
+                  <li class="activity-item">
+                    <span class="activity-icon system">🔔</span>
+                    <div class="activity-content">
+                      <p>Leaderboard automatically refreshed</p>
+                      <p class="muted">3 hours ago</p>
+                    </div>
+                  </li>
+                </ul>
+                <button class="btn ghost full-width">View All Activity</button>
+              </article>
+
+              <!-- Quick Stats Chart -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Completion Trend</h3>
+                  <select class="small-select">
+                    <option>Last 7 days</option>
+                    <option>Last 30 days</option>
+                    <option>This semester</option>
+                  </select>
+                </div>
+                <div class="chart-placeholder">
+                  <div class="sparkline large">
+                    <span class="h-65" title="Mon: 65%"></span>
+                    <span class="h-72" title="Tue: 72%"></span>
+                    <span class="h-80" title="Wed: 80%"></span>
+                    <span class="h-72" title="Thu: 72%"></span>
+                    <span class="h-88" title="Fri: 88%"></span>
+                    <span class="h-80" title="Sat: 80%"></span>
+                    <span class="h-90" title="Sun: 90%"></span>
+                  </div>
+                  <div class="chart-legend">
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                    <span>Sun</span>
+                  </div>
+                </div>
+                <div class="chart-summary">
+                  <p class="muted">Average completion rate: <strong>78%</strong></p>
+                </div>
+              </article>
+
+              <!-- Top Performers -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Top Performers</h3>
+                  <a class="link-btn" href="leaderboards.html">Full Board →</a>
+                </div>
+                <ul class="leaderboard-preview">
+                  <li class="leaderboard-item">
+                    <span class="rank gold">1</span>
+                    <div class="user-avatar small">AC</div>
+                    <div class="user-info">
+                      <p class="user-name">Avery Chen</p>
+                      <p class="muted">Team Crimson</p>
+                    </div>
+                    <span class="points">3,210 pts</span>
+                  </li>
+                  <li class="leaderboard-item">
+                    <span class="rank silver">2</span>
+                    <div class="user-avatar small">JP</div>
+                    <div class="user-info">
+                      <p class="user-name">Jordan Patel</p>
+                      <p class="muted">Team Silver</p>
+                    </div>
+                    <span class="points">3,045 pts</span>
+                  </li>
+                  <li class="leaderboard-item">
+                    <span class="rank bronze">3</span>
+                    <div class="user-avatar small">SH</div>
+                    <div class="user-info">
+                      <p class="user-name">Sam Hart</p>
+                      <p class="muted">Team Silver</p>
+                    </div>
+                    <span class="points">2,980 pts</span>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Pending Reviews -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Pending Reviews</h3>
+                  <span class="count-badge">23</span>
+                </div>
+                <ul class="review-queue">
+                  <li class="review-item urgent">
+                    <div class="review-info">
+                      <p class="review-title">Data Insights Report</p>
+                      <p class="muted">Jamie Alvarez · 5 min ago</p>
+                    </div>
+                    <span class="badge warn">Urgent</span>
+                  </li>
+                  <li class="review-item urgent">
+                    <div class="review-info">
+                      <p class="review-title">Cyber Lab (Resubmit)</p>
+                      <p class="muted">Sam Hart · 20 min ago</p>
+                    </div>
+                    <span class="badge warn">Revision</span>
+                  </li>
+                  <li class="review-item">
+                    <div class="review-info">
+                      <p class="review-title">Campus Photo Story</p>
+                      <p class="muted">Jordan Patel · 1 hour ago</p>
+                    </div>
+                    <span class="badge neutral">New</span>
+                  </li>
+                </ul>
+                <a class="btn secondary full-width" href="admin-tasks.html">Review All</a>
+              </article>
+
+              <!-- Active Hunts -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Active Hunts</h3>
+                  <a class="link-btn" href="admin-hunts.html">Manage →</a>
+                </div>
+                <ul class="hunt-status-list">
+                  <li class="hunt-status-item">
+                    <div class="hunt-status-info">
+                      <h4>Data Management Quest</h4>
+                      <div class="hunt-progress-mini">
+                        <div class="progress-track">
+                          <span style="width: 72%"></span>
+                        </div>
+                        <span>72% avg</span>
+                      </div>
+                    </div>
+                    <div class="hunt-status-meta">
+                      <span class="badge success">Active</span>
+                      <span class="muted">112 enrolled</span>
+                    </div>
+                  </li>
+                  <li class="hunt-status-item">
+                    <div class="hunt-status-info">
+                      <h4>Cybersecurity Challenge</h4>
+                      <div class="hunt-progress-mini">
+                        <div class="progress-track">
+                          <span style="width: 58%"></span>
+                        </div>
+                        <span>58% avg</span>
+                      </div>
+                    </div>
+                    <div class="hunt-status-meta">
+                      <span class="badge success">Active</span>
+                      <span class="muted">48 enrolled</span>
+                    </div>
+                  </li>
+                  <li class="hunt-status-item">
+                    <div class="hunt-status-info">
+                      <h4>Innovation Sprint</h4>
+                      <div class="hunt-progress-mini">
+                        <div class="progress-track">
+                          <span style="width: 35%"></span>
+                        </div>
+                        <span>35% avg</span>
+                      </div>
+                    </div>
+                    <div class="hunt-status-meta">
+                      <span class="badge success">Active</span>
+                      <span class="muted">72 enrolled</span>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- System Health -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>System Status</h3>
+                  <span class="status-dot healthy"></span>
+                </div>
+                <ul class="system-status-list">
+                  <li class="status-item">
+                    <span class="status-label">Server Uptime</span>
+                    <span class="status-value healthy">99.9%</span>
+                  </li>
+                  <li class="status-item">
+                    <span class="status-label">Storage Used</span>
+                    <span class="status-value">68%</span>
+                  </li>
+                  <li class="status-item">
+                    <span class="status-label">Last Backup</span>
+                    <span class="status-value">2 hours ago</span>
+                  </li>
+                  <li class="status-item">
+                    <span class="status-label">Active Sessions</span>
+                    <span class="status-value">127</span>
+                  </li>
+                </ul>
+                <a class="btn ghost full-width" href="admin-settings.html">System Settings</a>
+              </article>
+
+              <!-- Messages Preview -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Recent Messages</h3>
+                  <a class="link-btn" href="admin-messages.html">Inbox →</a>
+                </div>
+                <ul class="message-preview-list">
+                  <li class="message-preview unread">
+                    <div class="message-avatar">TC</div>
+                    <div class="message-content">
+                      <p class="message-sender">Team Crimson</p>
+                      <p class="message-snippet">"Need clarification on rubric..."</p>
+                    </div>
+                  </li>
+                  <li class="message-preview">
+                    <div class="message-avatar">IE</div>
+                    <div class="message-content">
+                      <p class="message-sender">Instructor Evans</p>
+                      <p class="message-snippet">"Analytics export ready"</p>
+                    </div>
+                  </li>
+                  <li class="message-preview">
+                    <div class="message-avatar">SH</div>
+                    <div class="message-content">
+                      <p class="message-sender">Sam Hart</p>
+                      <p class="message-snippet">"Submitted revision"</p>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Quick Actions Row -->
+          <section class="section">
+            <h3 class="section-title">Quick Actions</h3>
+            <div class="quick-actions-grid">
+              <a class="quick-action-card" href="admin-hunts.html">
+                <span class="quick-action-icon">🎯</span>
+                <span class="quick-action-label">Create Hunt</span>
+              </a>
+              <a class="quick-action-card" href="admin-tasks.html">
+                <span class="quick-action-icon">📋</span>
+                <span class="quick-action-label">Add Task</span>
+              </a>
+              <a class="quick-action-card" href="admin-students.html">
+                <span class="quick-action-icon">👥</span>
+                <span class="quick-action-label">Import Students</span>
+              </a>
+              <a class="quick-action-card" href="admin-announcements.html">
+                <span class="quick-action-icon">📢</span>
+                <span class="quick-action-label">Announcement</span>
+              </a>
+              <a class="quick-action-card" href="admin-analytics.html">
+                <span class="quick-action-icon">📊</span>
+                <span class="quick-action-label">View Analytics</span>
+              </a>
+              <button class="quick-action-card" id="exportDataBtn">
+                <span class="quick-action-icon">📥</span>
+                <span class="quick-action-label">Export Data</span>
+              </button>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Quick Actions Modal -->
+    <div class="modal" id="quickActionsModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="quickActions"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Quick Actions</h3>
+          <button type="button" class="icon-btn" data-close-modal="quickActions" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <div class="quick-actions-list">
+            <a class="quick-action-row" href="admin-hunts.html">
+              <span class="icon">🎯</span>
+              <div>
+                <p class="action-title">Create New Hunt</p>
+                <p class="muted">Set up a new scavenger hunt with tasks</p>
+              </div>
+            </a>
+            <a class="quick-action-row" href="admin-tasks.html">
+              <span class="icon">📋</span>
+              <div>
+                <p class="action-title">Add Task to Hunt</p>
+                <p class="muted">Create a new task for existing hunts</p>
+              </div>
+            </a>
+            <a class="quick-action-row" href="admin-students.html">
+              <span class="icon">👥</span>
+              <div>
+                <p class="action-title">Import Students</p>
+                <p class="muted">Bulk import student roster from CSV</p>
+              </div>
+            </a>
+            <a class="quick-action-row" href="admin-announcements.html">
+              <span class="icon">📢</span>
+              <div>
+                <p class="action-title">Send Announcement</p>
+                <p class="muted">Broadcast message to all participants</p>
+              </div>
+            </a>
+            <button class="quick-action-row" id="refreshLeaderboardBtn">
+              <span class="icon">🔄</span>
+              <div>
+                <p class="action-title">Refresh Leaderboard</p>
+                <p class="muted">Manually trigger leaderboard update</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Report Modal -->
+    <div class="modal" id="exportModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="export"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Export Report</h3>
+          <button type="button" class="icon-btn" data-close-modal="export" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <form class="stacked-form">
+            <label>
+              Report Type
+              <select>
+                <option>Full Program Report</option>
+                <option>Student Progress Report</option>
+                <option>Hunt Completion Report</option>
+                <option>Task Analytics Report</option>
+              </select>
+            </label>
+            <label>
+              Date Range
+              <div class="date-range">
+                <input type="date" value="2025-08-01" />
+                <span>to</span>
+                <input type="date" value="2025-11-14" />
+              </div>
+            </label>
+            <label>
+              Format
+              <div class="radio-group">
+                <label class="radio"><input type="radio" name="format" value="csv" checked /> CSV</label>
+                <label class="radio"><input type="radio" name="format" value="pdf" /> PDF</label>
+                <label class="radio"><input type="radio" name="format" value="xlsx" /> Excel</label>
+              </div>
+            </label>
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="export">Cancel</button>
+          <button class="btn primary" id="downloadExportBtn">Download Report</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Toast notification
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const sidebar = document.getElementById('sidebar');
+        mobileNavToggle?.addEventListener('click', () => {
+          sidebar.classList.toggle('open');
+        });
+
+        // Quick actions modal
+        document.getElementById('quickActionsBtn')?.addEventListener('click', () => {
+          document.getElementById('quickActionsModal')?.classList.add('open');
+        });
+
+        // Export report modal
+        document.getElementById('exportReportBtn')?.addEventListener('click', () => {
+          document.getElementById('exportModal')?.classList.add('open');
+        });
+
+        document.getElementById('downloadExportBtn')?.addEventListener('click', () => {
+          showToast('Generating report... Download will start shortly.', 'success');
+          document.getElementById('exportModal')?.classList.remove('open');
+        });
+
+        document.getElementById('exportDataBtn')?.addEventListener('click', () => {
+          document.getElementById('exportModal')?.classList.add('open');
+        });
+
+        // Refresh leaderboard
+        document.getElementById('refreshLeaderboardBtn')?.addEventListener('click', () => {
+          showToast('Leaderboard refresh initiated!', 'success');
+          document.getElementById('quickActionsModal')?.classList.remove('open');
+        });
+
+        // Modal close buttons
+        document.querySelectorAll('[data-close-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const modalId = btn.dataset.closeModal + 'Modal';
+            document.getElementById(modalId)?.classList.remove('open');
+          });
+        });
+
+        // Activity filter chips
+        document.querySelectorAll('.activity-filters .chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.activity-filters .chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+          });
+        });
+
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.modal.open').forEach(el => {
+              el.classList.remove('open');
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

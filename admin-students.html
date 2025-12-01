@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Students · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Admin Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Admin navigation">
+          <p class="nav-label">Overview</p>
+          <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="admin-hunts.html">Manage Hunts</a>
+          <a class="nav-link" href="admin-tasks.html">Task Management</a>
+          <a class="nav-link active" href="admin-students.html">Students</a>
+          <a class="nav-link" href="admin-analytics.html">Analytics</a>
+          <p class="nav-label">Communication</p>
+          <a class="nav-link" href="admin-messages.html">Messages</a>
+          <a class="nav-link" href="admin-announcements.html">Announcements</a>
+          <p class="nav-label">System</p>
+          <a class="nav-link" href="admin-settings.html">Settings</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar admin">DR</div>
+            <div>
+              <p class="user-name">Dr. Reed</p>
+              <p class="user-role">Program Admin</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Student Management</p>
+            <h1>Students</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn secondary" id="exportStudentsBtn">Export CSV</button>
+            <button class="btn primary" id="importStudentsBtn">
+              <span class="btn-icon">+</span> Import Students
+            </button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Stats -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Total Students</p>
+                  <h3>342</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Active This Week</p>
+                  <h3>298</h3>
+                  <span class="stat-change positive">87%</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">At-Risk</p>
+                  <h3>7</h3>
+                  <span class="stat-change warn">Low engagement</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Teaching Assistants</p>
+                  <h3>8</h3>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Filters -->
+          <section class="section">
+            <div class="filter-bar">
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="search" placeholder="Search students..." id="studentSearch" />
+              </div>
+              <div class="filter-controls">
+                <select id="teamFilter">
+                  <option value="">All Teams</option>
+                  <option value="crimson">Team Crimson</option>
+                  <option value="silver">Team Silver</option>
+                  <option value="gold">Team Gold</option>
+                </select>
+                <select id="statusFilter">
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="at-risk">At-Risk</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+                <select id="sortBy">
+                  <option value="name">Sort by Name</option>
+                  <option value="points">Sort by Points</option>
+                  <option value="tasks">Sort by Tasks</option>
+                  <option value="recent">Recently Active</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- Students Table -->
+          <section class="section">
+            <div class="card table-card">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" id="selectAllStudents" /></th>
+                    <th>Student</th>
+                    <th>Team</th>
+                    <th>Points</th>
+                    <th>Tasks Done</th>
+                    <th>Completion</th>
+                    <th>Status</th>
+                    <th>Last Active</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>
+                      <div class="student-cell">
+                        <div class="user-avatar small">AC</div>
+                        <div>
+                          <p class="student-name">Avery Chen</p>
+                          <p class="muted">achen@crimson.ua.edu</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Crimson</td>
+                    <td>3,210</td>
+                    <td>58</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 95%"></span>
+                        </div>
+                        <span>95%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>5 min ago</td>
+                    <td>
+                      <button class="btn small secondary" data-view-student="avery">View</button>
+                      <button class="btn small ghost" data-message-student="avery">Message</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>
+                      <div class="student-cell">
+                        <div class="user-avatar small">JP</div>
+                        <div>
+                          <p class="student-name">Jordan Patel</p>
+                          <p class="muted">jpatel@crimson.ua.edu</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Silver</td>
+                    <td>3,045</td>
+                    <td>54</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 92%"></span>
+                        </div>
+                        <span>92%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>1 hour ago</td>
+                    <td>
+                      <button class="btn small secondary" data-view-student="jordan">View</button>
+                      <button class="btn small ghost" data-message-student="jordan">Message</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>
+                      <div class="student-cell">
+                        <div class="user-avatar small">SH</div>
+                        <div>
+                          <p class="student-name">Sam Hart</p>
+                          <p class="muted">shart@crimson.ua.edu</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Silver</td>
+                    <td>2,980</td>
+                    <td>52</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 88%"></span>
+                        </div>
+                        <span>88%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>2 hours ago</td>
+                    <td>
+                      <button class="btn small secondary" data-view-student="sam">View</button>
+                      <button class="btn small ghost" data-message-student="sam">Message</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>
+                      <div class="student-cell">
+                        <div class="user-avatar small">JA</div>
+                        <div>
+                          <p class="student-name">Jamie Alvarez</p>
+                          <p class="muted">jalvarez@crimson.ua.edu</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Crimson</td>
+                    <td>2,450</td>
+                    <td>47</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 82%"></span>
+                        </div>
+                        <span>82%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge success">Active</span></td>
+                    <td>Today</td>
+                    <td>
+                      <button class="btn small secondary" data-view-student="jamie">View</button>
+                      <button class="btn small ghost" data-message-student="jamie">Message</button>
+                    </td>
+                  </tr>
+                  <tr class="at-risk-row">
+                    <td><input type="checkbox" /></td>
+                    <td>
+                      <div class="student-cell">
+                        <div class="user-avatar small">TW</div>
+                        <div>
+                          <p class="student-name">Taylor Williams</p>
+                          <p class="muted">twilliams@crimson.ua.edu</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Gold</td>
+                    <td>890</td>
+                    <td>15</td>
+                    <td>
+                      <div class="mini-progress">
+                        <div class="mini-progress-track">
+                          <span style="width: 35%"></span>
+                        </div>
+                        <span>35%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge warn">At-Risk</span></td>
+                    <td>5 days ago</td>
+                    <td>
+                      <button class="btn small secondary" data-view-student="taylor">View</button>
+                      <button class="btn small primary" data-nudge-student="taylor">Send Nudge</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-pagination">
+              <p class="muted">Showing 5 of 342 students</p>
+              <div class="pagination-controls">
+                <button class="btn ghost small" disabled>← Previous</button>
+                <span class="page-indicator">Page 1 of 69</span>
+                <button class="btn ghost small">Next →</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- At-Risk Students Section -->
+          <section class="section">
+            <div class="card">
+              <div class="card-header">
+                <h3>⚠️ At-Risk Students</h3>
+                <span class="count-badge warn">7 students</span>
+              </div>
+              <p class="muted">Students with low engagement who may need intervention.</p>
+              <div class="at-risk-list">
+                <div class="at-risk-item">
+                  <div class="student-cell">
+                    <div class="user-avatar small">TW</div>
+                    <div>
+                      <p class="student-name">Taylor Williams</p>
+                      <p class="muted">Last active 5 days ago · 35% completion</p>
+                    </div>
+                  </div>
+                  <div class="at-risk-actions">
+                    <button class="btn small primary">Send Reminder</button>
+                    <button class="btn small ghost">View Profile</button>
+                  </div>
+                </div>
+                <div class="at-risk-item">
+                  <div class="student-cell">
+                    <div class="user-avatar small">MK</div>
+                    <div>
+                      <p class="student-name">Morgan Kim</p>
+                      <p class="muted">Last active 4 days ago · 42% completion</p>
+                    </div>
+                  </div>
+                  <div class="at-risk-actions">
+                    <button class="btn small primary">Send Reminder</button>
+                    <button class="btn small ghost">View Profile</button>
+                  </div>
+                </div>
+              </div>
+              <button class="btn secondary full-width">View All At-Risk Students</button>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Student Profile Drawer -->
+    <div class="drawer large" id="studentDrawer" aria-hidden="true">
+      <div class="drawer__header">
+        <h3>Student Profile</h3>
+        <button type="button" class="icon-btn" data-close-drawer="student" aria-label="Close">×</button>
+      </div>
+      <div class="drawer__body">
+        <div class="student-profile-header">
+          <div class="user-avatar large">JA</div>
+          <div>
+            <h3>Jamie Alvarez</h3>
+            <p class="muted">jalvarez@crimson.ua.edu · Team Crimson</p>
+          </div>
+        </div>
+        <div class="cards-grid four stat-cards">
+          <article>
+            <p class="muted">Rank</p>
+            <h4>#12</h4>
+          </article>
+          <article>
+            <p class="muted">Points</p>
+            <h4>2,450</h4>
+          </article>
+          <article>
+            <p class="muted">Tasks</p>
+            <h4>47/52</h4>
+          </article>
+          <article>
+            <p class="muted">Completion</p>
+            <h4>82%</h4>
+          </article>
+        </div>
+        <div class="profile-section">
+          <h4>Active Hunts</h4>
+          <ul class="pill-list">
+            <li><p>Data Management Quest</p><span>70%</span></li>
+            <li><p>Cybersecurity Challenge</p><span>55%</span></li>
+            <li><p>Innovation Sprint</p><span>40%</span></li>
+          </ul>
+        </div>
+        <div class="profile-section">
+          <h4>Recent Activity</h4>
+          <ul class="timeline">
+            <li>
+              <span class="badge success">✓</span>
+              <div>
+                <p>Submitted "Data Insights"</p>
+                <p class="muted">Today · 3:05 PM</p>
+              </div>
+            </li>
+            <li>
+              <span class="badge warn">↻</span>
+              <div>
+                <p>Revision requested – "Cyber Lab"</p>
+                <p class="muted">Yesterday</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="drawer__footer">
+        <button type="button" class="btn ghost" data-close-drawer="student">Close</button>
+        <button type="button" class="btn secondary">Message Student</button>
+        <button type="button" class="btn primary">Export Profile</button>
+      </div>
+    </div>
+
+    <!-- Import Students Modal -->
+    <div class="modal" id="importModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="import"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Import Students</h3>
+          <button type="button" class="icon-btn" data-close-modal="import" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <p class="muted">Upload a CSV file with student information.</p>
+          <div class="file-upload-area large">
+            <input type="file" accept=".csv" id="studentImportFile" />
+            <div class="file-upload-placeholder">
+              <span class="upload-icon">📁</span>
+              <p>Drop CSV file here or click to browse</p>
+              <p class="muted">Required columns: name, email, team</p>
+            </div>
+          </div>
+          <a href="#" class="link-btn">Download CSV template</a>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="import">Cancel</button>
+          <button class="btn primary" id="processImportBtn">Import Students</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // View student drawer
+        document.querySelectorAll('[data-view-student]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById('studentDrawer')?.classList.add('open');
+          });
+        });
+
+        // Message student
+        document.querySelectorAll('[data-message-student]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            window.location.href = 'admin-messages.html';
+          });
+        });
+
+        // Nudge student
+        document.querySelectorAll('[data-nudge-student]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            showToast('Reminder sent to student!', 'success');
+          });
+        });
+
+        // Import modal
+        document.getElementById('importStudentsBtn')?.addEventListener('click', () => {
+          document.getElementById('importModal')?.classList.add('open');
+        });
+
+        document.getElementById('processImportBtn')?.addEventListener('click', () => {
+          showToast('Students imported successfully!', 'success');
+          document.getElementById('importModal')?.classList.remove('open');
+        });
+
+        // Export
+        document.getElementById('exportStudentsBtn')?.addEventListener('click', () => {
+          showToast('Exporting student data...', 'info');
+        });
+
+        // Close controls
+        document.querySelectorAll('[data-close-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById(btn.dataset.closeDrawer + 'Drawer')?.classList.remove('open');
+          });
+        });
+
+        document.querySelectorAll('[data-close-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById(btn.dataset.closeModal + 'Modal')?.classList.remove('open');
+          });
+        });
+
+        // Search
+        document.getElementById('studentSearch')?.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          document.querySelectorAll('tbody tr').forEach(row => {
+            const name = row.querySelector('.student-name')?.textContent.toLowerCase() || '';
+            row.style.display = name.includes(query) ? '' : 'none';
+          });
+        });
+
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.drawer.open, .modal.open').forEach(el => el.classList.remove('open'));
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

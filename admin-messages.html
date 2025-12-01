@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Messages · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Admin Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Admin Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Admin navigation">
+          <p class="nav-label">Overview</p>
+          <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="admin-hunts.html">Manage Hunts</a>
+          <a class="nav-link" href="admin-tasks.html">Task Management</a>
+          <a class="nav-link" href="admin-students.html">Students</a>
+          <a class="nav-link" href="admin-analytics.html">Analytics</a>
+          <p class="nav-label">Communication</p>
+          <a class="nav-link active" href="admin-messages.html">Messages</a>
+          <a class="nav-link" href="admin-announcements.html">Announcements</a>
+          <p class="nav-label">System</p>
+          <a class="nav-link" href="admin-settings.html">Settings</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar admin">DR</div>
+            <div>
+              <p class="user-name">Dr. Reed</p>
+              <p class="user-role">Program Admin</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content messaging-main">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Communication</p>
+            <h1>Messages</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn secondary" id="composeBtn">+ Compose</button>
+            <button class="btn ghost" id="broadcastBtn">📢 Broadcast</button>
+          </div>
+        </header>
+
+        <main style="flex: 1; display: flex; flex-direction: column;">
+          <div class="messaging-layout" style="flex: 1;">
+            <!-- Conversations Panel -->
+            <div class="conversations-panel">
+              <div class="conversations-header">
+                <div class="conversations-tabs">
+                  <button class="conv-tab active">All</button>
+                  <button class="conv-tab">Students</button>
+                  <button class="conv-tab">TAs</button>
+                  <button class="conv-tab">System</button>
+                </div>
+                <div class="search-box">
+                  <span class="search-icon">🔍</span>
+                  <input type="search" placeholder="Search messages..." />
+                </div>
+              </div>
+
+              <ul class="conversations-list">
+                <li class="conversation-item active">
+                  <div class="conv-avatar">JA</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Jamie Alvarez</span>
+                      <span class="conv-time">2m ago</span>
+                    </div>
+                    <p class="conv-preview">Hi Dr. Reed, I have a question about...</p>
+                  </div>
+                  <span class="unread-badge">2</span>
+                </li>
+                <li class="conversation-item">
+                  <div class="conv-avatar ta">AC</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Alex Chen (TA)</span>
+                      <span class="conv-time">1h ago</span>
+                    </div>
+                    <p class="conv-preview">The grading for Hunt 5 is complete.</p>
+                  </div>
+                </li>
+                <li class="conversation-item">
+                  <div class="conv-avatar group">MIS</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">MIS 320 TAs</span>
+                      <span class="conv-time">3h ago</span>
+                    </div>
+                    <p class="conv-preview">You: Thanks for the update everyone!</p>
+                  </div>
+                </li>
+                <li class="conversation-item">
+                  <div class="conv-avatar">SM</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Sarah Mitchell</span>
+                      <span class="conv-time">Yesterday</span>
+                    </div>
+                    <p class="conv-preview">Thank you for extending the deadline!</p>
+                  </div>
+                </li>
+                <li class="conversation-item">
+                  <div class="conv-avatar">TC</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Team Crimson</span>
+                      <span class="conv-time">Yesterday</span>
+                    </div>
+                    <p class="conv-preview">Great teamwork on the last hunt!</p>
+                  </div>
+                </li>
+                <li class="conversation-item">
+                  <div class="conv-avatar system">🔔</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">System Notifications</span>
+                      <span class="conv-time">2d ago</span>
+                    </div>
+                    <p class="conv-preview">15 new task submissions require review</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Chat Panel -->
+            <div class="chat-panel card">
+              <div class="chat-header">
+                <div class="chat-recipient">
+                  <div class="conv-avatar">JA</div>
+                  <div>
+                    <h3>Jamie Alvarez</h3>
+                    <span class="muted">MIS 320 · Team Crimson · Online</span>
+                  </div>
+                </div>
+                <div class="chat-actions">
+                  <button class="icon-btn" title="View Profile">👤</button>
+                  <button class="icon-btn" title="More Options">⋮</button>
+                </div>
+              </div>
+
+              <div class="chat-messages">
+                <div class="chat-date-divider">Today</div>
+                
+                <div class="message received">
+                  <div class="conv-avatar small">JA</div>
+                  <div class="message-bubble">
+                    <p>Hi Dr. Reed, I have a question about the SQL Optimization Hunt.</p>
+                    <span class="message-time">10:32 AM</span>
+                  </div>
+                </div>
+
+                <div class="message received">
+                  <div class="conv-avatar small">JA</div>
+                  <div class="message-bubble">
+                    <p>For Task 3, are we supposed to optimize for read speed or write speed? The requirements mention both but don't specify priority.</p>
+                    <span class="message-time">10:33 AM</span>
+                  </div>
+                </div>
+
+                <div class="message sent">
+                  <div class="message-bubble">
+                    <p>Great question, Jamie! For this task, prioritize read speed since the scenario involves a reporting dashboard.</p>
+                    <span class="message-time">10:45 AM</span>
+                  </div>
+                </div>
+
+                <div class="message sent">
+                  <div class="message-bubble">
+                    <p>However, you should document any trade-offs you considered. That analysis is part of the grading rubric.</p>
+                    <span class="message-time">10:45 AM</span>
+                  </div>
+                </div>
+
+                <div class="message received">
+                  <div class="conv-avatar small">JA</div>
+                  <div class="message-bubble">
+                    <p>That makes sense! Thank you for clarifying. One more question...</p>
+                    <span class="message-time">10:48 AM</span>
+                  </div>
+                </div>
+
+                <div class="message received">
+                  <div class="conv-avatar small">JA</div>
+                  <div class="message-bubble">
+                    <p>Can we use indexed views for this task, or should we stick to traditional indexes?</p>
+                    <span class="message-time">10:48 AM</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-input-area">
+                <div class="chat-attachments">
+                  <button class="icon-btn" title="Attach file">📎</button>
+                </div>
+                <form class="chat-input-form">
+                  <input type="text" placeholder="Type your message..." />
+                  <button type="submit" class="btn primary">Send</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Compose Message Modal -->
+    <div class="modal" id="composeModal">
+      <div class="modal__backdrop"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>New Message</h3>
+          <button class="icon-btn close-btn">✕</button>
+        </div>
+        <div class="modal__body">
+          <form class="stacked-form">
+            <label>
+              To
+              <input type="text" placeholder="Search for students, TAs, or groups..." />
+            </label>
+            <label>
+              Subject (optional)
+              <input type="text" placeholder="Enter subject" />
+            </label>
+            <label>
+              Message
+              <textarea rows="6" placeholder="Write your message..."></textarea>
+            </label>
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost close-btn">Cancel</button>
+          <button class="btn primary">Send Message</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Broadcast Modal -->
+    <div class="modal" id="broadcastModal">
+      <div class="modal__backdrop"></div>
+      <div class="modal__content large">
+        <div class="modal__header">
+          <h3>Broadcast Message</h3>
+          <button class="icon-btn close-btn">✕</button>
+        </div>
+        <div class="modal__body">
+          <form class="stacked-form">
+            <div class="form-section">
+              <h4>Recipients</h4>
+              <div class="chip-row">
+                <button type="button" class="chip active">All Students</button>
+                <button type="button" class="chip">MIS 320</button>
+                <button type="button" class="chip">MIS 430</button>
+                <button type="button" class="chip">TAs Only</button>
+              </div>
+            </div>
+            <label>
+              Subject
+              <input type="text" placeholder="Enter broadcast subject" required />
+            </label>
+            <label>
+              Message
+              <textarea rows="6" placeholder="Write your broadcast message..." required></textarea>
+            </label>
+            <div class="form-section">
+              <h4>Delivery Options</h4>
+              <div class="toggle-row">
+                <span class="toggle-label">Send as email</span>
+                <label class="toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <span class="toggle-label">Send push notification</span>
+                <label class="toggle">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost close-btn">Cancel</button>
+          <button class="btn primary">Send Broadcast</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/navigation.js"></script>
+    <script>
+      // Mobile nav toggle
+      document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('open');
+      });
+
+      // Conversation tabs
+      document.querySelectorAll('.conv-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.conv-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+        });
+      });
+
+      // Conversation selection
+      document.querySelectorAll('.conversation-item').forEach(item => {
+        item.addEventListener('click', () => {
+          document.querySelectorAll('.conversation-item').forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        });
+      });
+
+      // Compose modal
+      document.getElementById('composeBtn')?.addEventListener('click', () => {
+        document.getElementById('composeModal').classList.add('open');
+      });
+
+      // Broadcast modal
+      document.getElementById('broadcastBtn')?.addEventListener('click', () => {
+        document.getElementById('broadcastModal').classList.add('open');
+      });
+
+      // Close modals
+      document.querySelectorAll('.modal .close-btn, .modal__backdrop').forEach(el => {
+        el.addEventListener('click', () => {
+          el.closest('.modal').classList.remove('open');
+        });
+      });
+
+      // Chat form
+      document.querySelector('.chat-input-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = e.target.querySelector('input');
+        if (input.value.trim()) {
+          alert('Message sent! (Demo only)');
+          input.value = '';
+        }
+      });
+
+      // Chip selection
+      document.querySelectorAll('.chip-row .chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          chip.classList.toggle('active');
+        });
+      });
+    </script>
+  </body>
+</html>
+

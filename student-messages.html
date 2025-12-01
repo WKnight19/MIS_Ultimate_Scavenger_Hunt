@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Messages · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Student Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Student navigation">
+          <p class="nav-label">Student</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link active" href="student-messages.html">Messages</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link" href="student-profile.html">My Profile</a>
+          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Communication</p>
+            <h1>Messages</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn primary" id="newMessageBtn">
+              <span class="btn-icon">+</span> New Message
+            </button>
+          </div>
+        </header>
+
+        <main class="messaging-main">
+          <section class="messaging-layout">
+            <!-- Conversations List -->
+            <div class="conversations-panel">
+              <div class="conversations-header">
+                <div class="conversations-tabs">
+                  <button class="conv-tab active" data-conv-tab="all">All</button>
+                  <button class="conv-tab" data-conv-tab="direct">Direct</button>
+                  <button class="conv-tab" data-conv-tab="groups">Groups</button>
+                  <button class="conv-tab" data-conv-tab="system">System</button>
+                </div>
+                <div class="search-box small">
+                  <span class="search-icon">🔍</span>
+                  <input type="search" placeholder="Search messages..." id="messageSearch" />
+                </div>
+              </div>
+              <ul class="conversations-list" id="conversationsList">
+                <li class="conversation-item active" data-conv-id="team-crimson">
+                  <div class="conv-avatar group">TC</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Team Crimson</span>
+                      <span class="conv-time">2m ago</span>
+                    </div>
+                    <p class="conv-preview">Sam: "Meeting tonight @ 6 to discuss..."</p>
+                  </div>
+                  <span class="unread-badge">3</span>
+                </li>
+                <li class="conversation-item" data-conv-id="marta-ta">
+                  <div class="conv-avatar ta">M</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Marta (TA)</span>
+                      <span class="conv-time">1h ago</span>
+                    </div>
+                    <p class="conv-preview">"Reviewing your evidence now!"</p>
+                  </div>
+                </li>
+                <li class="conversation-item" data-conv-id="instructor-evans">
+                  <div class="conv-avatar instructor">IE</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Instructor Evans</span>
+                      <span class="conv-time">2h ago</span>
+                    </div>
+                    <p class="conv-preview">"Schedule office hours?"</p>
+                  </div>
+                </li>
+                <li class="conversation-item" data-conv-id="avery">
+                  <div class="conv-avatar">AC</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Avery Chen</span>
+                      <span class="conv-time">Yesterday</span>
+                    </div>
+                    <p class="conv-preview">"Great work on the collab task!"</p>
+                  </div>
+                </li>
+                <li class="conversation-item" data-conv-id="data-quest-discussion">
+                  <div class="conv-avatar group">DQ</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">Data Quest Discussion</span>
+                      <span class="conv-time">Yesterday</span>
+                    </div>
+                    <p class="conv-preview">Jordan: "Anyone stuck on task 4?"</p>
+                  </div>
+                </li>
+                <li class="conversation-item system" data-conv-id="system">
+                  <div class="conv-avatar system">📢</div>
+                  <div class="conv-content">
+                    <div class="conv-header">
+                      <span class="conv-name">System Notifications</span>
+                      <span class="conv-time">3h ago</span>
+                    </div>
+                    <p class="conv-preview">"Leaderboard refresh complete."</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-panel">
+              <div class="chat-header">
+                <div class="chat-recipient">
+                  <div class="conv-avatar group">TC</div>
+                  <div>
+                    <h3 id="chatTitle">Team Crimson</h3>
+                    <p class="muted" id="chatSubtitle">5 members · Data Management Quest</p>
+                  </div>
+                </div>
+                <div class="chat-actions">
+                  <button class="icon-btn" title="Video Call" id="videoCallBtn">📹</button>
+                  <button class="icon-btn" title="Voice Call" id="voiceCallBtn">📞</button>
+                  <button class="icon-btn" title="More Options" id="chatOptionsBtn">⋮</button>
+                </div>
+              </div>
+
+              <div class="chat-messages" id="chatMessages">
+                <div class="chat-date-divider">Today</div>
+                
+                <div class="message received">
+                  <div class="message-avatar">S</div>
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">Sam Hart</span>
+                      <span class="message-time">3:45 PM</span>
+                    </div>
+                    <div class="message-bubble">
+                      <p>Hey team! Just finished uploading my photos for the campus story task. Anyone else done with it?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="message received">
+                  <div class="message-avatar">AC</div>
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">Avery Chen</span>
+                      <span class="message-time">3:47 PM</span>
+                    </div>
+                    <div class="message-bubble">
+                      <p>Almost! Just need the library photo. Going there tomorrow morning.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="message sent">
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-time">3:50 PM</span>
+                    </div>
+                    <div class="message-bubble">
+                      <p>I finished mine yesterday! The Denny Chimes one came out great. Happy to help anyone who's stuck.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="message received">
+                  <div class="message-avatar">JP</div>
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">Jordan Patel</span>
+                      <span class="message-time">4:02 PM</span>
+                    </div>
+                    <div class="message-bubble">
+                      <p>Nice! Can we meet tonight to work on the group reflection task together?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="message received">
+                  <div class="message-avatar">S</div>
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">Sam Hart</span>
+                      <span class="message-time">4:05 PM</span>
+                    </div>
+                    <div class="message-bubble">
+                      <p>Meeting tonight @ 6 to discuss final sprint? Ferguson Center room 203 is available.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="message sent">
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-time">4:10 PM</span>
+                    </div>
+                    <div class="message-bubble">
+                      <p>6 works for me! I'll bring my laptop so we can share the notes.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="message received">
+                  <div class="message-avatar">AC</div>
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">Avery Chen</span>
+                      <span class="message-time">4:12 PM</span>
+                    </div>
+                    <div class="message-bubble">
+                      <p>Count me in! 👍</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-input-area">
+                <div class="chat-attachments">
+                  <button class="icon-btn" title="Attach File" id="attachFileBtn">📎</button>
+                  <button class="icon-btn" title="Add Image" id="addImageBtn">🖼️</button>
+                  <button class="icon-btn" title="Add Emoji" id="addEmojiBtn">😊</button>
+                </div>
+                <form class="chat-input-form" id="chatForm">
+                  <input type="text" placeholder="Type a message..." id="messageInput" />
+                  <button type="submit" class="btn primary">Send</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Info Panel (collapsible) -->
+            <div class="info-panel" id="infoPanel">
+              <div class="info-panel-header">
+                <h4>Team Crimson</h4>
+                <button class="icon-btn" id="closeInfoPanel">×</button>
+              </div>
+              <div class="info-panel-content">
+                <div class="info-section">
+                  <h5>About</h5>
+                  <p class="muted">Group for Data Management Quest team collaboration</p>
+                </div>
+                <div class="info-section">
+                  <h5>Members (5)</h5>
+                  <ul class="members-list">
+                    <li class="member-item">
+                      <div class="member-avatar">JA</div>
+                      <div class="member-info">
+                        <span class="member-name">Jamie Alvarez (You)</span>
+                        <span class="member-role">Student</span>
+                      </div>
+                    </li>
+                    <li class="member-item">
+                      <div class="member-avatar">SH</div>
+                      <div class="member-info">
+                        <span class="member-name">Sam Hart</span>
+                        <span class="member-role">Student</span>
+                      </div>
+                    </li>
+                    <li class="member-item">
+                      <div class="member-avatar">AC</div>
+                      <div class="member-info">
+                        <span class="member-name">Avery Chen</span>
+                        <span class="member-role">Student</span>
+                      </div>
+                    </li>
+                    <li class="member-item">
+                      <div class="member-avatar">JP</div>
+                      <div class="member-info">
+                        <span class="member-name">Jordan Patel</span>
+                        <span class="member-role">Student</span>
+                      </div>
+                    </li>
+                    <li class="member-item">
+                      <div class="member-avatar">TW</div>
+                      <div class="member-info">
+                        <span class="member-name">Taylor Williams</span>
+                        <span class="member-role">Student</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="info-section">
+                  <h5>Shared Files</h5>
+                  <ul class="shared-files-list">
+                    <li class="shared-file">
+                      <span class="file-icon">📄</span>
+                      <span class="file-name">team_notes.pdf</span>
+                    </li>
+                    <li class="shared-file">
+                      <span class="file-icon">🖼️</span>
+                      <span class="file-name">campus_photos.zip</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="info-actions">
+                  <button class="btn secondary full-width">Mute Notifications</button>
+                  <button class="btn ghost full-width">Leave Group</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- New Message Modal -->
+    <div class="modal" id="newMessageModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="newMessage"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>New Message</h3>
+          <button type="button" class="icon-btn" data-close-modal="newMessage" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <form class="stacked-form" id="newMessageForm">
+            <label>
+              To
+              <input type="text" placeholder="Search for a person or group..." id="recipientInput" list="recipientsList" />
+              <datalist id="recipientsList">
+                <option value="Marta (TA)">
+                <option value="Instructor Evans">
+                <option value="Avery Chen">
+                <option value="Sam Hart">
+                <option value="Jordan Patel">
+                <option value="Team Crimson">
+                <option value="Data Quest Discussion">
+              </datalist>
+            </label>
+            <label>
+              Subject (optional)
+              <input type="text" placeholder="Message subject..." />
+            </label>
+            <label>
+              Message
+              <textarea rows="5" placeholder="Type your message..." required></textarea>
+            </label>
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="newMessage">Cancel</button>
+          <button class="btn primary" id="sendNewMessage">Send Message</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emoji Picker (simplified) -->
+    <div class="emoji-picker" id="emojiPicker" aria-hidden="true">
+      <div class="emoji-grid">
+        <button class="emoji-btn">😊</button>
+        <button class="emoji-btn">👍</button>
+        <button class="emoji-btn">❤️</button>
+        <button class="emoji-btn">🎉</button>
+        <button class="emoji-btn">🔥</button>
+        <button class="emoji-btn">💯</button>
+        <button class="emoji-btn">✅</button>
+        <button class="emoji-btn">👀</button>
+        <button class="emoji-btn">🤔</button>
+        <button class="emoji-btn">😂</button>
+        <button class="emoji-btn">🙌</button>
+        <button class="emoji-btn">💪</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Toast notification
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const sidebar = document.getElementById('sidebar');
+        mobileNavToggle?.addEventListener('click', () => {
+          sidebar.classList.toggle('open');
+        });
+
+        // Conversation switching
+        const conversations = document.querySelectorAll('.conversation-item');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatTitle = document.getElementById('chatTitle');
+        const chatSubtitle = document.getElementById('chatSubtitle');
+
+        conversations.forEach(conv => {
+          conv.addEventListener('click', () => {
+            conversations.forEach(c => c.classList.remove('active'));
+            conv.classList.add('active');
+            conv.querySelector('.unread-badge')?.remove();
+            
+            // Update chat header
+            const name = conv.querySelector('.conv-name').textContent;
+            chatTitle.textContent = name;
+            
+            // Show different content based on conversation
+            if (conv.dataset.convId === 'system') {
+              chatSubtitle.textContent = 'System notifications';
+            } else if (conv.dataset.convId.includes('team') || conv.dataset.convId.includes('discussion')) {
+              chatSubtitle.textContent = 'Group conversation';
+            } else {
+              chatSubtitle.textContent = 'Direct message';
+            }
+          });
+        });
+
+        // Conversation tabs
+        document.querySelectorAll('.conv-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            document.querySelectorAll('.conv-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            const filter = tab.dataset.convTab;
+            conversations.forEach(conv => {
+              if (filter === 'all') {
+                conv.style.display = 'flex';
+              } else if (filter === 'direct') {
+                const isGroup = conv.querySelector('.conv-avatar').classList.contains('group');
+                const isSystem = conv.classList.contains('system');
+                conv.style.display = (!isGroup && !isSystem) ? 'flex' : 'none';
+              } else if (filter === 'groups') {
+                const isGroup = conv.querySelector('.conv-avatar').classList.contains('group');
+                conv.style.display = isGroup ? 'flex' : 'none';
+              } else if (filter === 'system') {
+                conv.style.display = conv.classList.contains('system') ? 'flex' : 'none';
+              }
+            });
+          });
+        });
+
+        // Send message
+        const chatForm = document.getElementById('chatForm');
+        const messageInput = document.getElementById('messageInput');
+        
+        chatForm?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const text = messageInput.value.trim();
+          if (!text) return;
+
+          // Add message to chat
+          const messageHtml = `
+            <div class="message sent">
+              <div class="message-content">
+                <div class="message-header">
+                  <span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                </div>
+                <div class="message-bubble">
+                  <p>${text}</p>
+                </div>
+              </div>
+            </div>
+          `;
+          chatMessages.insertAdjacentHTML('beforeend', messageHtml);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          messageInput.value = '';
+          showToast('Message sent!', 'success');
+        });
+
+        // New message modal
+        document.getElementById('newMessageBtn')?.addEventListener('click', () => {
+          const modal = document.getElementById('newMessageModal');
+          modal?.classList.add('open');
+          modal?.setAttribute('aria-hidden', 'false');
+        });
+
+        document.getElementById('sendNewMessage')?.addEventListener('click', () => {
+          showToast('Message sent!', 'success');
+          document.getElementById('newMessageModal')?.classList.remove('open');
+        });
+
+        // Modal close
+        document.querySelectorAll('[data-close-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const modalId = btn.dataset.closeModal + 'Modal';
+            const modal = document.getElementById(modalId);
+            modal?.classList.remove('open');
+            modal?.setAttribute('aria-hidden', 'true');
+          });
+        });
+
+        // Emoji picker
+        const emojiBtn = document.getElementById('addEmojiBtn');
+        const emojiPicker = document.getElementById('emojiPicker');
+        
+        emojiBtn?.addEventListener('click', () => {
+          emojiPicker.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.emoji-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            messageInput.value += btn.textContent;
+            messageInput.focus();
+            emojiPicker.classList.remove('open');
+          });
+        });
+
+        // Chat options
+        document.getElementById('chatOptionsBtn')?.addEventListener('click', () => {
+          const infoPanel = document.getElementById('infoPanel');
+          infoPanel.classList.toggle('open');
+        });
+
+        document.getElementById('closeInfoPanel')?.addEventListener('click', () => {
+          document.getElementById('infoPanel').classList.remove('open');
+        });
+
+        // Call buttons
+        document.getElementById('videoCallBtn')?.addEventListener('click', () => {
+          showToast('Video calling not available in demo', 'info');
+        });
+
+        document.getElementById('voiceCallBtn')?.addEventListener('click', () => {
+          showToast('Voice calling not available in demo', 'info');
+        });
+
+        // Attachment buttons
+        document.getElementById('attachFileBtn')?.addEventListener('click', () => {
+          showToast('File attachment coming soon!', 'info');
+        });
+
+        document.getElementById('addImageBtn')?.addEventListener('click', () => {
+          showToast('Image upload coming soon!', 'info');
+        });
+
+        // Search
+        document.getElementById('messageSearch')?.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          conversations.forEach(conv => {
+            const name = conv.querySelector('.conv-name').textContent.toLowerCase();
+            const preview = conv.querySelector('.conv-preview').textContent.toLowerCase();
+            conv.style.display = (name.includes(query) || preview.includes(query)) ? 'flex' : 'none';
+          });
+        });
+
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.modal.open').forEach(el => {
+              el.classList.remove('open');
+              el.setAttribute('aria-hidden', 'true');
+            });
+            emojiPicker?.classList.remove('open');
+          }
+        });
+
+        // Scroll to bottom of chat
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      });
+    </script>
+  </body>
+</html>
+

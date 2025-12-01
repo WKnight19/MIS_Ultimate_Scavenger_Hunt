@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hunt Details · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Sidebar (adapts based on user type) -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Student navigation">
+          <p class="nav-label">Student</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="student-messages.html">Messages</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link" href="student-profile.html">My Profile</a>
+          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Hunt Details</p>
+            <h1 id="huntTitle">Data Management Quest</h1>
+          </div>
+          <div class="header-actions">
+            <a class="btn ghost" href="student-hunts.html">← Back to Hunts</a>
+            <button class="btn primary" id="joinHuntBtn">Join Hunt</button>
+          </div>
+        </header>
+
+        <main>
+          <!-- Hunt Header Card -->
+          <section class="section">
+            <div class="hunt-detail-header card">
+              <div class="hunt-detail-info">
+                <div class="hunt-badges">
+                  <span class="badge success">Active</span>
+                  <span class="hunt-difficulty medium">Medium</span>
+                </div>
+                <h2>Data Management Quest</h2>
+                <p class="hunt-description">Master data analysis and management through hands-on campus challenges. Complete tasks to earn points and unlock the Data Pioneer badge.</p>
+                <div class="hunt-meta-row">
+                  <div class="hunt-meta-item">
+                    <span class="meta-icon">👥</span>
+                    <span>112 enrolled</span>
+                  </div>
+                  <div class="hunt-meta-item">
+                    <span class="meta-icon">📍</span>
+                    <span>Hybrid</span>
+                  </div>
+                  <div class="hunt-meta-item">
+                    <span class="meta-icon">⏰</span>
+                    <span>Ends Nov 25</span>
+                  </div>
+                  <div class="hunt-meta-item">
+                    <span class="meta-icon">🎯</span>
+                    <span>10 tasks</span>
+                  </div>
+                </div>
+              </div>
+              <div class="hunt-rewards-card">
+                <h4>Rewards</h4>
+                <div class="reward-items">
+                  <div class="reward-item">
+                    <span class="reward-icon">🏆</span>
+                    <div>
+                      <p class="reward-value">350</p>
+                      <p class="muted">Points</p>
+                    </div>
+                  </div>
+                  <div class="reward-item">
+                    <span class="reward-icon">🎖️</span>
+                    <div>
+                      <p class="reward-value">Data Pioneer</p>
+                      <p class="muted">Badge</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Progress Section (for enrolled users) -->
+          <section class="section" id="progressSection">
+            <div class="card">
+              <div class="card-header">
+                <h3>Your Progress</h3>
+                <span class="progress-value-large">70%</span>
+              </div>
+              <div class="progress-track large">
+                <span style="width: 70%"></span>
+              </div>
+              <p class="muted">7 of 10 tasks completed · 3 tasks remaining · 3 days left</p>
+            </div>
+          </section>
+
+          <!-- Main Content Grid -->
+          <section class="section">
+            <div class="hunt-detail-grid">
+              <!-- Tasks List -->
+              <div class="hunt-tasks-panel">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>Hunt Tasks</h3>
+                    <span class="task-count">7/10 complete</span>
+                  </div>
+                  <ul class="hunt-tasks-list">
+                    <li class="hunt-task-item completed">
+                      <span class="task-status-icon">✓</span>
+                      <div class="task-info">
+                        <p class="task-name">Data Collection Overview</p>
+                        <p class="muted">Introduction task · 30 pts</p>
+                      </div>
+                      <span class="badge success">Complete</span>
+                    </li>
+                    <li class="hunt-task-item completed">
+                      <span class="task-status-icon">✓</span>
+                      <div class="task-info">
+                        <p class="task-name">Database Design Quiz</p>
+                        <p class="muted">Assessment · 40 pts</p>
+                      </div>
+                      <span class="badge success">Complete</span>
+                    </li>
+                    <li class="hunt-task-item completed">
+                      <span class="task-status-icon">✓</span>
+                      <div class="task-info">
+                        <p class="task-name">SQL Practice Lab</p>
+                        <p class="muted">Hands-on · 50 pts</p>
+                      </div>
+                      <span class="badge success">Complete</span>
+                    </li>
+                    <li class="hunt-task-item completed">
+                      <span class="task-status-icon">✓</span>
+                      <div class="task-info">
+                        <p class="task-name">Data Visualization</p>
+                        <p class="muted">Creative · 40 pts</p>
+                      </div>
+                      <span class="badge success">Complete</span>
+                    </li>
+                    <li class="hunt-task-item completed">
+                      <span class="task-status-icon">✓</span>
+                      <div class="task-info">
+                        <p class="task-name">Ethics Case Study</p>
+                        <p class="muted">Written · 35 pts</p>
+                      </div>
+                      <span class="badge success">Complete</span>
+                    </li>
+                    <li class="hunt-task-item completed">
+                      <span class="task-status-icon">✓</span>
+                      <div class="task-info">
+                        <p class="task-name">Team Data Project</p>
+                        <p class="muted">Group work · 50 pts</p>
+                      </div>
+                      <span class="badge success">Complete</span>
+                    </li>
+                    <li class="hunt-task-item completed">
+                      <span class="task-status-icon">✓</span>
+                      <div class="task-info">
+                        <p class="task-name">Campus Photo Story</p>
+                        <p class="muted">Photo evidence · 100 pts</p>
+                      </div>
+                      <span class="badge success">Complete</span>
+                    </li>
+                    <li class="hunt-task-item in-progress">
+                      <span class="task-status-icon">○</span>
+                      <div class="task-info">
+                        <p class="task-name">Data Insights Report</p>
+                        <p class="muted">Analysis · 120 pts · Due Nov 18</p>
+                      </div>
+                      <button class="btn small primary" data-open-drawer="task">Start</button>
+                    </li>
+                    <li class="hunt-task-item">
+                      <span class="task-status-icon">○</span>
+                      <div class="task-info">
+                        <p class="task-name">Peer Review</p>
+                        <p class="muted">Collaboration · 25 pts</p>
+                      </div>
+                      <span class="badge neutral">Locked</span>
+                    </li>
+                    <li class="hunt-task-item">
+                      <span class="task-status-icon">○</span>
+                      <div class="task-info">
+                        <p class="task-name">Final Presentation</p>
+                        <p class="muted">Capstone · 60 pts</p>
+                      </div>
+                      <span class="badge neutral">Locked</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Sidebar Info -->
+              <div class="hunt-info-panel">
+                <!-- Milestones -->
+                <div class="card">
+                  <h3>Milestones</h3>
+                  <ul class="milestones-list">
+                    <li class="milestone completed">
+                      <span class="milestone-icon">✓</span>
+                      <div>
+                        <p>Complete introduction tasks</p>
+                        <p class="muted">Unlock advanced tasks</p>
+                      </div>
+                    </li>
+                    <li class="milestone completed">
+                      <span class="milestone-icon">✓</span>
+                      <div>
+                        <p>Reach 50% completion</p>
+                        <p class="muted">+25 bonus points</p>
+                      </div>
+                    </li>
+                    <li class="milestone current">
+                      <span class="milestone-icon">○</span>
+                      <div>
+                        <p>Complete Data Insights</p>
+                        <p class="muted">Unlock final tasks</p>
+                      </div>
+                    </li>
+                    <li class="milestone">
+                      <span class="milestone-icon">○</span>
+                      <div>
+                        <p>100% Completion</p>
+                        <p class="muted">Earn Data Pioneer badge</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Hunt Leaderboard -->
+                <div class="card">
+                  <div class="card-header">
+                    <h3>Hunt Leaderboard</h3>
+                    <a class="link-btn" href="leaderboards.html">Full Board →</a>
+                  </div>
+                  <ul class="mini-leaderboard">
+                    <li>
+                      <span class="rank">1</span>
+                      <span class="name">Avery Chen</span>
+                      <span class="points">320 pts</span>
+                    </li>
+                    <li>
+                      <span class="rank">2</span>
+                      <span class="name">Jordan Patel</span>
+                      <span class="points">305 pts</span>
+                    </li>
+                    <li>
+                      <span class="rank">3</span>
+                      <span class="name">Sam Hart</span>
+                      <span class="points">290 pts</span>
+                    </li>
+                    <li class="you">
+                      <span class="rank">12</span>
+                      <span class="name">You</span>
+                      <span class="points">245 pts</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="card">
+                  <h3>Resources</h3>
+                  <ul class="resources-list">
+                    <li><a href="#">📄 Hunt Guidelines PDF</a></li>
+                    <li><a href="#">📝 Grading Rubric</a></li>
+                    <li><a href="#">🗺️ Campus Map</a></li>
+                    <li><a href="#">❓ FAQ</a></li>
+                  </ul>
+                </div>
+
+                <!-- Team -->
+                <div class="card">
+                  <h3>Your Team</h3>
+                  <div class="team-mini">
+                    <div class="team-members">
+                      <div class="team-member" title="Jamie Alvarez (You)">JA</div>
+                      <div class="team-member" title="Sam Hart">SH</div>
+                      <div class="team-member" title="Avery Chen">AC</div>
+                      <div class="team-member" title="Jordan Patel">JP</div>
+                      <div class="team-member" title="Taylor Williams">TW</div>
+                    </div>
+                    <a class="link-btn" href="student-messages.html">Team Chat →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Task Drawer -->
+    <div class="drawer" id="taskDrawer" aria-hidden="true">
+      <div class="drawer__header">
+        <h3>Submit Task</h3>
+        <button type="button" class="icon-btn" data-close-drawer="task" aria-label="Close">×</button>
+      </div>
+      <div class="drawer__body">
+        <div class="task-drawer-info">
+          <p class="eyebrow">Current Task</p>
+          <h4>Data Insights Report</h4>
+          <p class="muted">Analyze the provided dataset and create a comprehensive insights report. Worth 120 points.</p>
+        </div>
+        <form class="stacked-form">
+          <label>
+            Evidence Upload
+            <div class="file-upload-area">
+              <input type="file" accept="*/*" multiple />
+              <div class="file-upload-placeholder">
+                <span class="upload-icon">📁</span>
+                <p>Click to upload or drag files here</p>
+              </div>
+            </div>
+          </label>
+          <label>
+            Notes for Grader
+            <textarea rows="4" placeholder="Describe your work..."></textarea>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" required />
+            I confirm this is my own work
+          </label>
+        </form>
+      </div>
+      <div class="drawer__footer">
+        <button type="button" class="btn ghost" data-close-drawer="task">Cancel</button>
+        <button type="button" class="btn secondary">Save Draft</button>
+        <button type="button" class="btn primary" id="submitTaskBtn">Submit</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Task drawer
+        document.querySelectorAll('[data-open-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById(btn.dataset.openDrawer + 'Drawer')?.classList.add('open');
+          });
+        });
+
+        document.querySelectorAll('[data-close-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.getElementById(btn.dataset.closeDrawer + 'Drawer')?.classList.remove('open');
+          });
+        });
+
+        document.getElementById('submitTaskBtn')?.addEventListener('click', () => {
+          showToast('Task submitted for review!', 'success');
+          document.getElementById('taskDrawer')?.classList.remove('open');
+        });
+
+        // Join hunt
+        document.getElementById('joinHuntBtn')?.addEventListener('click', () => {
+          showToast('Successfully joined the hunt!', 'success');
+        });
+
+        // Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.drawer.open').forEach(el => el.classList.remove('open'));
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

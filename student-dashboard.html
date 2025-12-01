@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Student Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Student navigation">
+          <p class="nav-label">Student</p>
+          <a class="nav-link active" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="student-messages.html">Messages</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link" href="student-profile.html">My Profile</a>
+          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Student Portal</p>
+            <h1>Dashboard</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn secondary" id="submitTaskBtn">
+              <span class="btn-icon">+</span> Submit Task
+            </button>
+            <a class="btn tertiary" href="leaderboards.html">Leaderboards</a>
+          </div>
+        </header>
+
+        <main>
+          <!-- Welcome Banner -->
+          <section class="welcome-banner">
+            <div class="welcome-content">
+              <h2>Welcome back, Jamie! 👋</h2>
+              <p>You're on a 12-day streak! Keep going to unlock the Dedication Badge.</p>
+            </div>
+            <div class="welcome-actions">
+              <a class="btn primary" href="student-tasks.html">View My Tasks</a>
+              <a class="btn secondary" href="student-hunts.html">Explore Hunts</a>
+            </div>
+          </section>
+
+          <!-- Stats Overview -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card clickable" onclick="window.location.href='leaderboards.html'">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-content">
+                  <p class="muted">Leaderboard Rank</p>
+                  <h3>#12 Overall</h3>
+                  <span class="stat-change positive">↑ 3 spots</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-content">
+                  <p class="muted">Total Points</p>
+                  <h3>2,450 pts</h3>
+                  <span class="stat-change positive">+180 this week</span>
+                </div>
+              </article>
+              <article class="card stat-card clickable" onclick="window.location.href='student-tasks.html'">
+                <div class="stat-icon">✓</div>
+                <div class="stat-content">
+                  <p class="muted">Tasks Complete</p>
+                  <h3>47 / 52</h3>
+                  <span class="stat-change">5 remaining</span>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-content">
+                  <p class="muted">Active Streak</p>
+                  <h3>12 days</h3>
+                  <span class="stat-change positive">Personal best!</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Main Dashboard Grid -->
+          <section class="section">
+            <div class="dashboard-grid">
+              <!-- Current Hunt Progress -->
+              <article class="card progress-card span-2">
+                <div class="card-header">
+                  <h3>Current Hunt Progress</h3>
+                  <a class="link-btn" href="hunt-detail.html?id=data">View Details →</a>
+                </div>
+                <div class="hunt-progress-content">
+                  <div class="hunt-info">
+                    <h4>Data Management Quest</h4>
+                    <p class="muted">Complete 8 tasks to earn 350 points and the Data Pioneer badge</p>
+                    <div class="hunt-meta">
+                      <span class="badge success">Active</span>
+                      <span class="muted">Due Nov 25, 2025</span>
+                    </div>
+                  </div>
+                  <div class="progress-section">
+                    <div class="progress-header">
+                      <span class="progress-value">70%</span>
+                      <span class="muted">7 of 10 tasks</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 70%"></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Active Hunts -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>My Active Hunts</h3>
+                  <a class="link-btn" href="student-hunts.html">View All →</a>
+                </div>
+                <ul class="hunt-list">
+                  <li class="hunt-item" onclick="window.location.href='hunt-detail.html?id=cyber'">
+                    <div class="hunt-item-info">
+                      <p class="hunt-item-name">Cybersecurity Challenge</p>
+                      <p class="muted">5 days remaining</p>
+                    </div>
+                    <div class="mini-progress">
+                      <div class="mini-progress-track">
+                        <span style="width: 55%"></span>
+                      </div>
+                      <span>55%</span>
+                    </div>
+                  </li>
+                  <li class="hunt-item" onclick="window.location.href='hunt-detail.html?id=innovation'">
+                    <div class="hunt-item-info">
+                      <p class="hunt-item-name">Innovation Sprint</p>
+                      <p class="muted">12 days remaining</p>
+                    </div>
+                    <div class="mini-progress">
+                      <div class="mini-progress-track">
+                        <span style="width: 40%"></span>
+                      </div>
+                      <span>40%</span>
+                    </div>
+                  </li>
+                  <li class="hunt-item completed">
+                    <div class="hunt-item-info">
+                      <p class="hunt-item-name">Community Builder</p>
+                      <p class="muted">Completed Nov 10</p>
+                    </div>
+                    <span class="badge success">Complete</span>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Upcoming Deadlines -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Upcoming Deadlines</h3>
+                  <a class="link-btn" href="student-tasks.html">All Tasks →</a>
+                </div>
+                <ul class="deadline-list">
+                  <li class="deadline-item urgent">
+                    <div class="deadline-date">
+                      <span class="day">15</span>
+                      <span class="month">Nov</span>
+                    </div>
+                    <div class="deadline-info">
+                      <p class="deadline-name">Cyber Lab Reflection</p>
+                      <p class="muted">75 points · Due Tomorrow</p>
+                    </div>
+                    <button class="btn small primary" data-open-drawer="task">Submit</button>
+                  </li>
+                  <li class="deadline-item">
+                    <div class="deadline-date">
+                      <span class="day">18</span>
+                      <span class="month">Nov</span>
+                    </div>
+                    <div class="deadline-info">
+                      <p class="deadline-name">Data Insights Report</p>
+                      <p class="muted">120 points · 4 days left</p>
+                    </div>
+                    <button class="btn small secondary" data-open-drawer="task">Start</button>
+                  </li>
+                  <li class="deadline-item">
+                    <div class="deadline-date">
+                      <span class="day">22</span>
+                      <span class="month">Nov</span>
+                    </div>
+                    <div class="deadline-info">
+                      <p class="deadline-name">Team Collaboration Log</p>
+                      <p class="muted">50 points · 8 days left</p>
+                    </div>
+                    <button class="btn small ghost">View</button>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Activity Timeline -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Recent Activity</h3>
+                  <button class="link-btn" id="viewAllActivity">View All →</button>
+                </div>
+                <ul class="timeline">
+                  <li>
+                    <span class="badge success">✓</span>
+                    <div>
+                      <p>Submitted "Data Insights"</p>
+                      <p class="muted">Today · 3:05 PM</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="badge warn">↻</span>
+                    <div>
+                      <p>Revision requested – "Cyber Lab"</p>
+                      <p class="muted">Yesterday · 9:12 PM</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="badge success">+</span>
+                    <div>
+                      <p>Earned 50 points from Forum task</p>
+                      <p class="muted">Yesterday · 2:30 PM</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="badge neutral">•</span>
+                    <div>
+                      <p>Joined Team Crimson</p>
+                      <p class="muted">Mon · 11:00 AM</p>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Messages Preview -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>Messages</h3>
+                  <a class="link-btn" href="student-messages.html">Open Inbox →</a>
+                </div>
+                <ul class="message-preview-list">
+                  <li class="message-preview unread" onclick="window.location.href='student-messages.html'">
+                    <div class="message-avatar">TC</div>
+                    <div class="message-content">
+                      <div class="message-header">
+                        <p class="message-sender">Team Crimson</p>
+                        <span class="message-time">2m ago</span>
+                      </div>
+                      <p class="message-snippet">"Meeting tonight @ 6 to discuss final sprint..."</p>
+                    </div>
+                    <span class="unread-dot"></span>
+                  </li>
+                  <li class="message-preview" onclick="window.location.href='student-messages.html'">
+                    <div class="message-avatar">M</div>
+                    <div class="message-content">
+                      <div class="message-header">
+                        <p class="message-sender">Marta (TA)</p>
+                        <span class="message-time">1h ago</span>
+                      </div>
+                      <p class="message-snippet">"Reviewing your evidence now!"</p>
+                    </div>
+                  </li>
+                  <li class="message-preview" onclick="window.location.href='student-messages.html'">
+                    <div class="message-avatar">S</div>
+                    <div class="message-content">
+                      <div class="message-header">
+                        <p class="message-sender">System</p>
+                        <span class="message-time">3h ago</span>
+                      </div>
+                      <p class="message-snippet">"Leaderboard refresh complete."</p>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Badges & Achievements -->
+              <article class="card">
+                <div class="card-header">
+                  <h3>My Badges</h3>
+                  <a class="link-btn" href="student-profile.html#badges">View All →</a>
+                </div>
+                <div class="badges-grid">
+                  <div class="badge-item" title="Early Bird - Complete 5 tasks before deadline">
+                    <span class="badge-icon">🌅</span>
+                    <span class="badge-name">Early Bird</span>
+                  </div>
+                  <div class="badge-item" title="Team Player - Participate in 3 group hunts">
+                    <span class="badge-icon">🤝</span>
+                    <span class="badge-name">Team Player</span>
+                  </div>
+                  <div class="badge-item" title="Explorer - Complete 10 unique tasks">
+                    <span class="badge-icon">🧭</span>
+                    <span class="badge-name">Explorer</span>
+                  </div>
+                  <div class="badge-item locked" title="Data Pioneer - Unlock by completing Data Quest">
+                    <span class="badge-icon">📊</span>
+                    <span class="badge-name">Data Pioneer</span>
+                    <span class="badge-lock">🔒</span>
+                  </div>
+                </div>
+                <p class="muted badge-progress">Complete 3 more tasks to unlock Data Pioneer!</p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Quick Actions -->
+          <section class="section">
+            <h3 class="section-title">Quick Actions</h3>
+            <div class="quick-actions-grid">
+              <button class="quick-action-card" data-open-drawer="task">
+                <span class="quick-action-icon">📤</span>
+                <span class="quick-action-label">Submit Task</span>
+              </button>
+              <a class="quick-action-card" href="student-hunts.html">
+                <span class="quick-action-icon">🎯</span>
+                <span class="quick-action-label">Join New Hunt</span>
+              </a>
+              <a class="quick-action-card" href="student-messages.html">
+                <span class="quick-action-icon">💬</span>
+                <span class="quick-action-label">Team Chat</span>
+              </a>
+              <a class="quick-action-card" href="leaderboards.html">
+                <span class="quick-action-icon">📊</span>
+                <span class="quick-action-label">Leaderboard</span>
+              </a>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Task Submission Drawer -->
+    <div class="drawer" id="taskDrawer" aria-hidden="true">
+      <div class="drawer__header">
+        <h3>Submit Task</h3>
+        <button type="button" class="icon-btn" data-close-drawer="task" aria-label="Close">×</button>
+      </div>
+      <div class="drawer__body">
+        <div class="task-drawer-info">
+          <p class="eyebrow">Current Task</p>
+          <h4>Campus Photo Story</h4>
+          <p class="muted">Upload photos proving each clue completion. Worth 100 points.</p>
+        </div>
+        <form class="stacked-form" id="taskSubmitForm">
+          <label>
+            Select Task
+            <select required>
+              <option value="">Choose a task...</option>
+              <option value="campus-photo">Campus Photo Story (100 pts)</option>
+              <option value="cyber-lab">Cyber Lab Reflection (75 pts)</option>
+              <option value="data-insights">Data Insights Report (120 pts)</option>
+            </select>
+          </label>
+          <label>
+            Evidence Upload
+            <div class="file-upload-area">
+              <input type="file" id="evidenceFile" accept="image/*,.pdf,.doc,.docx" />
+              <div class="file-upload-placeholder">
+                <span class="upload-icon">📁</span>
+                <p>Click to upload or drag files here</p>
+                <p class="muted">Supports images, PDFs, and documents</p>
+              </div>
+            </div>
+          </label>
+          <label>
+            Evidence URL (optional)
+            <input type="url" placeholder="https://example.com/my-evidence" />
+          </label>
+          <label>
+            Notes
+            <textarea rows="4" placeholder="Describe what you did and any context for the grader..."></textarea>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" />
+            I confirm this is my own work and follows the honor code
+          </label>
+        </form>
+      </div>
+      <div class="drawer__footer">
+        <button type="button" class="btn ghost" data-close-drawer="task">Cancel</button>
+        <button type="button" class="btn secondary" id="saveDraftBtn">Save Draft</button>
+        <button type="button" class="btn primary" id="submitTaskFormBtn">Submit for Review</button>
+      </div>
+    </div>
+
+    <!-- Activity Modal -->
+    <div class="modal" id="activityModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="activity"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Activity History</h3>
+          <button type="button" class="icon-btn" data-close-modal="activity" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <div class="activity-filters">
+            <button class="chip active">All</button>
+            <button class="chip">Submissions</button>
+            <button class="chip">Points</button>
+            <button class="chip">Badges</button>
+          </div>
+          <ul class="timeline extended">
+            <li>
+              <span class="badge success">✓</span>
+              <div>
+                <p>Submitted "Data Insights"</p>
+                <p class="muted">Today · 3:05 PM</p>
+              </div>
+            </li>
+            <li>
+              <span class="badge warn">↻</span>
+              <div>
+                <p>Revision requested – "Cyber Lab"</p>
+                <p class="muted">Yesterday · 9:12 PM</p>
+              </div>
+            </li>
+            <li>
+              <span class="badge success">+</span>
+              <div>
+                <p>Earned 50 points from Forum task</p>
+                <p class="muted">Yesterday · 2:30 PM</p>
+              </div>
+            </li>
+            <li>
+              <span class="badge neutral">•</span>
+              <div>
+                <p>Joined Team Crimson</p>
+                <p class="muted">Mon · 11:00 AM</p>
+              </div>
+            </li>
+            <li>
+              <span class="badge success">🏅</span>
+              <div>
+                <p>Earned "Explorer" badge</p>
+                <p class="muted">Sun · 4:00 PM</p>
+              </div>
+            </li>
+            <li>
+              <span class="badge success">✓</span>
+              <div>
+                <p>Completed "Innovation Pitch"</p>
+                <p class="muted">Sat · 10:15 AM</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="modal__footer">
+          <button class="btn secondary" data-close-modal="activity">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Toast notification
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const sidebar = document.getElementById('sidebar');
+        mobileNavToggle?.addEventListener('click', () => {
+          sidebar.classList.toggle('open');
+        });
+
+        // Drawer controls
+        document.querySelectorAll('[data-open-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const drawerId = btn.dataset.openDrawer + 'Drawer';
+            const drawer = document.getElementById(drawerId);
+            drawer?.classList.add('open');
+            drawer?.setAttribute('aria-hidden', 'false');
+          });
+        });
+
+        document.querySelectorAll('[data-close-drawer]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const drawerId = btn.dataset.closeDrawer + 'Drawer';
+            const drawer = document.getElementById(drawerId);
+            drawer?.classList.remove('open');
+            drawer?.setAttribute('aria-hidden', 'true');
+          });
+        });
+
+        // Submit task button in header
+        document.getElementById('submitTaskBtn')?.addEventListener('click', () => {
+          const drawer = document.getElementById('taskDrawer');
+          drawer?.classList.add('open');
+          drawer?.setAttribute('aria-hidden', 'false');
+        });
+
+        // Task form submission
+        document.getElementById('submitTaskFormBtn')?.addEventListener('click', () => {
+          showToast('Task submitted for review!', 'success');
+          document.getElementById('taskDrawer')?.classList.remove('open');
+        });
+
+        document.getElementById('saveDraftBtn')?.addEventListener('click', () => {
+          showToast('Draft saved successfully!', 'info');
+        });
+
+        // Modal controls
+        document.querySelectorAll('[data-close-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const modalId = btn.dataset.closeModal + 'Modal';
+            const modal = document.getElementById(modalId);
+            modal?.classList.remove('open');
+            modal?.setAttribute('aria-hidden', 'true');
+          });
+        });
+
+        document.getElementById('viewAllActivity')?.addEventListener('click', () => {
+          const modal = document.getElementById('activityModal');
+          modal?.classList.add('open');
+          modal?.setAttribute('aria-hidden', 'false');
+        });
+
+        // Escape key to close drawers/modals
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.drawer.open, .modal.open').forEach(el => {
+              el.classList.remove('open');
+              el.setAttribute('aria-hidden', 'true');
+            });
+          }
+        });
+
+        // Filter chips
+        document.querySelectorAll('.activity-filters .chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.activity-filters .chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            showToast(`Filtering by: ${chip.textContent}`, 'info');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Help Center</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav">
+          <p class="nav-label">Navigation</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Support</p>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <a class="nav-link active" href="faq.html">FAQ</a>
+          <a class="nav-link" href="about.html">About MIS</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+          <a class="nav-link" href="auth.html">Login</a>
+        </nav>
+        <div class="sidebar__footer">
+          <a class="btn ghost full-width" href="auth.html">Sign In</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Help Center</p>
+            <h1>Frequently Asked Questions</h1>
+          </div>
+          <div class="header-actions">
+            <a class="btn secondary" href="support.html">Help Center</a>
+            <a class="btn primary" href="contact.html">Contact Us</a>
+          </div>
+        </header>
+
+        <main>
+          <!-- Category Filter -->
+          <section class="section">
+            <div class="faq-categories">
+              <button class="chip active" data-category="all">All</button>
+              <button class="chip" data-category="account">Account</button>
+              <button class="chip" data-category="hunts">Hunts & Tasks</button>
+              <button class="chip" data-category="points">Points & Badges</button>
+              <button class="chip" data-category="technical">Technical</button>
+            </div>
+          </section>
+
+          <!-- FAQ List -->
+          <section class="section">
+            <div class="card">
+              <div class="faq-list">
+                <!-- Account -->
+                <details class="faq-item" data-category="account">
+                  <summary>How do I create an account?</summary>
+                  <div class="faq-answer">
+                    <p>Click "Sign Up" on the login page and use your University of Alabama email (@ua.edu or @crimson.ua.edu). Verify your email to complete registration.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="account">
+                  <summary>How do I reset my password?</summary>
+                  <div class="faq-answer">
+                    <p>Click "Forgot Password" on the login page, enter your email, and follow the reset link sent to your inbox. The link expires after 24 hours.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="account">
+                  <summary>Can I change my display name or email?</summary>
+                  <div class="faq-answer">
+                    <p>Yes! Go to your Profile page and click "Edit Profile" to update your display name and other information. Email changes require verification.</p>
+                  </div>
+                </details>
+
+                <!-- Hunts -->
+                <details class="faq-item" data-category="hunts">
+                  <summary>How do I join a hunt?</summary>
+                  <div class="faq-answer">
+                    <p>Browse available hunts in the "Browse Hunts" section and click "Join Hunt" on any hunt you'd like to participate in. Some hunts may require instructor approval.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="hunts">
+                  <summary>Can I leave a hunt after joining?</summary>
+                  <div class="faq-answer">
+                    <p>Yes, but your progress will be lost. Go to "My Hunts" and click "Leave Hunt." You can rejoin later, but you'll need to start over.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="hunts">
+                  <summary>What happens if I miss a deadline?</summary>
+                  <div class="faq-answer">
+                    <p>Late submissions may receive reduced points depending on the hunt settings. Contact your instructor if you have extenuating circumstances.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="hunts">
+                  <summary>How do I submit evidence for a task?</summary>
+                  <div class="faq-answer">
+                    <p>Open the task and click "Submit." You can upload files, photos, or provide URLs as evidence. Add notes to explain your submission.</p>
+                  </div>
+                </details>
+
+                <!-- Points -->
+                <details class="faq-item" data-category="points">
+                  <summary>How are points calculated?</summary>
+                  <div class="faq-answer">
+                    <p>Each task has a base point value. You receive full points for on-time submissions that meet requirements. Graders may adjust points based on quality.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="points">
+                  <summary>How do I earn badges?</summary>
+                  <div class="faq-answer">
+                    <p>Badges are earned by completing hunts, reaching milestones, and maintaining streaks. Each badge has specific unlock criteria shown on your profile.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="points">
+                  <summary>How often is the leaderboard updated?</summary>
+                  <div class="faq-answer">
+                    <p>The leaderboard updates automatically every hour. You can also manually refresh to see the latest rankings.</p>
+                  </div>
+                </details>
+
+                <!-- Technical -->
+                <details class="faq-item" data-category="technical">
+                  <summary>What file types can I upload?</summary>
+                  <div class="faq-answer">
+                    <p>We support images (JPG, PNG, GIF), documents (PDF, DOC, DOCX), videos (MP4, MOV), and archives (ZIP). Maximum file size is 25MB.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="technical">
+                  <summary>Why won't my file upload?</summary>
+                  <div class="faq-answer">
+                    <p>Check your file size (max 25MB), file format, and internet connection. Try compressing large files or using a different browser.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="technical">
+                  <summary>Is there a mobile app?</summary>
+                  <div class="faq-answer">
+                    <p>The platform is fully mobile-responsive. Access it through your mobile browser for the best experience. A native app is planned for future release.</p>
+                  </div>
+                </details>
+
+                <details class="faq-item" data-category="technical">
+                  <summary>Which browsers are supported?</summary>
+                  <div class="faq-answer">
+                    <p>We support the latest versions of Chrome, Firefox, Safari, and Edge. For the best experience, keep your browser updated.</p>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <!-- Still have questions -->
+          <section class="section">
+            <div class="card support-cta">
+              <div class="support-cta-content">
+                <h3>Didn't find your answer?</h3>
+                <p class="muted">Our support team is ready to help you with any questions not covered here.</p>
+              </div>
+              <div class="support-cta-actions">
+                <a href="contact.html" class="btn primary">Contact Support</a>
+                <a href="support.html" class="btn secondary">Help Center</a>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Category filtering
+        document.querySelectorAll('.faq-categories .chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.faq-categories .chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            
+            const category = chip.dataset.category;
+            document.querySelectorAll('.faq-item').forEach(item => {
+              if (category === 'all' || item.dataset.category === category) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+

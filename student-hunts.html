@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Browse Hunts · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Student Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Student Portal</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav" aria-label="Student navigation">
+          <p class="nav-label">Student</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-tasks.html">My Tasks</a>
+          <a class="nav-link active" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="student-messages.html">Messages</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Account</p>
+          <a class="nav-link" href="student-profile.html">My Profile</a>
+          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="support.html">Help & Support</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="user-card">
+            <div class="user-avatar">JA</div>
+            <div>
+              <p class="user-name">Jamie Alvarez</p>
+              <p class="user-role">Student · Team Crimson</p>
+            </div>
+          </div>
+          <a class="btn ghost full-width" href="auth.html?logout=true">Sign Out</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button class="icon-btn mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+          <div>
+            <p class="eyebrow">Discovery</p>
+            <h1>Browse Hunts</h1>
+          </div>
+          <div class="header-actions">
+            <a class="btn tertiary" href="leaderboards.html">Leaderboards</a>
+          </div>
+        </header>
+
+        <main>
+          <!-- Hunt Stats -->
+          <section class="section">
+            <div class="cards-grid four stat-cards">
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Available Hunts</p>
+                  <h3>12</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">My Active Hunts</p>
+                  <h3>3</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Completed Hunts</p>
+                  <h3>6</h3>
+                </div>
+              </article>
+              <article class="card stat-card">
+                <div class="stat-content">
+                  <p class="muted">Total Points Earned</p>
+                  <h3>2,450</h3>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Filters -->
+          <section class="section">
+            <div class="filter-bar">
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="search" placeholder="Search hunts..." id="huntSearch" />
+              </div>
+              <div class="chip-row">
+                <button class="chip active" data-filter="all">All</button>
+                <button class="chip" data-filter="easy">Easy</button>
+                <button class="chip" data-filter="medium">Medium</button>
+                <button class="chip" data-filter="hard">Hard</button>
+                <button class="chip" data-filter="online">Online</button>
+                <button class="chip" data-filter="campus">On Campus</button>
+                <button class="chip" data-filter="team">Team</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Hunt Tabs -->
+          <section class="section">
+            <div class="tabs-container">
+              <div class="tabs">
+                <button class="tab active" data-tab="available">Available (9)</button>
+                <button class="tab" data-tab="myHunts">My Hunts (3)</button>
+                <button class="tab" data-tab="completed">Completed (6)</button>
+              </div>
+            </div>
+
+            <!-- Available Hunts -->
+            <div class="tab-panel active" id="available">
+              <div class="cards-grid three">
+                <!-- Featured Hunt -->
+                <article class="card hunt-card featured" data-difficulty="medium" data-type="hybrid">
+                  <div class="hunt-badge featured-badge">⭐ Featured</div>
+                  <div class="hunt-header">
+                    <h3>Data Management Quest</h3>
+                    <span class="hunt-difficulty medium">Medium</span>
+                  </div>
+                  <p class="muted">Master data analysis and management through hands-on campus challenges.</p>
+                  <div class="hunt-meta-grid">
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">👥</span>
+                      <span>112 enrolled</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">📍</span>
+                      <span>Hybrid</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">⏰</span>
+                      <span>Ends Nov 25</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">🎯</span>
+                      <span>10 tasks</span>
+                    </div>
+                  </div>
+                  <div class="hunt-rewards">
+                    <span class="reward-item">🏆 350 pts</span>
+                    <span class="reward-item">🎖️ Data Pioneer Badge</span>
+                  </div>
+                  <div class="hunt-actions">
+                    <button class="btn primary" data-join-hunt="data">Join Hunt</button>
+                    <a class="btn secondary" href="hunt-detail.html?id=data">View Details</a>
+                  </div>
+                </article>
+
+                <article class="card hunt-card" data-difficulty="hard" data-type="campus">
+                  <div class="hunt-header">
+                    <h3>Cybersecurity Challenge</h3>
+                    <span class="hunt-difficulty hard">Hard</span>
+                  </div>
+                  <p class="muted">Test your security skills in a hands-on lab environment.</p>
+                  <div class="hunt-meta-grid">
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">👥</span>
+                      <span>48 enrolled</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">📍</span>
+                      <span>On Campus</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">⏰</span>
+                      <span>1 week left</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">🎯</span>
+                      <span>8 tasks</span>
+                    </div>
+                  </div>
+                  <div class="hunt-rewards">
+                    <span class="reward-item">🏆 300 pts</span>
+                    <span class="reward-item">🎖️ Cyber Shield Badge</span>
+                  </div>
+                  <div class="hunt-actions">
+                    <button class="btn primary" data-join-hunt="cyber">Join Hunt</button>
+                    <a class="btn secondary" href="hunt-detail.html?id=cyber">View Details</a>
+                  </div>
+                </article>
+
+                <article class="card hunt-card" data-difficulty="medium" data-type="hybrid">
+                  <div class="hunt-header">
+                    <h3>Innovation Sprint</h3>
+                    <span class="hunt-difficulty medium">Medium</span>
+                  </div>
+                  <p class="muted">Rapid ideation and prototyping across campus hotspots.</p>
+                  <div class="hunt-meta-grid">
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">👥</span>
+                      <span>72 enrolled</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">📍</span>
+                      <span>Hybrid</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">⏰</span>
+                      <span>5 days left</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">🎯</span>
+                      <span>6 tasks</span>
+                    </div>
+                  </div>
+                  <div class="hunt-rewards">
+                    <span class="reward-item">🏆 250 pts</span>
+                    <span class="reward-item">🎖️ Innovator Badge</span>
+                  </div>
+                  <div class="hunt-actions">
+                    <button class="btn primary" data-join-hunt="innovation">Join Hunt</button>
+                    <a class="btn secondary" href="hunt-detail.html?id=innovation">View Details</a>
+                  </div>
+                </article>
+
+                <article class="card hunt-card" data-difficulty="easy" data-type="online">
+                  <div class="hunt-header">
+                    <h3>Community Builder</h3>
+                    <span class="hunt-difficulty easy">Easy</span>
+                  </div>
+                  <p class="muted">Connect with fellow MIS students through collaborative challenges.</p>
+                  <div class="hunt-meta-grid">
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">👥</span>
+                      <span>110 enrolled</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">📍</span>
+                      <span>Online</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">⏰</span>
+                      <span>Ongoing</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">🎯</span>
+                      <span>5 tasks</span>
+                    </div>
+                  </div>
+                  <div class="hunt-rewards">
+                    <span class="reward-item">🏆 150 pts</span>
+                    <span class="reward-item">🎖️ Team Player Badge</span>
+                  </div>
+                  <div class="hunt-actions">
+                    <button class="btn primary" data-join-hunt="community">Join Hunt</button>
+                    <a class="btn secondary" href="hunt-detail.html?id=community">View Details</a>
+                  </div>
+                </article>
+
+                <article class="card hunt-card" data-difficulty="hard" data-type="team">
+                  <div class="hunt-header">
+                    <h3>Analytics Championship</h3>
+                    <span class="hunt-difficulty hard">Hard</span>
+                  </div>
+                  <p class="muted">Compete in teams to solve complex data analytics problems.</p>
+                  <div class="hunt-meta-grid">
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">👥</span>
+                      <span>36 enrolled</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">📍</span>
+                      <span>Team Event</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">⏰</span>
+                      <span>Dec 1-7</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">🎯</span>
+                      <span>12 tasks</span>
+                    </div>
+                  </div>
+                  <div class="hunt-rewards">
+                    <span class="reward-item">🏆 500 pts</span>
+                    <span class="reward-item">🎖️ Analytics Pro Badge</span>
+                  </div>
+                  <div class="hunt-actions">
+                    <button class="btn primary" data-join-hunt="analytics">Join Hunt</button>
+                    <a class="btn secondary" href="hunt-detail.html?id=analytics">View Details</a>
+                  </div>
+                </article>
+
+                <article class="card hunt-card" data-difficulty="easy" data-type="campus">
+                  <div class="hunt-header">
+                    <h3>Campus Explorer</h3>
+                    <span class="hunt-difficulty easy">Easy</span>
+                  </div>
+                  <p class="muted">Discover hidden gems around the University of Alabama campus.</p>
+                  <div class="hunt-meta-grid">
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">👥</span>
+                      <span>85 enrolled</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">📍</span>
+                      <span>On Campus</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">⏰</span>
+                      <span>Ongoing</span>
+                    </div>
+                    <div class="hunt-meta-item">
+                      <span class="meta-icon">🎯</span>
+                      <span>8 tasks</span>
+                    </div>
+                  </div>
+                  <div class="hunt-rewards">
+                    <span class="reward-item">🏆 200 pts</span>
+                    <span class="reward-item">🎖️ Explorer Badge</span>
+                  </div>
+                  <div class="hunt-actions">
+                    <button class="btn primary" data-join-hunt="explorer">Join Hunt</button>
+                    <a class="btn secondary" href="hunt-detail.html?id=explorer">View Details</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- My Hunts -->
+            <div class="tab-panel" id="myHunts">
+              <div class="cards-grid three">
+                <article class="card hunt-card enrolled">
+                  <div class="hunt-badge enrolled-badge">📍 Enrolled</div>
+                  <div class="hunt-header">
+                    <h3>Data Management Quest</h3>
+                    <span class="hunt-difficulty medium">Medium</span>
+                  </div>
+                  <div class="hunt-progress">
+                    <div class="progress-header">
+                      <span>Your Progress</span>
+                      <span class="progress-value">70%</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 70%"></span>
+                    </div>
+                    <p class="muted">7 of 10 tasks complete · 3 days left</p>
+                  </div>
+                  <div class="hunt-actions">
+                    <a class="btn primary" href="hunt-detail.html?id=data">Continue Hunt</a>
+                    <button class="btn ghost" data-leave-hunt="data">Leave Hunt</button>
+                  </div>
+                </article>
+
+                <article class="card hunt-card enrolled">
+                  <div class="hunt-badge enrolled-badge">📍 Enrolled</div>
+                  <div class="hunt-header">
+                    <h3>Cybersecurity Challenge</h3>
+                    <span class="hunt-difficulty hard">Hard</span>
+                  </div>
+                  <div class="hunt-progress">
+                    <div class="progress-header">
+                      <span>Your Progress</span>
+                      <span class="progress-value">55%</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 55%"></span>
+                    </div>
+                    <p class="muted">4 of 8 tasks complete · 5 days left</p>
+                  </div>
+                  <div class="hunt-actions">
+                    <a class="btn primary" href="hunt-detail.html?id=cyber">Continue Hunt</a>
+                    <button class="btn ghost" data-leave-hunt="cyber">Leave Hunt</button>
+                  </div>
+                </article>
+
+                <article class="card hunt-card enrolled">
+                  <div class="hunt-badge enrolled-badge">📍 Enrolled</div>
+                  <div class="hunt-header">
+                    <h3>Innovation Sprint</h3>
+                    <span class="hunt-difficulty medium">Medium</span>
+                  </div>
+                  <div class="hunt-progress">
+                    <div class="progress-header">
+                      <span>Your Progress</span>
+                      <span class="progress-value">40%</span>
+                    </div>
+                    <div class="progress-track">
+                      <span style="width: 40%"></span>
+                    </div>
+                    <p class="muted">2 of 6 tasks complete · 12 days left</p>
+                  </div>
+                  <div class="hunt-actions">
+                    <a class="btn primary" href="hunt-detail.html?id=innovation">Continue Hunt</a>
+                    <button class="btn ghost" data-leave-hunt="innovation">Leave Hunt</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Completed Hunts -->
+            <div class="tab-panel" id="completed">
+              <div class="completed-summary">
+                <p>You've completed <strong>6 hunts</strong> and earned <strong>1,250 bonus points</strong>!</p>
+              </div>
+              <div class="cards-grid three">
+                <article class="card hunt-card completed-hunt">
+                  <div class="hunt-badge completed-badge">✓ Completed</div>
+                  <div class="hunt-header">
+                    <h3>Community Builder</h3>
+                    <span class="completion-date">Completed Nov 10</span>
+                  </div>
+                  <div class="hunt-completion-stats">
+                    <div class="completion-stat">
+                      <span class="stat-value">5/5</span>
+                      <span class="stat-label">Tasks</span>
+                    </div>
+                    <div class="completion-stat">
+                      <span class="stat-value">150</span>
+                      <span class="stat-label">Points</span>
+                    </div>
+                    <div class="completion-stat">
+                      <span class="stat-value">🎖️</span>
+                      <span class="stat-label">Badge</span>
+                    </div>
+                  </div>
+                  <div class="hunt-actions">
+                    <a class="btn secondary" href="hunt-detail.html?id=community">View Summary</a>
+                  </div>
+                </article>
+
+                <article class="card hunt-card completed-hunt">
+                  <div class="hunt-badge completed-badge">✓ Completed</div>
+                  <div class="hunt-header">
+                    <h3>Welcome Week Quest</h3>
+                    <span class="completion-date">Completed Aug 25</span>
+                  </div>
+                  <div class="hunt-completion-stats">
+                    <div class="completion-stat">
+                      <span class="stat-value">8/8</span>
+                      <span class="stat-label">Tasks</span>
+                    </div>
+                    <div class="completion-stat">
+                      <span class="stat-value">200</span>
+                      <span class="stat-label">Points</span>
+                    </div>
+                    <div class="completion-stat">
+                      <span class="stat-value">🎖️</span>
+                      <span class="stat-label">Badge</span>
+                    </div>
+                  </div>
+                  <div class="hunt-actions">
+                    <a class="btn secondary" href="hunt-detail.html?id=welcome">View Summary</a>
+                  </div>
+                </article>
+
+                <article class="card hunt-card completed-hunt">
+                  <div class="hunt-badge completed-badge">✓ Completed</div>
+                  <div class="hunt-header">
+                    <h3>MIS Foundations</h3>
+                    <span class="completion-date">Completed Sep 15</span>
+                  </div>
+                  <div class="hunt-completion-stats">
+                    <div class="completion-stat">
+                      <span class="stat-value">10/10</span>
+                      <span class="stat-label">Tasks</span>
+                    </div>
+                    <div class="completion-stat">
+                      <span class="stat-value">300</span>
+                      <span class="stat-label">Points</span>
+                    </div>
+                    <div class="completion-stat">
+                      <span class="stat-value">🎖️</span>
+                      <span class="stat-label">Badge</span>
+                    </div>
+                  </div>
+                  <div class="hunt-actions">
+                    <a class="btn secondary" href="hunt-detail.html?id=foundations">View Summary</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Join Hunt Confirmation Modal -->
+    <div class="modal" id="joinHuntModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="joinHunt"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Join Hunt</h3>
+          <button type="button" class="icon-btn" data-close-modal="joinHunt" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <div class="join-hunt-info">
+            <h4 id="joinHuntTitle">Data Management Quest</h4>
+            <p class="muted">You're about to join this hunt. Here's what you need to know:</p>
+            <ul class="join-info-list">
+              <li>📅 <strong>Duration:</strong> <span id="joinHuntDuration">2 weeks</span></li>
+              <li>🎯 <strong>Tasks:</strong> <span id="joinHuntTasks">10 tasks to complete</span></li>
+              <li>🏆 <strong>Reward:</strong> <span id="joinHuntReward">350 points + badge</span></li>
+              <li>⚠️ <strong>Note:</strong> You can leave anytime, but progress won't be saved</li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="joinHunt">Cancel</button>
+          <button class="btn primary" id="confirmJoinHunt">Join Hunt</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leave Hunt Confirmation Modal -->
+    <div class="modal" id="leaveHuntModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close-modal="leaveHunt"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Leave Hunt?</h3>
+          <button type="button" class="icon-btn" data-close-modal="leaveHunt" aria-label="Close">×</button>
+        </div>
+        <div class="modal__body">
+          <p>Are you sure you want to leave this hunt?</p>
+          <div class="warning-box">
+            <p>⚠️ <strong>Warning:</strong> Your progress will be lost and you'll need to start over if you rejoin.</p>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn ghost" data-close-modal="leaveHunt">Cancel</button>
+          <button class="btn warn" id="confirmLeaveHunt">Leave Hunt</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Toast notification
+        function showToast(message, type = 'info') {
+          let toast = document.querySelector('.toast');
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = message;
+          toast.className = `toast ${type} visible`;
+          setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+
+        // Mobile nav toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const sidebar = document.getElementById('sidebar');
+        mobileNavToggle?.addEventListener('click', () => {
+          sidebar.classList.toggle('open');
+        });
+
+        // Tab switching
+        document.querySelectorAll('.tabs .tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            const targetId = tab.dataset.tab;
+            document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+              panel.classList.toggle('active', panel.id === targetId);
+            });
+          });
+        });
+
+        // Filter chips
+        document.querySelectorAll('.chip-row .chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.chip-row .chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            
+            const filter = chip.dataset.filter;
+            document.querySelectorAll('.hunt-card').forEach(card => {
+              if (filter === 'all') {
+                card.style.display = 'flex';
+              } else {
+                const difficulty = card.dataset.difficulty;
+                const type = card.dataset.type;
+                const matches = difficulty === filter || type === filter;
+                card.style.display = matches ? 'flex' : 'none';
+              }
+            });
+          });
+        });
+
+        // Search functionality
+        document.getElementById('huntSearch')?.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          document.querySelectorAll('.hunt-card').forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const desc = card.querySelector('p.muted')?.textContent.toLowerCase() || '';
+            card.style.display = (title.includes(query) || desc.includes(query)) ? 'flex' : 'none';
+          });
+        });
+
+        // Join hunt modal
+        let selectedHunt = null;
+        document.querySelectorAll('[data-join-hunt]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            selectedHunt = btn.dataset.joinHunt;
+            const modal = document.getElementById('joinHuntModal');
+            // Update modal content based on hunt
+            const huntNames = {
+              data: 'Data Management Quest',
+              cyber: 'Cybersecurity Challenge',
+              innovation: 'Innovation Sprint',
+              community: 'Community Builder',
+              analytics: 'Analytics Championship',
+              explorer: 'Campus Explorer'
+            };
+            document.getElementById('joinHuntTitle').textContent = huntNames[selectedHunt] || 'Hunt';
+            modal?.classList.add('open');
+            modal?.setAttribute('aria-hidden', 'false');
+          });
+        });
+
+        document.getElementById('confirmJoinHunt')?.addEventListener('click', () => {
+          showToast(`Successfully joined hunt!`, 'success');
+          document.getElementById('joinHuntModal')?.classList.remove('open');
+          // Switch to My Hunts tab
+          document.querySelector('[data-tab="myHunts"]')?.click();
+        });
+
+        // Leave hunt modal
+        let huntToLeave = null;
+        document.querySelectorAll('[data-leave-hunt]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            huntToLeave = btn.dataset.leaveHunt;
+            const modal = document.getElementById('leaveHuntModal');
+            modal?.classList.add('open');
+            modal?.setAttribute('aria-hidden', 'false');
+          });
+        });
+
+        document.getElementById('confirmLeaveHunt')?.addEventListener('click', () => {
+          showToast('You have left the hunt', 'info');
+          document.getElementById('leaveHuntModal')?.classList.remove('open');
+        });
+
+        // Modal close buttons
+        document.querySelectorAll('[data-close-modal]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const modalId = btn.dataset.closeModal + 'Modal';
+            const modal = document.getElementById(modalId);
+            modal?.classList.remove('open');
+            modal?.setAttribute('aria-hidden', 'true');
+          });
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            document.querySelectorAll('.modal.open').forEach(el => {
+              el.classList.remove('open');
+              el.setAttribute('aria-hidden', 'true');
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

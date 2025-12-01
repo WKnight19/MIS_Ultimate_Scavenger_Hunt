@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Help & Support · MIS Ultimate Scavenger Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+          <div class="logo">MIS</div>
+          <div>
+            <p class="brand-title">Scavenger Hunt</p>
+            <p class="brand-meta">Help Center</p>
+          </div>
+        </div>
+        <nav class="sidebar__nav">
+          <p class="nav-label">Navigation</p>
+          <a class="nav-link" href="student-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="student-hunts.html">Browse Hunts</a>
+          <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+          <p class="nav-label">Support</p>
+          <a class="nav-link active" href="support.html">Help & Support</a>
+          <a class="nav-link" href="faq.html">FAQ</a>
+          <a class="nav-link" href="about.html">About MIS</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+          <p class="nav-label">Quick Links</p>
+          <a class="nav-link" href="index.html">Landing Page</a>
+          <a class="nav-link" href="auth.html">Login</a>
+        </nav>
+        <div class="sidebar__footer">
+          <a class="btn ghost full-width" href="auth.html">Sign In</a>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="site-header">
+          <button
+            class="icon-btn mobile-nav-toggle"
+            id="mobileNavToggle"
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+          <div>
+            <p class="eyebrow">Support Center</p>
+            <h1>Help & Support</h1>
+          </div>
+          <div class="header-actions">
+            <a class="btn primary" href="contact.html">Contact Us</a>
+          </div>
+        </header>
+
+        <main>
+          <!-- Search -->
+          <section class="section">
+            <div class="support-hero">
+              <h2>How can we help you?</h2>
+              <div class="search-box large">
+                <span class="search-icon">🔍</span>
+                <input
+                  type="search"
+                  placeholder="Search for help articles..."
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Quick Links -->
+          <section class="section">
+            <div class="cards-grid four">
+              <a href="faq.html" class="card quick-help-card">
+                <span class="quick-help-icon">❓</span>
+                <h4>FAQ</h4>
+                <p class="muted">Common questions answered</p>
+              </a>
+              <a href="#getting-started" class="card quick-help-card">
+                <span class="quick-help-icon">🚀</span>
+                <h4>Getting Started</h4>
+                <p class="muted">New to the platform?</p>
+              </a>
+              <a href="#troubleshooting" class="card quick-help-card">
+                <span class="quick-help-icon">🔧</span>
+                <h4>Troubleshooting</h4>
+                <p class="muted">Fix common issues</p>
+              </a>
+              <a href="contact.html" class="card quick-help-card">
+                <span class="quick-help-icon">💬</span>
+                <h4>Contact Support</h4>
+                <p class="muted">Get personalized help</p>
+              </a>
+            </div>
+          </section>
+
+          <!-- Help Topics -->
+          <section class="section" id="getting-started">
+            <h2 class="section-title">Getting Started</h2>
+            <div class="card">
+              <div class="help-accordion">
+                <details open>
+                  <summary>How do I create an account?</summary>
+                  <div class="help-content">
+                    <p>
+                      To create an account, click the "Sign Up" button on the
+                      login page. You'll need to use your University of Alabama
+                      email address (@ua.edu or @crimson.ua.edu).
+                    </p>
+                    <ol>
+                      <li>Go to the <a href="auth.html">Login page</a></li>
+                      <li>Click "Create Account"</li>
+                      <li>Enter your university email and create a password</li>
+                      <li>Verify your email address</li>
+                      <li>Complete your profile</li>
+                    </ol>
+                  </div>
+                </details>
+                <details>
+                  <summary>How do I join a hunt?</summary>
+                  <div class="help-content">
+                    <p>
+                      You can browse and join available hunts from the
+                      <a href="student-hunts.html">Browse Hunts</a> page.
+                    </p>
+                    <ol>
+                      <li>Navigate to "Browse Hunts" in the sidebar</li>
+                      <li>Find a hunt that interests you</li>
+                      <li>Click "Join Hunt" on the hunt card</li>
+                      <li>Start completing tasks!</li>
+                    </ol>
+                  </div>
+                </details>
+                <details>
+                  <summary>What are points and how do I earn them?</summary>
+                  <div class="help-content">
+                    <p>
+                      Points are earned by completing tasks within hunts. Each
+                      task has a point value displayed on the task card.
+                      Complete tasks before their deadline to earn full points.
+                    </p>
+                    <ul>
+                      <li>Submit tasks on time for full points</li>
+                      <li>Late submissions may receive reduced points</li>
+                      <li>
+                        Bonus points are awarded for completing hunts early
+                      </li>
+                      <li>
+                        Team activities can provide extra point opportunities
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <!-- Troubleshooting -->
+          <section class="section" id="troubleshooting">
+            <h2 class="section-title">Troubleshooting</h2>
+            <div class="card">
+              <div class="help-accordion">
+                <details>
+                  <summary>I can't log in to my account</summary>
+                  <div class="help-content">
+                    <p>If you're having trouble logging in, try these steps:</p>
+                    <ol>
+                      <li>
+                        Make sure you're using your university email address
+                      </li>
+                      <li>Check that Caps Lock is not enabled</li>
+                      <li>
+                        Try resetting your password using the "Forgot Password"
+                        link
+                      </li>
+                      <li>Clear your browser cache and cookies</li>
+                      <li>Try a different browser</li>
+                    </ol>
+                    <p>
+                      If you still can't log in,
+                      <a href="contact.html">contact support</a>.
+                    </p>
+                  </div>
+                </details>
+                <details>
+                  <summary>My submission won't upload</summary>
+                  <div class="help-content">
+                    <p>If your submission isn't uploading properly:</p>
+                    <ul>
+                      <li>Check your file size (max 25MB per file)</li>
+                      <li>Ensure you're using a supported file format</li>
+                      <li>Try compressing large images</li>
+                      <li>Check your internet connection</li>
+                      <li>Try using a different browser</li>
+                    </ul>
+                  </div>
+                </details>
+                <details>
+                  <summary>I submitted the wrong file</summary>
+                  <div class="help-content">
+                    <p>
+                      If you submitted the wrong file, you can resubmit as long
+                      as the deadline hasn't passed. Your new submission will
+                      replace the previous one. If the deadline has passed,
+                      contact your instructor or TA for assistance.
+                    </p>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </section>
+
+          <!-- Policies -->
+          <section class="section">
+            <h2 class="section-title">Policies & Guidelines</h2>
+            <div class="cards-grid three">
+              <div class="card">
+                <h4>Academic Integrity</h4>
+                <p class="muted">
+                  All submissions must be your own original work. Collaboration
+                  is encouraged on team tasks, but individual submissions must
+                  reflect your own efforts.
+                </p>
+                <a href="#" class="link-btn">Read Full Policy →</a>
+              </div>
+              <div class="card">
+                <h4>Privacy Policy</h4>
+                <p class="muted">
+                  We are committed to protecting your privacy. Learn how we
+                  collect, use, and protect your data.
+                </p>
+                <a href="#" class="link-btn">Read Privacy Policy →</a>
+              </div>
+              <div class="card">
+                <h4>Terms of Service</h4>
+                <p class="muted">
+                  By using this platform, you agree to our terms of service and
+                  acceptable use policies.
+                </p>
+                <a href="#" class="link-btn">Read Terms →</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Contact CTA -->
+          <section class="section">
+            <div class="card support-cta">
+              <div class="support-cta-content">
+                <h3>Still need help?</h3>
+                <p class="muted">
+                  Our support team is here to assist you. Reach out and we'll
+                  get back to you within 24 hours.
+                </p>
+              </div>
+              <div class="support-cta-actions">
+                <a href="contact.html" class="btn primary">Contact Support</a>
+                <a href="faq.html" class="btn secondary">View FAQ</a>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <p>© 2025 University of Alabama MIS · Ultimate Scavenger Hunt</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document
+          .getElementById("mobileNavToggle")
+          ?.addEventListener("click", () => {
+            document.getElementById("sidebar").classList.toggle("open");
+          });
+      });
+    </script>
+  </body>
+</html>
